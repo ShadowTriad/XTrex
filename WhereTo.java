@@ -42,6 +42,8 @@ public class WhereTo extends JFrame
 	
 	public final DeleteButton buttonDEL = new DeleteButton ("DEL");
 	
+	public final LeftButton buttonL = new LeftButton ("L");
+	
 	private class CharacterButton extends JButton
 	{
 		CharacterButton (String character)
@@ -78,7 +80,7 @@ public class WhereTo extends JFrame
 					
 					if (length == 0)
 					{
-					
+						
 					}
 					
 					else if (length == 1)
@@ -94,6 +96,24 @@ public class WhereTo extends JFrame
 					
 						display.setText ("" + string);
 					}
+				}
+			});
+		}
+	}
+	
+	private class LeftButton extends JButton
+	{
+		LeftButton (String left)
+		{
+			setIcon (new ImageIcon ("keycap" + left + ".png"));
+			
+			setBorder (null);
+			
+			addMouseListener (new MouseAdapter ()
+			{
+				public void mouseClicked (MouseEvent event)
+				{
+					
 				}
 			});
 		}
@@ -154,6 +174,10 @@ public class WhereTo extends JFrame
 		buttonDEL.setBounds (82, 228, 149, 116);
 		
 		add (buttonDEL);
+		
+		buttonL.setBounds (9, 282, 72, 62);
+		
+		add (buttonL);
 		
 	}
 	
