@@ -18,7 +18,7 @@ public class Numeric extends JFrame
 {
 	private static String string = "";
 		
-	public final TextField display = new TextField ();
+	public final TextField field = new TextField ();
 	
 	public final CharacterButton button1 = new CharacterButton ("1");
 	
@@ -58,7 +58,7 @@ public class Numeric extends JFrame
 				{
 					string = string + character;
 					
-					display.setText("" + string);
+					field.setText("" + string);
 				}
 			});
 		}
@@ -87,14 +87,14 @@ public class Numeric extends JFrame
 					{
 						string = "";
 						
-						display.setText ("");
+						field.setText ("");
 					}
 					
 					else
 					{
 						string = string.substring (0, length - 1);
 					
-						display.setText ("" + string);
+						field.setText ("" + string);
 					}
 				}
 			});
@@ -113,7 +113,17 @@ public class Numeric extends JFrame
 			{
 				public void mouseClicked (MouseEvent event)
 				{
+					Numeric.this.dispose ();
 					
+					JFrame frame = new Alphabetic (string);
+					
+					frame.setLocationRelativeTo (null);
+					
+					frame.setSize (240, 375);
+					
+					frame.setResizable (false);
+					
+					frame.setVisible (true);
 				}
 			});
 		}
@@ -127,9 +137,75 @@ public class Numeric extends JFrame
 		
 		setLayout (null);
 		
-		display.setBounds (14, 12, 208, 25);
+		field.setBounds (14, 12, 208, 25);
 		
-		add (display);
+		add (field);
+		
+		button1.setBounds (9, 52, 72, 61);
+		
+		add (button1);
+		
+		button2.setBounds (82, 52, 74, 61);
+		
+		add (button2);
+		
+		button3.setBounds (157, 52, 74, 61);
+		
+		add (button3);
+		
+		button4.setBounds (9, 114, 72, 59);
+		
+		add (button4);
+		
+		button5.setBounds (82, 114, 74, 59);
+		
+		add (button5);
+		
+		button6.setBounds (157, 114, 74, 59);
+		
+		add (button6);
+		
+		button7.setBounds (9, 174, 72, 53);
+		
+		add (button7);
+		
+		button8.setBounds (82, 174, 74, 53);
+		
+		add (button8);
+		
+		button9.setBounds (157, 174, 74, 53);
+		
+		add (button9);
+		
+		button0.setBounds (9, 228, 72, 53);
+		
+		add (button0);
+		
+		buttonDEL.setBounds (82, 228, 149, 116);
+		
+		add (buttonDEL);
+		
+		buttonLEF.setBounds (9, 282, 72, 62);
+		
+		add (buttonLEF);
+		
+	}
+	
+	public Numeric (String string)
+	{
+		this.string = string;
+		
+		field.setText (string);
+		
+		setTitle ("Numeric");
+		
+		setContentPane (new JLabel (new ImageIcon ("background2.png")));
+		
+		setLayout (null);
+		
+		field.setBounds (14, 12, 208, 25);
+		
+		add (field);
 		
 		button1.setBounds (9, 52, 72, 61);
 		
