@@ -1,32 +1,38 @@
-import java.awt.Color;
-import java.awt.TextField;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
 
 public class XTrex extends JFrame {
 
-    private int northPos;
-    private int westPos;
-    private mode currentMode;
-    private int lengthJourney;
-
     public XTrex() {
-      setTitle( "XTrex" );
-      setContentPane( new JLabel( new ImageIcon( "xtrex.jpg" ) ) );
-      setLayout( null );
 
+        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        setSize(1000, 1000);
+        setResizable(false);
+        setTitle("XTrex");
+
+        setContentPane(new JLabel(new ImageIcon("xtrex.jpg")));
+        getContentPane().setLayout(null);
+
+    }
+
+    private void showScreen( JPanel scr ) {
+        //getContentPane().setLayout(null);
+        getContentPane().removeAll();
+        this.add(scr);
+
+        scr.setSize(new Dimension(330, 415));
+        scr.setBounds(330, 380, 330, 415);
+
+        this.setVisible(true);
     }
 
     public static void main( String[] argv ) {
-      JFrame frame = new XTrex();
-      frame.setLocationRelativeTo( null );
-      frame.setSize( 1000, 1000 ); /* title bar! */
-      frame.setResizable( false );
-      frame.setVisible( true );
-    }
+        XTrex xt = new XTrex();
 
+        Satellite sat = new Satellite();
+        About ab = new About();
+
+        xt.showScreen( ab );
+        xt.showScreen( sat );
+    }
 }
