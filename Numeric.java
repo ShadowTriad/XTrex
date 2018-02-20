@@ -4,6 +4,8 @@ import java.awt.event.MouseAdapter;
 
 import java.awt.event.MouseEvent;
 
+import java.awt.Color;
+
 import java.awt.TextField;
 
 import javax.swing.ImageIcon;
@@ -50,12 +52,16 @@ public class Numeric extends JFrame
 		{
 			setIcon (new ImageIcon ("keycap" + character + ".png"));
 			
+			setRolloverIcon (new ImageIcon ("rollover" + character + ".png")); 
+			
 			setBorder (null);
 			
 			addMouseListener (new MouseAdapter ()
 			{
 				public void mouseClicked (MouseEvent event)
 				{
+					setBackground (Color.orange);
+					
 					string = string + character;
 					
 					field.setText("" + string);
@@ -69,6 +75,8 @@ public class Numeric extends JFrame
 		DeleteButton (String delete)
 		{
 			setIcon (new ImageIcon ("keycap" + delete + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + delete + ".png")); 
 			
 			setBorder (null);
 			
@@ -106,6 +114,8 @@ public class Numeric extends JFrame
 		LeftButton (String left)
 		{
 			setIcon (new ImageIcon ("keycap" + left + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + left + ".png")); 
 			
 			setBorder (null);
 			
