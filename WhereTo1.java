@@ -17,14 +17,12 @@ class WhereTo1 extends JPanel
 	}
 	
 	public void paintComponent (Graphics graphics)
-	{
+	{	
+		(new ImageIcon ("background.png")).paintIcon(this, graphics, 0, 0);
+		
 		graphics.setColor (Color.black);
 		
-		graphics.fillRect (0, 0, 240, 353);
-		
 		graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
-		
-		(new ImageIcon ("background.png")).paintIcon(this, graphics, 0, 0);
 		
 		graphics.drawString(address, 16, 34);
 		

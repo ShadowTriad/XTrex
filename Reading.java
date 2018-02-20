@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 
 import java.awt.event.MouseEvent;
 
-import java.awt.TextField;
+import javax.swing.JTextField;
 
 import javax.swing.ImageIcon;
 
@@ -16,18 +16,26 @@ import javax.swing.JLabel;
 
 public class Reading extends JFrame
 {
-	private static String string1 = "a";
+	private static String string1 = "";
 	
-	private static String string2 = "b";
+	private static String string2 = "";
 	
-	private static String string3 = "c";
+	private static String string3 = "";
+	
+	private static String string4 = "";
 		
-	public final TextField field1 = new TextField ();
+	public final JTextField field1 = new JTextField ("trip odometer");
 	
-	public final TextField field2 = new TextField ();
+	public final JTextField field2 = new JTextField (string1 + " KM");
 	
-	public final TextField field3 = new TextField ();
+	public final JTextField field3 = new JTextField ("speed");
 	
+	public final JTextField field4 = new JTextField (string2 + " KM/H");
+	
+	public final JTextField field5 = new JTextField ("moving time");
+	
+	public final JTextField field6 = new JTextField (string2 + " min " + string4 + " sec");
+		
 	public Reading ()
 	{
 		setTitle ("Reading");
@@ -36,17 +44,41 @@ public class Reading extends JFrame
 		
 		setLayout (null);
 		
-		field1.setBounds (14, 12, 208, 25);
+		field1.setHorizontalAlignment(JTextField.CENTER);
+		
+		field1.setBounds (16, 17, 208, 25);
 		
 		add (field1);
 		
-		field2.setBounds (28, 24, 208, 25);
+		field2.setHorizontalAlignment(JTextField.CENTER);
+		
+		field2.setBounds (16, 64, 208, 25);
 		
 		add (field2);
 		
-		field3.setBounds (42, 36, 208, 25);
+		field3.setHorizontalAlignment(JTextField.CENTER);
+		
+		field3.setBounds (16, 115, 208, 25);
 		
 		add (field3);
+		
+		field4.setHorizontalAlignment(JTextField.CENTER);
+		
+		field4.setBounds (16, 162, 208, 25);
+		
+		add (field4);
+		
+		field5.setHorizontalAlignment(JTextField.CENTER);
+		
+		field5.setBounds (16, 213, 208, 25);
+		
+		add (field5);
+		
+		field6.setHorizontalAlignment(JTextField.CENTER);
+		
+		field6.setBounds (16, 257, 208, 25);
+		
+		add (field6);
 	}
 	
 	public static void main (String [] array)

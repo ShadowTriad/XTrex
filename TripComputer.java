@@ -18,12 +18,10 @@ class TripComputer extends JPanel
 	}
 	
 	public void paintComponent (Graphics graphics)
-	{
-		graphics.setColor (Color.black);
-		
-		graphics.fillRect (0, 0, 240, 353);
-		
+	{			
 		(new ImageIcon ("background3.png")).paintIcon(this, graphics, 0, 27);
+		
+		graphics.setColor (Color.black);
 			
 		graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
 		
