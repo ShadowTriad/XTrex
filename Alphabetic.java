@@ -82,8 +82,6 @@ public class Alphabetic extends JFrame
 		{
 			setIcon (new ImageIcon ("keycap" + character + ".png"));
 			
-			setRolloverIcon (new ImageIcon ("rollover" + character + ".png")); 
-			
 			setBorder (null);
 			
 			addMouseListener (new MouseAdapter ()
@@ -103,8 +101,6 @@ public class Alphabetic extends JFrame
 		RightButton (String right)
 		{
 			setIcon (new ImageIcon ("keycap" + right + ".png"));
-			
-			setRolloverIcon (new ImageIcon ("rollover" + right + ".png")); 
 			
 			setBorder (null);
 			
