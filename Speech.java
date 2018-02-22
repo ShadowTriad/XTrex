@@ -33,7 +33,6 @@ public class Speech extends JPanel
     */
     public Speech(){
        //select language when button presed
-        System.out.println("lolollol");
         String TEXT   = "In 200 yards, turn left at the next junction";
         String token = renewAccessToken(); 
         //^needs to be done every 10 mins
