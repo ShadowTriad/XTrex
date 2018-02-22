@@ -22,15 +22,17 @@ import java.awt.*;
  */
 public class Speech extends JPanel
 {
-    // instance variables - replace the example below with your own
+    // languages is a list of languages on offer
     public List<String> languages = Arrays.asList("Off","es-US", "fr-FR","de-DE","It-IT","es-ES");
-    public int currentLanguageCount = 0;
-    public String nextInstruction = "go this way or something.";
     
+    //languages counter is used to record what language is currently selected
+    public int currentLanguageCount = 0;
+    
+    /*
+    *USED FOR TESTING PURPOSES ONLY, has same contents as SelectButton()
+    */
     public static void main(){
-        //USED FOR TESTING PURPOSES ONLY, has same contents as SelectButton()
-        
-        //select language when button presed
+       //select language when button presed
         String TEXT   = "In 200 yards, turn left at the next junction";
         String token = renewAccessToken(); 
         //^needs to be done every 10 mins
