@@ -14,7 +14,7 @@ class WhereTo2 extends JPanel
 	
 	public int maximum = 11;
 	
-	public ArrayList<Keycap> keycaps = new ArrayList<Keycap>(12);
+	public ArrayList <Keycap> keycaps = new ArrayList <Keycap> (12);
 	
 	public Keycap button1 = new Keycap ("1", 9, 52);
 	
@@ -42,56 +42,56 @@ class WhereTo2 extends JPanel
 		
 	public WhereTo2 ()
 	{
-		keycaps.add(button1);
+		keycaps.add (button1);
 		
-		keycaps.add(button2);
+		keycaps.add (button2);
 		
-		keycaps.add(button3);
+		keycaps.add (button3);
 		
-		keycaps.add(button4);
+		keycaps.add (button4);
 		
-		keycaps.add(button5);
+		keycaps.add (button5);
 		
-		keycaps.add(button6);
+		keycaps.add (button6);
 		
-		keycaps.add(button7);
+		keycaps.add (button7);
 		
-		keycaps.add(button8);
+		keycaps.add (button8);
 		
-		keycaps.add(button9);
+		keycaps.add (button9);
 		
-		keycaps.add(button0);
+		keycaps.add (button0);
 		
-		keycaps.add(buttonDEL);
+		keycaps.add (buttonDEL);
 		
-		keycaps.add(buttonLEF);
+		keycaps.add (buttonLEF);
 	}
 	
 	public WhereTo2 (String address, int minimum, int maximum)
 	{
-		keycaps.add(button1);
+		keycaps.add (button1);
 		
-		keycaps.add(button2);
+		keycaps.add (button2);
 		
-		keycaps.add(button3);
+		keycaps.add (button3);
 		
-		keycaps.add(button4);
+		keycaps.add (button4);
 		
-		keycaps.add(button5);
+		keycaps.add (button5);
 		
-		keycaps.add(button6);
+		keycaps.add (button6);
 		
-		keycaps.add(button7);
+		keycaps.add (button7);
 		
-		keycaps.add(button8);
+		keycaps.add (button8);
 		
-		keycaps.add(button9);
+		keycaps.add (button9);
 		
-		keycaps.add(button0);
+		keycaps.add (button0);
 		
-		keycaps.add(buttonDEL);
+		keycaps.add (buttonDEL);
 		
-		keycaps.add(buttonLEF);
+		keycaps.add (buttonLEF);
 		
 		this.address = address;
 		
@@ -100,11 +100,11 @@ class WhereTo2 extends JPanel
 		this.maximum = maximum;
 	}
 	
-	public void increment()
+	public void plus ()
 	{
 		if (button == maximum)
 		{
-			button = 0;
+			button = minimum;
 		}
 		
 		else
@@ -113,7 +113,7 @@ class WhereTo2 extends JPanel
 		}
 	}
 	
-	public void decrement()
+	public void minus ()
 	{
 		if (button == minimum)
 		{
@@ -126,59 +126,60 @@ class WhereTo2 extends JPanel
 		}
 	}
 	
-	public void select()
+	public void select ()
 	{		
-		if ((keycaps.get(button)).getName() == "DEL")
-						
-			if (address.length() == 0)
+		if ((keycaps.get (button)).getName () == "DEL")
+		{			
+			if (address.length () == 0)
 			{
 				
 			}
 			
-			else if (address.length() == 1)
+			else if (address.length () == 1)
 			{
 				address = "";
 			}
 			
 			else
 			{
-				address = address.substring (0, address.length() - 1);
+				address = address.substring (0, address.length () - 1);
 			}
+		}
 		
-		else if ((keycaps.get(button)).getName() == "LEF")
+		else if ((keycaps.get (button)).getName () == "LEF")
 		{
 			
 		}
 		
 		else
 		{
-			address = address + (keycaps.get(button)).getName();
+			address = address + (keycaps.get (button)).getName ();
 		}
 	}
 	
 	public void paintComponent (Graphics graphics)
 	{
-		(new ImageIcon ("background2.png")).paintIcon(this, graphics, 0, 0);
+		(new ImageIcon ("background2.png")).paintIcon (this, graphics, 0, 0);
 		
 		graphics.setColor (Color.black);
 		
 		graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
 		
-		graphics.drawString(address, 16, 34);
+		graphics.drawString (address, 16, 34);
 		
 		for (int index = 0; index<=11; index = index + 1)
 		{
 			if (index == button)
 			{
-				(new ImageIcon ("rollover" + (keycaps.get(index)).getName() + ".png")).paintIcon(this, graphics, (keycaps.get(index)).getX(), (keycaps.get(index)).getY());
+				(new ImageIcon ("rollover" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
 			}
 			
 			else
 			{
-				(new ImageIcon ("keycap" + (keycaps.get(index)).getName() + ".png")).paintIcon(this, graphics, (keycaps.get(index)).getX(), (keycaps.get(index)).getY());
+				(new ImageIcon ("keycap" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
 			}
 		}
 		
-		repaint();
+		repaint ();
 	}
 }

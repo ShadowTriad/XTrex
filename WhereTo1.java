@@ -14,7 +14,7 @@ class WhereTo1 extends JPanel
 	
 	public int maximum = 27;
 	
-	public ArrayList<Keycap> keycaps = new ArrayList<Keycap>(28);
+	public ArrayList <Keycap> keycaps = new ArrayList <Keycap> (28);
 	
 	public Keycap buttonA = new Keycap ("A", 11, 52);
 	
@@ -74,120 +74,120 @@ class WhereTo1 extends JPanel
 		
 	public WhereTo1 ()
 	{
-		keycaps.add(buttonA);
+		keycaps.add (buttonA);
 		
-		keycaps.add(buttonB);
+		keycaps.add (buttonB);
 		
-		keycaps.add(buttonC);
+		keycaps.add (buttonC);
 		
-		keycaps.add(buttonD);
+		keycaps.add (buttonD);
 		
-		keycaps.add(buttonE);
+		keycaps.add (buttonE);
 		
-		keycaps.add(buttonF);
+		keycaps.add (buttonF);
 		
-		keycaps.add(buttonG);
+		keycaps.add (buttonG);
 		
-		keycaps.add(buttonH);
+		keycaps.add (buttonH);
 		
-		keycaps.add(buttonI);
+		keycaps.add (buttonI);
 		
-		keycaps.add(buttonJ);
+		keycaps.add (buttonJ);
 		
-		keycaps.add(buttonK);
+		keycaps.add (buttonK);
 		
-		keycaps.add(buttonL);
+		keycaps.add (buttonL);
 		
-		keycaps.add(buttonM);
+		keycaps.add (buttonM);
 		
-		keycaps.add(buttonN);
+		keycaps.add (buttonN);
 		
-		keycaps.add(buttonO);
+		keycaps.add (buttonO);
 		
-		keycaps.add(buttonP);
+		keycaps.add (buttonP);
 		
-		keycaps.add(buttonQ);
+		keycaps.add (buttonQ);
 		
-		keycaps.add(buttonR);
+		keycaps.add (buttonR);
 		
-		keycaps.add(buttonS);
+		keycaps.add (buttonS);
 		
-		keycaps.add(buttonT);
+		keycaps.add (buttonT);
 		
-		keycaps.add(buttonU);
+		keycaps.add (buttonU);
 		
-		keycaps.add(buttonV);
+		keycaps.add (buttonV);
 		
-		keycaps.add(buttonW);
+		keycaps.add (buttonW);
 		
-		keycaps.add(buttonX);
+		keycaps.add (buttonX);
 		
-		keycaps.add(buttonY);
+		keycaps.add (buttonY);
 		
-		keycaps.add(buttonZ);
+		keycaps.add (buttonZ);
 		
-		keycaps.add(button_);
+		keycaps.add (button_);
 		
-		keycaps.add(buttonRIG);
+		keycaps.add (buttonRIG);
 	}
 	
 	public WhereTo1 (String address, int minimum, int maximum)
 	{
-		keycaps.add(buttonA);
+		keycaps.add (buttonA);
 		
-		keycaps.add(buttonB);
+		keycaps.add (buttonB);
 		
-		keycaps.add(buttonC);
+		keycaps.add (buttonC);
 		
-		keycaps.add(buttonD);
+		keycaps.add (buttonD);
 		
-		keycaps.add(buttonE);
+		keycaps.add (buttonE);
 		
-		keycaps.add(buttonF);
+		keycaps.add (buttonF);
 		
-		keycaps.add(buttonG);
+		keycaps.add (buttonG);
 		
-		keycaps.add(buttonH);
+		keycaps.add (buttonH);
 		
-		keycaps.add(buttonI);
+		keycaps.add (buttonI);
 		
-		keycaps.add(buttonJ);
+		keycaps.add (buttonJ);
 		
-		keycaps.add(buttonK);
+		keycaps.add (buttonK);
 		
-		keycaps.add(buttonL);
+		keycaps.add (buttonL);
 		
-		keycaps.add(buttonM);
+		keycaps.add (buttonM);
 		
-		keycaps.add(buttonN);
+		keycaps.add (buttonN);
 		
-		keycaps.add(buttonO);
+		keycaps.add (buttonO);
 		
-		keycaps.add(buttonP);
+		keycaps.add (buttonP);
 		
-		keycaps.add(buttonQ);
+		keycaps.add (buttonQ);
 		
-		keycaps.add(buttonR);
+		keycaps.add (buttonR);
 		
-		keycaps.add(buttonS);
+		keycaps.add (buttonS);
 		
-		keycaps.add(buttonT);
+		keycaps.add (buttonT);
 		
-		keycaps.add(buttonU);
+		keycaps.add (buttonU);
 		
-		keycaps.add(buttonV);
+		keycaps.add (buttonV);
 		
-		keycaps.add(buttonW);
+		keycaps.add (buttonW);
 		
-		keycaps.add(buttonX);
+		keycaps.add (buttonX);
 		
-		keycaps.add(buttonY);
+		keycaps.add (buttonY);
 		
-		keycaps.add(buttonZ);
+		keycaps.add (buttonZ);
 		
-		keycaps.add(button_);
+		keycaps.add (button_);
 		
-		keycaps.add(buttonRIG);
+		keycaps.add (buttonRIG);
 		
 		this.address = address;
 		
@@ -196,11 +196,11 @@ class WhereTo1 extends JPanel
 		this.maximum = maximum;
 	}
 	
-	public void increment()
+	public void plus ()
 	{
 		if (button == maximum)
 		{
-			button = 0;
+			button = minimum;
 		}
 		
 		else
@@ -209,7 +209,7 @@ class WhereTo1 extends JPanel
 		}
 	}
 	
-	public void decrement()
+	public void minus ()
 	{
 		if (button == minimum)
 		{
@@ -222,42 +222,42 @@ class WhereTo1 extends JPanel
 		}
 	}
 	
-	public void select()
+	public void select ()
 	{
-		if ((keycaps.get(button)).getName() == "RIG")
+		if ((keycaps.get (button)).getName () == "RIG")
 		{
 			
 		}
 		
 		else
 		{
-			address = address + (keycaps.get(button)).getName();
+			address = address + (keycaps.get (button)).getName ();
 		}
 	}
 	
 	public void paintComponent (Graphics graphics)
-	{	
-		(new ImageIcon ("background2.png")).paintIcon(this, graphics, 0, 0);
+	{
+		(new ImageIcon ("background.png")).paintIcon(this, graphics, 0, 0);
 		
 		graphics.setColor (Color.black);
 		
 		graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
 		
-		graphics.drawString(address, 16, 34);
+		graphics.drawString (address, 16, 34);
 		
 		for (int index = 0; index<=27; index = index + 1)
 		{
 			if (index == button)
 			{
-				(new ImageIcon ("rollover" + (keycaps.get(index)).getName() + ".png")).paintIcon(this, graphics, (keycaps.get(index)).getX(), (keycaps.get(index)).getY());
+				(new ImageIcon ("rollover" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
 			}
 			
 			else
 			{
-				(new ImageIcon ("keycap" + (keycaps.get(index)).getName() + ".png")).paintIcon(this, graphics, (keycaps.get(index)).getX(), (keycaps.get(index)).getY());
+				(new ImageIcon ("keycap" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
 			}
 		}
 
-		repaint();
+		repaint ();
 	}
 }

@@ -44,37 +44,37 @@ public class Reader extends JFrame
 		
 		setLayout (null);
 		
-		field1.setHorizontalAlignment(JTextField.CENTER);
+		field1.setHorizontalAlignment (JTextField.CENTER);
 		
 		field1.setBounds (16, 17, 208, 25);
 		
 		add (field1);
 		
-		field2.setHorizontalAlignment(JTextField.CENTER);
+		field2.setHorizontalAlignment (JTextField.CENTER);
 		
 		field2.setBounds (16, 64, 208, 25);
 		
 		add (field2);
 		
-		field3.setHorizontalAlignment(JTextField.CENTER);
+		field3.setHorizontalAlignment (JTextField.CENTER);
 		
 		field3.setBounds (16, 115, 208, 25);
 		
 		add (field3);
 		
-		field4.setHorizontalAlignment(JTextField.CENTER);
+		field4.setHorizontalAlignment (JTextField.CENTER);
 		
 		field4.setBounds (16, 162, 208, 25);
 		
 		add (field4);
 		
-		field5.setHorizontalAlignment(JTextField.CENTER);
+		field5.setHorizontalAlignment (JTextField.CENTER);
 		
 		field5.setBounds (16, 213, 208, 25);
 		
 		add (field5);
 		
-		field6.setHorizontalAlignment(JTextField.CENTER);
+		field6.setHorizontalAlignment (JTextField.CENTER);
 		
 		field6.setBounds (16, 257, 208, 25);
 		
