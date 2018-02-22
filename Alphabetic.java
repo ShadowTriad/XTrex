@@ -85,7 +85,7 @@ public class Alphabetic extends JFrame
 	{
 		setTitle ("Alphabetic");
 		
-		setContentPane (new JLabel (new ImageIcon ("background.png")));
+		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
 		
 		setLayout (null);
 		
@@ -214,7 +214,7 @@ public class Alphabetic extends JFrame
 		
 		setTitle ("Alphabetic");
 		
-		setContentPane (new JLabel (new ImageIcon ("background.png")));
+		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
 		
 		setLayout (null);
 		
@@ -339,9 +339,9 @@ public class Alphabetic extends JFrame
 	{
 		CharacterButton (String character)
 		{
-			setIcon (new ImageIcon ("keycap" + character + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + character + ".png"));
 			
-			setRolloverIcon (new ImageIcon ("rollover" + character + ".png")); 
+			setRolloverIcon (new ImageIcon ("img/rollover" + character + ".png")); 
 			
 			setBorder (null);
 			
@@ -361,9 +361,9 @@ public class Alphabetic extends JFrame
 	{
 		RightButton (String right)
 		{
-			setIcon (new ImageIcon ("keycap" + right + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + right + ".png"));
 			
-			setRolloverIcon (new ImageIcon ("rollover" + right + ".png")); 
+			setRolloverIcon (new ImageIcon ("img/rollover" + right + ".png")); 
 			
 			setBorder (null);
 			
