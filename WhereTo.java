@@ -297,7 +297,7 @@ class WhereTo extends JPanel
 	{
 		if (mode == true)
 		{
-			(new ImageIcon ("background.png")).paintIcon(this, graphics, 0, 0);
+			(new ImageIcon ("img/background.png")).paintIcon(this, graphics, 0, 0);
 			
 			graphics.setColor (Color.black);
 			
@@ -309,19 +309,19 @@ class WhereTo extends JPanel
 			{
 				if (index == button)
 				{
-					(new ImageIcon ("rollover" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
+					(new ImageIcon ("img/rollover" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
 				}
 				
 				else
 				{
-					(new ImageIcon ("keycap" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
+					(new ImageIcon ("img/keycap" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
 				}
 			}
 		}
 		
 		if (mode == false)
 		{
-			(new ImageIcon ("background2.png")).paintIcon (this, graphics, 0, 0);
+			(new ImageIcon ("img/background2.png")).paintIcon (this, graphics, 0, 0);
 			
 			graphics.setColor (Color.black);
 			
@@ -333,12 +333,12 @@ class WhereTo extends JPanel
 			{
 				if (index == button)
 				{
-					(new ImageIcon ("rollover" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
+					(new ImageIcon ("img/rollover" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
 				}
 				
 				else
 				{
-					(new ImageIcon ("keycap" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
+					(new ImageIcon ("img/keycap" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
 				}
 			}
 		}
