@@ -1,3 +1,10 @@
+/**
+ * About screen that displays information about the XTrex.
+ *
+ * @version 22/02/18
+ * @author Chris Tyson
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,6 +21,8 @@ class About extends JPanel {
     }
 
     public void paintComponent( Graphics g ) {
+        //paint the about page onto the JPanel
+
         super.paintComponent(g);
 
         g.setColor(Color.white);

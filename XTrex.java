@@ -1,3 +1,10 @@
+/**
+ * Main class that displays the XTrex, along with it's screens.
+ *
+ * @version 22/02/18
+ * @author Chris Tyson
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
