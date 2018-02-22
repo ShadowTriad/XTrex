@@ -164,7 +164,7 @@ class WhereTo2 extends JPanel
 	
 	public void paintComponent (Graphics graphics)
 	{
-		(new ImageIcon ("background2.png")).paintIcon (this, graphics, 0, 0);
+		(new ImageIcon ("img/background2.png")).paintIcon (this, graphics, 0, 0);
 		
 		graphics.setColor (Color.black);
 		
@@ -176,12 +176,12 @@ class WhereTo2 extends JPanel
 		{
 			if (index == button)
 			{
-				(new ImageIcon ("rollover" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
+				(new ImageIcon ("img/rollover" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
 			}
 			
 			else
 			{
-				(new ImageIcon ("keycap" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
+				(new ImageIcon ("img/keycap" + (keycaps.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps.get (index)).getX (), (keycaps.get (index)).getY ());
 			}
 		}
 		
