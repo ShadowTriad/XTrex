@@ -55,7 +55,7 @@ public class Numeric extends JFrame
 	{
 		setTitle ("Numeric");
 		
-		setContentPane (new JLabel (new ImageIcon ("background2.png")));
+		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
 		
 		setLayout (null);
 		
@@ -120,7 +120,7 @@ public class Numeric extends JFrame
 		
 		setTitle ("Numeric");
 		
-		setContentPane (new JLabel (new ImageIcon ("background2.png")));
+		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
 		
 		setLayout (null);
 		
@@ -181,9 +181,9 @@ public class Numeric extends JFrame
 	{
 		CharacterButton (String character)
 		{
-			setIcon (new ImageIcon ("keycap" + character + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + character + ".png"));
 			
-			setRolloverIcon (new ImageIcon ("rollover" + character + ".png")); 
+			setRolloverIcon (new ImageIcon ("img/rollover" + character + ".png")); 
 			
 			setBorder (null);
 			
@@ -205,9 +205,9 @@ public class Numeric extends JFrame
 	{
 		DeleteButton (String delete)
 		{
-			setIcon (new ImageIcon ("keycap" + delete + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + delete + ".png"));
 			
-			setRolloverIcon (new ImageIcon ("rollover" + delete + ".png")); 
+			setRolloverIcon (new ImageIcon ("img/rollover" + delete + ".png")); 
 			
 			setBorder (null);
 			
@@ -244,9 +244,9 @@ public class Numeric extends JFrame
 	{
 		LeftButton (String left)
 		{
-			setIcon (new ImageIcon ("keycap" + left + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + left + ".png"));
 			
-			setRolloverIcon (new ImageIcon ("rollover" + left + ".png")); 
+			setRolloverIcon (new ImageIcon ("img/rollover" + left + ".png")); 
 			
 			setBorder (null);
 			
