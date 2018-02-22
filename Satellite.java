@@ -1,3 +1,10 @@
+/**
+ * Screen to display current GPS coordinates.
+ *
+ * @version 22/02/18
+ * @author Chris Tyson
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +20,8 @@ class Satellite extends JPanel {
     }
 
     public void paintComponent( Graphics g ) {
+        //draw the lat and lon coords onto the JPanel
+
         super.paintComponent(g);
 
         String lat = gps.getLatitude();
