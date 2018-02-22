@@ -38,7 +38,9 @@ public class XTrex extends JFrame {
 
         Satellite sat = new Satellite();
         About ab = new About();
+        Speech spe = new Speech();
 
-        xt.showScreen( ab );
+        xt.showScreen( spe );
+        spe.selectButton();
     }
 }
