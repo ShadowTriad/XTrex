@@ -76,54 +76,6 @@ public class Alphabetic extends JFrame
 		
 	public final RightButton buttonRIG = new RightButton ("RIG");
 	
-	private class CharacterButton extends JButton
-	{
-		CharacterButton (String character)
-		{
-			setIcon (new ImageIcon ("keycap" + character + ".png"));
-			
-			setBorder (null);
-			
-			addMouseListener (new MouseAdapter ()
-			{
-				public void mouseClicked (MouseEvent event)
-				{
-					string = string + character;
-					
-					field.setText("" + string);
-				}
-			});
-		}
-	}
-	
-	private class RightButton extends JButton
-	{
-		RightButton (String right)
-		{
-			setIcon (new ImageIcon ("keycap" + right + ".png"));
-			
-			setBorder (null);
-			
-			addMouseListener (new MouseAdapter ()
-			{
-				public void mouseClicked (MouseEvent event)
-				{
-					Alphabetic.this.dispose ();
-					
-					JFrame frame = new Numeric (string);
-					
-					frame.setLocationRelativeTo (null);
-					
-					frame.setSize (240, 375);
-					
-					frame.setResizable (false);
-					
-					frame.setVisible (true);
-				}
-			});
-		}
-	}
-	
 	public Alphabetic ()
 	{
 		setTitle ("Alphabetic");
@@ -247,7 +199,6 @@ public class Alphabetic extends JFrame
 		buttonRIG.setBounds (177, 303, 52, 38);
 		
 		add (buttonRIG);
-		
 	}
 	
 	public Alphabetic (String string)
@@ -377,7 +328,58 @@ public class Alphabetic extends JFrame
 		buttonRIG.setBounds (177, 303, 52, 38);
 		
 		add (buttonRIG);
-		
+	}
+	
+	private class CharacterButton extends JButton
+	{
+		CharacterButton (String character)
+		{
+			setIcon (new ImageIcon ("keycap" + character + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + character + ".png")); 
+			
+			setBorder (null);
+			
+			addMouseListener (new MouseAdapter ()
+			{
+				public void mouseClicked (MouseEvent event)
+				{
+					string = string + character;
+					
+					field.setText("" + string);
+				}
+			});
+		}
+	}
+	
+	private class RightButton extends JButton
+	{
+		RightButton (String right)
+		{
+			setIcon (new ImageIcon ("keycap" + right + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + right + ".png")); 
+			
+			setBorder (null);
+			
+			addMouseListener (new MouseAdapter ()
+			{
+				public void mouseClicked (MouseEvent event)
+				{
+					Alphabetic.this.dispose ();
+					
+					JFrame frame = new Numeric (string);
+					
+					frame.setLocationRelativeTo (null);
+					
+					frame.setSize (240, 375);
+					
+					frame.setResizable (false);
+					
+					frame.setVisible (true);
+				}
+			});
+		}
 	}
 	
 	public static void main (String [] array)

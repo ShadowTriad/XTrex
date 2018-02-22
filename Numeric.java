@@ -4,6 +4,8 @@ import java.awt.event.MouseAdapter;
 
 import java.awt.event.MouseEvent;
 
+import java.awt.Color;
+
 import java.awt.TextField;
 
 import javax.swing.ImageIcon;
@@ -43,91 +45,6 @@ public class Numeric extends JFrame
 	public final DeleteButton buttonDEL = new DeleteButton ("DEL");
 	
 	public final LeftButton buttonLEF = new LeftButton ("LEF");
-	
-	private class CharacterButton extends JButton
-	{
-		CharacterButton (String character)
-		{
-			setIcon (new ImageIcon ("keycap" + character + ".png"));
-			
-			setBorder (null);
-			
-			addMouseListener (new MouseAdapter ()
-			{
-				public void mouseClicked (MouseEvent event)
-				{
-					string = string + character;
-					
-					field.setText("" + string);
-				}
-			});
-		}
-	}
-	
-	private class DeleteButton extends JButton
-	{
-		DeleteButton (String delete)
-		{
-			setIcon (new ImageIcon ("keycap" + delete + ".png"));
-			
-			setBorder (null);
-			
-			addMouseListener (new MouseAdapter ()
-			{
- 				public void mouseClicked (MouseEvent event)
-				{
-					int length = string.length ();
-					
-					if (length == 0)
-					{
-						
-					}
-					
-					else if (length == 1)
-					{
-						string = "";
-						
-						field.setText ("");
-					}
-					
-					else
-					{
-						string = string.substring (0, length - 1);
-					
-						field.setText ("" + string);
-					}
-				}
-			});
-		}
-	}
-	
-	private class LeftButton extends JButton
-	{
-		LeftButton (String left)
-		{
-			setIcon (new ImageIcon ("keycap" + left + ".png"));
-			
-			setBorder (null);
-			
-			addMouseListener (new MouseAdapter ()
-			{
-				public void mouseClicked (MouseEvent event)
-				{
-					Numeric.this.dispose ();
-					
-					JFrame frame = new Alphabetic (string);
-					
-					frame.setLocationRelativeTo (null);
-					
-					frame.setSize (240, 375);
-					
-					frame.setResizable (false);
-					
-					frame.setVisible (true);
-				}
-			});
-		}
-	}
 	
 	public Numeric ()
 	{
@@ -188,7 +105,6 @@ public class Numeric extends JFrame
 		buttonLEF.setBounds (9, 282, 72, 62);
 		
 		add (buttonLEF);
-		
 	}
 	
 	public Numeric (String string)
@@ -254,7 +170,99 @@ public class Numeric extends JFrame
 		buttonLEF.setBounds (9, 282, 72, 62);
 		
 		add (buttonLEF);
-		
+	}
+	
+	private class CharacterButton extends JButton
+	{
+		CharacterButton (String character)
+		{
+			setIcon (new ImageIcon ("keycap" + character + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + character + ".png")); 
+			
+			setBorder (null);
+			
+			addMouseListener (new MouseAdapter ()
+			{
+				public void mouseClicked (MouseEvent event)
+				{
+					setBackground (Color.orange);
+					
+					string = string + character;
+					
+					field.setText("" + string);
+				}
+			});
+		}
+	}
+	
+	private class DeleteButton extends JButton
+	{
+		DeleteButton (String delete)
+		{
+			setIcon (new ImageIcon ("keycap" + delete + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + delete + ".png")); 
+			
+			setBorder (null);
+			
+			addMouseListener (new MouseAdapter ()
+			{
+ 				public void mouseClicked (MouseEvent event)
+				{
+					int length = string.length ();
+					
+					if (length == 0)
+					{
+						
+					}
+					
+					else if (length == 1)
+					{
+						string = "";
+						
+						field.setText ("");
+					}
+					
+					else
+					{
+						string = string.substring (0, length - 1);
+					
+						field.setText ("" + string);
+					}
+				}
+			});
+		}
+	}
+	
+	private class LeftButton extends JButton
+	{
+		LeftButton (String left)
+		{
+			setIcon (new ImageIcon ("keycap" + left + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("rollover" + left + ".png")); 
+			
+			setBorder (null);
+			
+			addMouseListener (new MouseAdapter ()
+			{
+				public void mouseClicked (MouseEvent event)
+				{
+					Numeric.this.dispose ();
+					
+					JFrame frame = new Alphabetic (string);
+					
+					frame.setLocationRelativeTo (null);
+					
+					frame.setSize (240, 375);
+					
+					frame.setResizable (false);
+					
+					frame.setVisible (true);
+				}
+			});
+		}
 	}
 	
 	public static void main (String [] array)
