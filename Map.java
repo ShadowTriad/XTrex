@@ -4,77 +4,82 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.awt.*;
 import javax.swing.*;
-
-// url for google static maps:
-// https://maps.googleapis.com/maps/api/staticmap?center=50.718412,-3.53389&zoom=15&size=600x600
-//https://maps.googleapis.com/maps/api/staticmap?center=50.718412,-3.53389&zoom=15&size=600x600&markers=color:blue%7Clabel:S%7C50.718412,-3.53389
-
-/*
-need to be passed the current gps coordinates 
+/* 
+ * Map class for the Map Mode of the XTrex. Utilises the HttpConnect class
+ * by David Wakeling and extends JPanel so it can be displayed.
+ * Retrieves a Google Static Map for the coordinates supplied by GPS and 
+ * saves as an ImageIcon with a central circle marker (displaying current dummy location)
+ * so it can be displayed on the XTrex JFrame.
+ * Has light functionality to allow for the zoom of the image to increase/decrease when required.
+ *
+ * @author Oonagh
+ * @version 1.0
  */
 
 public class Map extends JPanel {
     private GPS gps = new GPS();
-    public static String output = "output.png";     
+    public static String output = "map.png";     
     public static String latitude;  
     public static String longitude;   
     public int zoom = 15;
-    public String ZOOM = Integer.toString(zoom);        /* 0 .. 21           */   
+    public String strZoom = Integer.toString(zoom);        /* 0 .. 21           */   
     public ImageIcon map;
 
     /*
-     *
+     * Constructor
      */
     public Map() {
         repaint();
-
     }
 
     /*
-     * use when + button is pressed
+     * Use when + button is pressed. Functionality to update image must be added.
      */
     public void zoomIn() {
-        System.out.println(zoom);
-
-        zoom = zoom + 1; 
-        ZOOM = Integer.toString(zoom);
+        if (zoom > 0){
+            zoom -= 1; 
+            strZoom = Integer.toString(zoom);
+        }
     }
 
     /*
-     * use when - button is pressed
+     * Use when - button is pressed. Functionality to update image must be added.
      */
     public void zoomOut() {
-        zoom = zoom - 1;
-        ZOOM = Integer.toString(zoom);
-        // call read and write to update image
-
+        if (zoom < 0) {
+            zoom += 1; 
+            strZoom = Integer.toString(zoom);
+        }
     }
 
+    /*
+     * Currently retrieves dummy 'current coordinates' 
+     */
     public void updateCoords() {
         latitude = gps.getLatitude();
         longitude = gps.getLongitude();
     }
 
-    //***************
-
+    /*
+     * Retrieve map data from Google Static Maps.
+     * Based on method supplied by David Wakeling.
+     */
     private byte[] readData() {
-
-        final String method = "GET"; // use of final?? is this necessary?
-        final String url = (
+        String url = (
                 "https://maps.googleapis.com/maps/api/staticmap?center=" 
                 + latitude + "," + longitude
-                + "&zoom=" + ZOOM
+                + "&zoom=" + strZoom
                 + "&size=240x353"
-            );
+                );
         final byte[] body = {};
         final String[][] headers = {};
-        byte[] response = HttpConnect.httpConnect( method, url, headers, body );
+        byte[] response = HttpConnect.httpConnect( "GET", url, headers, body );
         return response;
     }
 
-    //*************************
     /*
-     * Write map data.
+     * Write map data to file so image can be used.
+     * Based on method supplied by David Wakeling.
      */
     private void writeData( String file, byte[] data ) {
         try {
@@ -83,20 +88,24 @@ public class Map extends JPanel {
             os.close();
         } catch ( IOException e ) {
             e.printStackTrace(); 
-            System.exit( 1 ); // ??????????
+            System.exit( 1 ); 
         }
     }
 
+    /*
+     * Method to display map on screen with red marker in centre.
+     */
     public void paintComponent( Graphics g ) {
-        super.paintComponent(g);
         this.updateCoords();
-        
+
+        super.paintComponent(g);
+
         final byte[] data = this.readData(); 
         this.writeData( output, data ); 
-        map = new ImageIcon("output.png");
-        
+        map = new ImageIcon(output);
+
         map.paintIcon(this, g, 0, 0);
         g.setColor(Color.red);
-        g.fillOval(116, 173, 8, 8);
+        g.fillOval(115, 172, 10, 10);
     }
 }
