@@ -1,3 +1,8 @@
+/**
+ * @version 22/02/18
+ * @author Faith Yemofio
+ */
+
 import javax.swing.*;
 
 import java.awt.*;
