@@ -1,8 +1,15 @@
+/**
+ * @version 22/02/18
+ * @author Faith Yemofio
+ */
+
 import java.awt.Color;
 
 import java.awt.event.MouseAdapter;
 
 import java.awt.event.MouseEvent;
+
+import java.awt.Color;
 
 import java.awt.TextField;
 
@@ -44,11 +51,139 @@ public class Numeric extends JFrame
 	
 	public final LeftButton buttonLEF = new LeftButton ("LEF");
 	
+	public Numeric ()
+	{
+		setTitle ("Numeric");
+		
+		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
+		
+		setLayout (null);
+		
+		field.setBounds (14, 12, 208, 25);
+		
+		add (field);
+		
+		button1.setBounds (9, 52, 72, 61);
+		
+		add (button1);
+		
+		button2.setBounds (82, 52, 74, 61);
+		
+		add (button2);
+		
+		button3.setBounds (157, 52, 74, 61);
+		
+		add (button3);
+		
+		button4.setBounds (9, 114, 72, 59);
+		
+		add (button4);
+		
+		button5.setBounds (82, 114, 74, 59);
+		
+		add (button5);
+		
+		button6.setBounds (157, 114, 74, 59);
+		
+		add (button6);
+		
+		button7.setBounds (9, 174, 72, 53);
+		
+		add (button7);
+		
+		button8.setBounds (82, 174, 74, 53);
+		
+		add (button8);
+		
+		button9.setBounds (157, 174, 74, 53);
+		
+		add (button9);
+		
+		button0.setBounds (9, 228, 72, 53);
+		
+		add (button0);
+		
+		buttonDEL.setBounds (82, 228, 149, 116);
+		
+		add (buttonDEL);
+		
+		buttonLEF.setBounds (9, 282, 72, 62);
+		
+		add (buttonLEF);
+	}
+	
+	public Numeric (String string)
+	{
+		this.string = string;
+		
+		field.setText (string);
+		
+		setTitle ("Numeric");
+		
+		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
+		
+		setLayout (null);
+		
+		field.setBounds (14, 12, 208, 25);
+		
+		add (field);
+		
+		button1.setBounds (9, 52, 72, 61);
+		
+		add (button1);
+		
+		button2.setBounds (82, 52, 74, 61);
+		
+		add (button2);
+		
+		button3.setBounds (157, 52, 74, 61);
+		
+		add (button3);
+		
+		button4.setBounds (9, 114, 72, 59);
+		
+		add (button4);
+		
+		button5.setBounds (82, 114, 74, 59);
+		
+		add (button5);
+		
+		button6.setBounds (157, 114, 74, 59);
+		
+		add (button6);
+		
+		button7.setBounds (9, 174, 72, 53);
+		
+		add (button7);
+		
+		button8.setBounds (82, 174, 74, 53);
+		
+		add (button8);
+		
+		button9.setBounds (157, 174, 74, 53);
+		
+		add (button9);
+		
+		button0.setBounds (9, 228, 72, 53);
+		
+		add (button0);
+		
+		buttonDEL.setBounds (82, 228, 149, 116);
+		
+		add (buttonDEL);
+		
+		buttonLEF.setBounds (9, 282, 72, 62);
+		
+		add (buttonLEF);
+	}
+	
 	private class CharacterButton extends JButton
 	{
 		CharacterButton (String character)
 		{
-			setIcon (new ImageIcon ("keycap" + character + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + character + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("img/rollover" + character + ".png")); 
 			
 			setBorder (null);
 			
@@ -56,6 +191,8 @@ public class Numeric extends JFrame
 			{
 				public void mouseClicked (MouseEvent event)
 				{
+					setBackground (Color.orange);
+					
 					string = string + character;
 					
 					field.setText("" + string);
@@ -68,7 +205,9 @@ public class Numeric extends JFrame
 	{
 		DeleteButton (String delete)
 		{
-			setIcon (new ImageIcon ("keycap" + delete + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + delete + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("img/rollover" + delete + ".png")); 
 			
 			setBorder (null);
 			
@@ -105,7 +244,9 @@ public class Numeric extends JFrame
 	{
 		LeftButton (String left)
 		{
-			setIcon (new ImageIcon ("keycap" + left + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + left + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("img/rollover" + left + ".png")); 
 			
 			setBorder (null);
 			
@@ -127,134 +268,6 @@ public class Numeric extends JFrame
 				}
 			});
 		}
-	}
-	
-	public Numeric ()
-	{
-		setTitle ("Numeric");
-		
-		setContentPane (new JLabel (new ImageIcon ("background2.png")));
-		
-		setLayout (null);
-		
-		field.setBounds (14, 12, 208, 25);
-		
-		add (field);
-		
-		button1.setBounds (9, 52, 72, 61);
-		
-		add (button1);
-		
-		button2.setBounds (82, 52, 74, 61);
-		
-		add (button2);
-		
-		button3.setBounds (157, 52, 74, 61);
-		
-		add (button3);
-		
-		button4.setBounds (9, 114, 72, 59);
-		
-		add (button4);
-		
-		button5.setBounds (82, 114, 74, 59);
-		
-		add (button5);
-		
-		button6.setBounds (157, 114, 74, 59);
-		
-		add (button6);
-		
-		button7.setBounds (9, 174, 72, 53);
-		
-		add (button7);
-		
-		button8.setBounds (82, 174, 74, 53);
-		
-		add (button8);
-		
-		button9.setBounds (157, 174, 74, 53);
-		
-		add (button9);
-		
-		button0.setBounds (9, 228, 72, 53);
-		
-		add (button0);
-		
-		buttonDEL.setBounds (82, 228, 149, 116);
-		
-		add (buttonDEL);
-		
-		buttonLEF.setBounds (9, 282, 72, 62);
-		
-		add (buttonLEF);
-		
-	}
-	
-	public Numeric (String string)
-	{
-		this.string = string;
-		
-		field.setText (string);
-		
-		setTitle ("Numeric");
-		
-		setContentPane (new JLabel (new ImageIcon ("background2.png")));
-		
-		setLayout (null);
-		
-		field.setBounds (14, 12, 208, 25);
-		
-		add (field);
-		
-		button1.setBounds (9, 52, 72, 61);
-		
-		add (button1);
-		
-		button2.setBounds (82, 52, 74, 61);
-		
-		add (button2);
-		
-		button3.setBounds (157, 52, 74, 61);
-		
-		add (button3);
-		
-		button4.setBounds (9, 114, 72, 59);
-		
-		add (button4);
-		
-		button5.setBounds (82, 114, 74, 59);
-		
-		add (button5);
-		
-		button6.setBounds (157, 114, 74, 59);
-		
-		add (button6);
-		
-		button7.setBounds (9, 174, 72, 53);
-		
-		add (button7);
-		
-		button8.setBounds (82, 174, 74, 53);
-		
-		add (button8);
-		
-		button9.setBounds (157, 174, 74, 53);
-		
-		add (button9);
-		
-		button0.setBounds (9, 228, 72, 53);
-		
-		add (button0);
-		
-		buttonDEL.setBounds (82, 228, 149, 116);
-		
-		add (buttonDEL);
-		
-		buttonLEF.setBounds (9, 282, 72, 62);
-		
-		add (buttonLEF);
-		
 	}
 	
 	public static void main (String [] array)

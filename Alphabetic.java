@@ -1,3 +1,8 @@
+/**
+ * @version 22/02/18
+ * @author Faith Yemofio
+ */
+
 import java.awt.Color;
 
 import java.awt.event.MouseAdapter;
@@ -76,11 +81,267 @@ public class Alphabetic extends JFrame
 		
 	public final RightButton buttonRIG = new RightButton ("RIG");
 	
+	public Alphabetic ()
+	{
+		setTitle ("Alphabetic");
+		
+		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
+		
+		setLayout (null);
+		
+		field.setBounds (14, 12, 208, 25);
+		
+		add (field);
+		
+		buttonA.setBounds (11, 52, 52, 40);
+		
+		add (buttonA);
+		
+		buttonB.setBounds (65, 52, 54, 40);
+		
+		add (buttonB);
+		
+		buttonC.setBounds (121, 52, 54, 40);
+		
+		add (buttonC);
+		
+		buttonD.setBounds (177, 52, 52, 40);
+		
+		add (buttonD);
+		
+		buttonE.setBounds (11, 94, 52, 40);
+		
+		add (buttonE);
+		
+		buttonF.setBounds (65, 94, 54, 40);
+		
+		add (buttonF);
+		
+		buttonG.setBounds (121, 94, 54, 40);
+		
+		add (buttonG);
+		
+		buttonH.setBounds (177, 94, 52, 40);
+		
+		add (buttonH);
+		
+		buttonI.setBounds (11, 136, 52, 40);
+		
+		add (buttonI);
+		
+		buttonJ.setBounds (65, 136, 54, 40);
+		
+		add (buttonJ);
+		
+		buttonK.setBounds (121, 136, 54, 40);
+		
+		add (buttonK);
+		
+		buttonL.setBounds (177, 136, 52, 40);
+		
+		add (buttonL);
+		
+		buttonM.setBounds (11, 177, 52, 41);
+		
+		add (buttonM);
+		
+		buttonN.setBounds (65, 177, 54, 41);
+		
+		add (buttonN);
+		
+		buttonO.setBounds (121, 177, 54, 41);
+		
+		add (buttonO);
+		
+		buttonP.setBounds (177, 177, 52, 41);
+		
+		add (buttonP);
+		
+		buttonQ.setBounds (11, 219, 52, 41);
+		
+		add (buttonQ);
+		
+		buttonR.setBounds (65, 219, 54, 41);
+		
+		add (buttonR);
+		
+		buttonS.setBounds (121, 219, 54, 41);
+		
+		add (buttonS);
+		
+		buttonT.setBounds (177, 219, 52, 41);
+		
+		add (buttonT);
+		
+		buttonU.setBounds (11, 262, 52, 39);
+		
+		add (buttonU);
+		
+		buttonV.setBounds (65, 262, 54, 39);
+		
+		add (buttonV);
+		
+		buttonW.setBounds (121, 262, 54, 39);
+		
+		add (buttonW);
+		
+		buttonX.setBounds (177, 262, 52, 39);
+		
+		add (buttonX);
+		
+		buttonY.setBounds (11, 303, 52, 38);
+		
+		add (buttonY);
+		
+		buttonZ.setBounds (65, 303, 54, 38);
+		
+		add (buttonZ);
+		
+		button_.setBounds (121, 303, 54, 38);
+		
+		add (button_);
+		
+		buttonRIG.setBounds (177, 303, 52, 38);
+		
+		add (buttonRIG);
+	}
+	
+	public Alphabetic (String string)
+	{
+		this.string = string;
+		
+		field.setText (string);
+		
+		setTitle ("Alphabetic");
+		
+		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
+		
+		setLayout (null);
+		
+		field.setBounds (14, 12, 208, 25);
+		
+		add (field);
+		
+		buttonA.setBounds (11, 52, 52, 40);
+		
+		add (buttonA);
+		
+		buttonB.setBounds (65, 52, 54, 40);
+		
+		add (buttonB);
+		
+		buttonC.setBounds (121, 52, 54, 40);
+		
+		add (buttonC);
+		
+		buttonD.setBounds (177, 52, 52, 40);
+		
+		add (buttonD);
+		
+		buttonE.setBounds (11, 94, 52, 40);
+		
+		add (buttonE);
+		
+		buttonF.setBounds (65, 94, 54, 40);
+		
+		add (buttonF);
+		
+		buttonG.setBounds (121, 94, 54, 40);
+		
+		add (buttonG);
+		
+		buttonH.setBounds (177, 94, 52, 40);
+		
+		add (buttonH);
+		
+		buttonI.setBounds (11, 136, 52, 40);
+		
+		add (buttonI);
+		
+		buttonJ.setBounds (65, 136, 54, 40);
+		
+		add (buttonJ);
+		
+		buttonK.setBounds (121, 136, 54, 40);
+		
+		add (buttonK);
+		
+		buttonL.setBounds (177, 136, 52, 40);
+		
+		add (buttonL);
+		
+		buttonM.setBounds (11, 177, 52, 41);
+		
+		add (buttonM);
+		
+		buttonN.setBounds (65, 177, 54, 41);
+		
+		add (buttonN);
+		
+		buttonO.setBounds (121, 177, 54, 41);
+		
+		add (buttonO);
+		
+		buttonP.setBounds (177, 177, 52, 41);
+		
+		add (buttonP);
+		
+		buttonQ.setBounds (11, 219, 52, 41);
+		
+		add (buttonQ);
+		
+		buttonR.setBounds (65, 219, 54, 41);
+		
+		add (buttonR);
+		
+		buttonS.setBounds (121, 219, 54, 41);
+		
+		add (buttonS);
+		
+		buttonT.setBounds (177, 219, 52, 41);
+		
+		add (buttonT);
+		
+		buttonU.setBounds (11, 262, 52, 39);
+		
+		add (buttonU);
+		
+		buttonV.setBounds (65, 262, 54, 39);
+		
+		add (buttonV);
+		
+		buttonW.setBounds (121, 262, 54, 39);
+		
+		add (buttonW);
+		
+		buttonX.setBounds (177, 262, 52, 39);
+		
+		add (buttonX);
+		
+		buttonY.setBounds (11, 303, 52, 38);
+		
+		add (buttonY);
+		
+		buttonZ.setBounds (65, 303, 54, 38);
+		
+		add (buttonZ);
+		
+		button_.setBounds (121, 303, 54, 38);
+		
+		add (button_);
+		
+		buttonRIG.setBounds (177, 303, 52, 38);
+		
+		add (buttonRIG);
+	}
+	
 	private class CharacterButton extends JButton
 	{
 		CharacterButton (String character)
 		{
-			setIcon (new ImageIcon ("keycap" + character + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + character + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("img/rollover" + character + ".png")); 
 			
 			setBorder (null);
 			
@@ -100,7 +361,9 @@ public class Alphabetic extends JFrame
 	{
 		RightButton (String right)
 		{
-			setIcon (new ImageIcon ("keycap" + right + ".png"));
+			setIcon (new ImageIcon ("img/keycap" + right + ".png"));
+			
+			setRolloverIcon (new ImageIcon ("img/rollover" + right + ".png")); 
 			
 			setBorder (null);
 			
@@ -122,262 +385,6 @@ public class Alphabetic extends JFrame
 				}
 			});
 		}
-	}
-	
-	public Alphabetic ()
-	{
-		setTitle ("Alphabetic");
-		
-		setContentPane (new JLabel (new ImageIcon ("background.png")));
-		
-		setLayout (null);
-		
-		field.setBounds (14, 12, 208, 25);
-		
-		add (field);
-		
-		buttonA.setBounds (11, 52, 52, 40);
-		
-		add (buttonA);
-		
-		buttonB.setBounds (65, 52, 54, 40);
-		
-		add (buttonB);
-		
-		buttonC.setBounds (121, 52, 54, 40);
-		
-		add (buttonC);
-		
-		buttonD.setBounds (177, 52, 52, 40);
-		
-		add (buttonD);
-		
-		buttonE.setBounds (11, 94, 52, 40);
-		
-		add (buttonE);
-		
-		buttonF.setBounds (65, 94, 54, 40);
-		
-		add (buttonF);
-		
-		buttonG.setBounds (121, 94, 54, 40);
-		
-		add (buttonG);
-		
-		buttonH.setBounds (177, 94, 52, 40);
-		
-		add (buttonH);
-		
-		buttonI.setBounds (11, 136, 52, 40);
-		
-		add (buttonI);
-		
-		buttonJ.setBounds (65, 136, 54, 40);
-		
-		add (buttonJ);
-		
-		buttonK.setBounds (121, 136, 54, 40);
-		
-		add (buttonK);
-		
-		buttonL.setBounds (177, 136, 52, 40);
-		
-		add (buttonL);
-		
-		buttonM.setBounds (11, 177, 52, 41);
-		
-		add (buttonM);
-		
-		buttonN.setBounds (65, 177, 54, 41);
-		
-		add (buttonN);
-		
-		buttonO.setBounds (121, 177, 54, 41);
-		
-		add (buttonO);
-		
-		buttonP.setBounds (177, 177, 52, 41);
-		
-		add (buttonP);
-		
-		buttonQ.setBounds (11, 219, 52, 41);
-		
-		add (buttonQ);
-		
-		buttonR.setBounds (65, 219, 54, 41);
-		
-		add (buttonR);
-		
-		buttonS.setBounds (121, 219, 54, 41);
-		
-		add (buttonS);
-		
-		buttonT.setBounds (177, 219, 52, 41);
-		
-		add (buttonT);
-		
-		buttonU.setBounds (11, 262, 52, 39);
-		
-		add (buttonU);
-		
-		buttonV.setBounds (65, 262, 54, 39);
-		
-		add (buttonV);
-		
-		buttonW.setBounds (121, 262, 54, 39);
-		
-		add (buttonW);
-		
-		buttonX.setBounds (177, 262, 52, 39);
-		
-		add (buttonX);
-		
-		buttonY.setBounds (11, 303, 52, 38);
-		
-		add (buttonY);
-		
-		buttonZ.setBounds (65, 303, 54, 38);
-		
-		add (buttonZ);
-		
-		button_.setBounds (121, 303, 54, 38);
-		
-		add (button_);
-		
-		buttonRIG.setBounds (177, 303, 52, 38);
-		
-		add (buttonRIG);
-		
-	}
-	
-	public Alphabetic (String string)
-	{
-		this.string = string;
-		
-		field.setText (string);
-		
-		setTitle ("Alphabetic");
-		
-		setContentPane (new JLabel (new ImageIcon ("background.png")));
-		
-		setLayout (null);
-		
-		field.setBounds (14, 12, 208, 25);
-		
-		add (field);
-		
-		buttonA.setBounds (11, 52, 52, 40);
-		
-		add (buttonA);
-		
-		buttonB.setBounds (65, 52, 54, 40);
-		
-		add (buttonB);
-		
-		buttonC.setBounds (121, 52, 54, 40);
-		
-		add (buttonC);
-		
-		buttonD.setBounds (177, 52, 52, 40);
-		
-		add (buttonD);
-		
-		buttonE.setBounds (11, 94, 52, 40);
-		
-		add (buttonE);
-		
-		buttonF.setBounds (65, 94, 54, 40);
-		
-		add (buttonF);
-		
-		buttonG.setBounds (121, 94, 54, 40);
-		
-		add (buttonG);
-		
-		buttonH.setBounds (177, 94, 52, 40);
-		
-		add (buttonH);
-		
-		buttonI.setBounds (11, 136, 52, 40);
-		
-		add (buttonI);
-		
-		buttonJ.setBounds (65, 136, 54, 40);
-		
-		add (buttonJ);
-		
-		buttonK.setBounds (121, 136, 54, 40);
-		
-		add (buttonK);
-		
-		buttonL.setBounds (177, 136, 52, 40);
-		
-		add (buttonL);
-		
-		buttonM.setBounds (11, 177, 52, 41);
-		
-		add (buttonM);
-		
-		buttonN.setBounds (65, 177, 54, 41);
-		
-		add (buttonN);
-		
-		buttonO.setBounds (121, 177, 54, 41);
-		
-		add (buttonO);
-		
-		buttonP.setBounds (177, 177, 52, 41);
-		
-		add (buttonP);
-		
-		buttonQ.setBounds (11, 219, 52, 41);
-		
-		add (buttonQ);
-		
-		buttonR.setBounds (65, 219, 54, 41);
-		
-		add (buttonR);
-		
-		buttonS.setBounds (121, 219, 54, 41);
-		
-		add (buttonS);
-		
-		buttonT.setBounds (177, 219, 52, 41);
-		
-		add (buttonT);
-		
-		buttonU.setBounds (11, 262, 52, 39);
-		
-		add (buttonU);
-		
-		buttonV.setBounds (65, 262, 54, 39);
-		
-		add (buttonV);
-		
-		buttonW.setBounds (121, 262, 54, 39);
-		
-		add (buttonW);
-		
-		buttonX.setBounds (177, 262, 52, 39);
-		
-		add (buttonX);
-		
-		buttonY.setBounds (11, 303, 52, 38);
-		
-		add (buttonY);
-		
-		buttonZ.setBounds (65, 303, 54, 38);
-		
-		add (buttonZ);
-		
-		button_.setBounds (121, 303, 54, 38);
-		
-		add (button_);
-		
-		buttonRIG.setBounds (177, 303, 52, 38);
-		
-		add (buttonRIG);
-		
 	}
 	
 	public static void main (String [] array)
