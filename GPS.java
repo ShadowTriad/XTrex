@@ -19,12 +19,12 @@ public class GPS {
     }
 
     private String randomLatitude() {
-        Double lat = -90.0 + Math.random() * 180;
+        Double lat = 51.5 + Math.random();
         return (new DecimalFormat("###.####")).format(lat);
     }
 
     private String randomLongitude() {
-        Double lon = -180.0 + Math.random() * 360;
+        Double lon = -1.9 + Math.random() * 1.78;
         return (new DecimalFormat("###.####")).format(lon);
     }
 

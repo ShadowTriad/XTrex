@@ -6,11 +6,11 @@ public class XTrex extends JFrame {
     public XTrex() {
 
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        setSize(1000, 1000);
+        setSize(727, 727);
         setResizable(false);
         setTitle("XTrex");
 
-        setContentPane(new JLabel(new ImageIcon("xtrex.jpg")));
+        setContentPane( new JLabel( new ImageIcon("img/xtrex.jpg") ) );
         getContentPane().setLayout(null);
 
     }
@@ -20,8 +20,8 @@ public class XTrex extends JFrame {
         getContentPane().removeAll();
         this.add(scr);
 
-        scr.setSize(new Dimension(330, 415));
-        scr.setBounds(330, 380, 330, 415);
+        scr.setSize(new Dimension(240, 353));
+        scr.setBounds(240, 210, 240, 353);
 
         this.setVisible(true);
     }
@@ -32,6 +32,6 @@ public class XTrex extends JFrame {
         Satellite sat = new Satellite();
         About ab = new About();
 
-        xt.showScreen( sat );
+        xt.showScreen( ab );
     }
 }

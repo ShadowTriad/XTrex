@@ -24,9 +24,9 @@ class Satellite extends JPanel {
         g.fillRect(0,0, 330, 415);
 
         g.setColor(Color.black);
-        g.setFont(new Font("Arial", Font.PLAIN, 40));
-        g.drawString(lon + "  N", 60, 100);
-        g.drawString(lat + "  W", 60, 200);
+        g.setFont(new Font("Arial", Font.PLAIN, 30));
+        g.drawString(lon + "  N", 50, 100);
+        g.drawString(lat + "  W", 50, 200);
 
         //repaint();
     }

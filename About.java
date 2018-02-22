@@ -9,7 +9,7 @@ class About extends JPanel {
     public About() {
 
         this.version = "7.01a";
-        this.img = new ImageIcon( "dino.gif" );
+        this.img = new ImageIcon( "img/dino.gif" );
 
     }
 
@@ -17,16 +17,16 @@ class About extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.white);
-        g.fillRect(0,0, 330, 415);
+        g.fillRect(0,0, 240, 353);
 
         g.setColor(Color.black);
         g.setFont(new Font("Arial", Font.PLAIN, 30));
-        g.drawString("XTrek", 25, 100);
-        g.drawString(version, 235, 100);
+        g.drawString("XTrek", 25, 60);
+        g.drawString(version, 150, 60);
 
-        g.drawString("(c) 2018", 100, 350);
-        g.drawString("Dinosoft", 100, 390);
+        g.drawString("(c) 2018", 80, 300);
+        g.drawString("Dinosoft", 80, 340);
 
-        img.paintIcon(this, g, 100, 25);
+        img.paintIcon(this, g, 85, 60);
     }
 }
