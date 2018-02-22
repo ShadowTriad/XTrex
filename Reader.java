@@ -45,7 +45,7 @@ public class Reader extends JFrame
 	{
 		setTitle ("Reader");
 		
-		setContentPane (new JLabel (new ImageIcon ("background3.png")));
+		setContentPane (new JLabel (new ImageIcon ("img/background3.png")));
 		
 		setLayout (null);
 		
