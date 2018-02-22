@@ -15,7 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Write a description of class Speech here.
+ *  This class provides the Speech mode to the XTrex. 
  * 
  * @author Tilly 
  * @version 1.0
