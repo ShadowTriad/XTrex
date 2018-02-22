@@ -31,13 +31,13 @@ public class Speech extends JPanel
     /*
     *USED FOR TESTING PURPOSES ONLY, has same contents as SelectButton()
     */
-    public static void main(){
+    public Speech(){
        //select language when button presed
+        System.out.println("lolollol");
         String TEXT   = "In 200 yards, turn left at the next junction";
         String token = renewAccessToken(); 
         //^needs to be done every 10 mins
         createSoundFile(token, TEXT,"fr-FR");
-        
         AudioInputStream stm = setupStream("output.wav");
         playStream( stm, readStream( stm ) );
         
@@ -63,8 +63,8 @@ public class Speech extends JPanel
      * WRITTEN BY DAVID WAKELING, 2018
      */
     static String renewAccessToken( ) {
-       String key1 = "fdae2fd6d16443a5b5901a103293946d";
-       String key2 = "69994180d2e34a6b9efd927ade187f67";
+       String key1 = "c7a58cbdf5544b41bd33fe3226a553b1";
+       String key2 = "c46407a5cdc0407280999b0487d523d4";
       
        final String method = "POST";
        final String url = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
