@@ -24,7 +24,7 @@ class TripComputer extends JPanel
 	
 	public void paintComponent (Graphics graphics)
 	{
-		(new ImageIcon ("background3.png")).paintIcon(this, graphics, 0, 27);
+		(new ImageIcon ("img/background3.png")).paintIcon(this, graphics, 0, 27);
 		
 		graphics.setColor (Color.black);
 			
