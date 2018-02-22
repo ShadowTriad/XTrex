@@ -1,26 +1,65 @@
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.DataOutputStream;
+import java.util.*;
+import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Write a description of class Speech here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tilly 
+ * @version 1.0
  */
-public class Speech
+public class Speech extends JPanel
 {
     // instance variables - replace the example below with your own
-    private int x;
+    public List<String> languages = Arrays.asList("Off","es-US", "fr-FR","de-DE","It-IT","es-ES");
+    public int currentLanguageCount = 0;
+    public String nextInstruction = "go this way or something.";
     
     public static void main(){
-      String TEXT   = "im so ill";
-      String LANG   = "en-US";
-      String token = renewAccessToken(); 
-      //^needs to be done every 10 mins
-      createSoundFile(token, TEXT, LANG);
-    
+        //USED FOR TESTING PURPOSES ONLY, has same contents as SelectButton()
+        
+        //select language when button presed
+        String TEXT   = "In 200 yards, turn left at the next junction";
+        String token = renewAccessToken(); 
+        //^needs to be done every 10 mins
+        createSoundFile(token, TEXT,"fr-FR");
+        
+        AudioInputStream stm = setupStream("output.wav");
+        playStream( stm, readStream( stm ) );
+        
     }
 
+    /*
+     * Creates a screen to be viewed on the XTrex JFrame
+     */
+    public void paintComponent( Graphics g ) {
+        super.paintComponent(g);
+
+        g.setColor(Color.white);
+        g.fillRect(0,0, 330, 415);
+
+        g.setColor(Color.black);
+        g.setFont(new Font("Arial", Font.PLAIN, 20));
+        g.drawString("This will be speech mode", 25, 100);
+
+    }
+    
+     /*
+     * Renews the access token for the API
+     * WRITTEN BY DAVID WAKELING, 2018
+     */
     static String renewAccessToken( ) {
        String key1 = "fdae2fd6d16443a5b5901a103293946d";
        String key2 = "69994180d2e34a6b9efd927ade187f67";
@@ -36,6 +75,11 @@ public class Speech
        return new String( response ); 
     }
   
+    /*
+     * Creates a sound file with some given text in a given accent
+     * WRITTEN BY DAVID WAKELING, 2018
+     * edited by Tilly for more specific use
+     */
     static void createSoundFile( String token, String text, String lang) {
         String gender = "Female";
         String artist = "(en-GB, Susan, Apollo)";
@@ -73,8 +117,105 @@ public class Speech
         }
     }
     
-    public void show(){
-        // load screen and menu and shit
-        
+    /*
+     * Sets up the input stream
+     * WRITTEN BY DAVID WAKELING, 2018
+     */
+    static AudioInputStream setupStream( String name ) {
+     try {
+       File             file = new File( name );
+       AudioInputStream stm  = AudioSystem.getAudioInputStream( file );
+       return stm;
+     } catch ( Exception ex ) {
+       System.out.println( ex ); System.exit( 1 ); return null;
+     }
     }
+
+    /*
+     * Plays the file
+     * WRITTEN BY DAVID WAKELING, 2018
+     */
+    static void playStream( AudioInputStream stm, ByteArrayOutputStream bos ) {
+        try {
+          AudioFormat    af   = stm.getFormat();
+          byte[]         ba   = bos.toByteArray();
+          DataLine.Info  info = new DataLine.Info( SourceDataLine.class, af );
+          SourceDataLine line = (SourceDataLine) AudioSystem.getLine( info );
+    
+          line.open( af );
+          line.start();
+          line.write( ba, 0, ba.length );
+        } catch ( Exception ex ) {
+          System.out.println( ex ); System.exit( 1 );
+        }
+    }
+  
+    /*
+     * Reads the output stream
+     * WRITTEN BY DAVID WAKELING, 2018
+     */
+    static ByteArrayOutputStream readStream( AudioInputStream stm ) {
+        try {
+          AudioFormat           af  = stm.getFormat();
+          ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    
+          int  bufferSize = (int) af.getSampleRate() * af.getFrameSize();
+          byte buffer[]   = new byte[ bufferSize ];
+    
+          for (;;) {
+            int n = stm.read( buffer, 0, buffer.length );
+            if ( n > 0 ) {
+               bos.write( buffer, 0, n );
+            } else {
+              break;
+            }
+          }
+    
+          return bos;
+        } catch ( Exception ex ) {
+          System.out.println( ex ); System.exit( 1 ); return null;
+        }
+    }
+  
+    /*
+     * Is prompted by the pushing of the plus button on side of the device.
+     * Changes the language by changing the currentLanguageCounter which represents an index of the list of languages.
+     */
+    public void plusButton(){
+        //scroll up when button pressed.
+        if (currentLanguageCount == 5){
+            currentLanguageCount = 0;
+        } else {
+            currentLanguageCount += 1;
+        }
+    }
+    
+    /*
+     * Is prompted by the pushing of the minus button on side of the device.
+     * Changes the language by changing the currentLanguageCounter which represents an index of the list of languages.
+     */
+    public void minusButton(){
+        //scroll down when button pressed
+        if (currentLanguageCount == 0){
+            currentLanguageCount = 5;
+        } else {
+            currentLanguageCount -= 1;
+        }
+    }
+    
+    /*
+     * Is prompted by the pushing of the select button on side of the device.
+     * Currently this simply says a random direction to the user to demonstrate how it will say directions.
+     */
+    public void selectButton(){
+        //select language when button presed
+        String TEXT   = "In 200 yards, turn left at the next junction";
+        String token = renewAccessToken(); 
+        //^needs to be done every 10 mins
+        createSoundFile(token, TEXT,"fr-FR");
+        
+        AudioInputStream stm = setupStream("output.wav");
+        playStream( stm, readStream( stm ) );
+    }
+    
 }
