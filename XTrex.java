@@ -53,7 +53,7 @@ public class XTrex extends JFrame
 		
         Speech speech = new Speech ();
         
-        TripComputer tripComputer = new tripComputer ();
+        TripComputer tripComputer = new TripComputer ();
         
         WhereTo whereTo = new WhereTo ();
 		
