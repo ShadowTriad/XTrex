@@ -26,7 +26,7 @@ import javax.swing.JLabel;
  * In the future the screen will display the actual trip odometer, speed and moving time using real life data.
  */
 
-//class Reader extends jFrame so the mode can use clickable buttons
+//class Reader extends jFrame so the mode can use clickable buttons and text display
 
 public class Reader extends JFrame
 {
@@ -44,33 +44,38 @@ public class Reader extends JFrame
 	
 	private static String string4 = "8";
 	
-	//displays the trip odometer
+	//stores the trip odometer display
 		
 	public final JTextField field1 = new JTextField ("trip odometer");
 	
 	public final JTextField field2 = new JTextField (string1 + " KM");
 	
-	//displays the speed
+	//stores the speed display
 	
 	public final JTextField field3 = new JTextField ("speed");
 	
 	public final JTextField field4 = new JTextField (string2 + " KM/H");
 	
-	//displays the moving time 
+	//stores the moving time display
 	
 	public final JTextField field5 = new JTextField ("moving time");
 	
 	public final JTextField field6 = new JTextField (string2 + " min " + string4 + " sec");
 	
 	//sets up the class so the simulation can be displayed
+	//adds the buttons and the displays to the simulation
 	
 	public Reader ()
 	{
 		setTitle ("Reader");
 		
+		//displays the background on the simulation
+		
 		setContentPane (new JLabel (new ImageIcon ("img/background3.png")));
 		
 		setLayout (null);
+		
+		//displays the trip odometer on the simulation
 		
 		field1.setHorizontalAlignment (JTextField.CENTER);
 		
@@ -78,11 +83,15 @@ public class Reader extends JFrame
 		
 		add (field1);
 		
+		//displays the speed on the simulation
+		
 		field2.setHorizontalAlignment (JTextField.CENTER);
 		
 		field2.setBounds (16, 64, 208, 25);
 		
 		add (field2);
+		
+		//displays the moving time on the simulation
 		
 		field3.setHorizontalAlignment (JTextField.CENTER);
 		
@@ -113,6 +122,8 @@ public class Reader extends JFrame
 	
 	public static void main (String [] array)
 	{
+		//creates a simulation and displays the simulation
+		
 		JFrame frame = new Reader ();
 		
 		frame.setLocationRelativeTo (null);
