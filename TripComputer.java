@@ -43,6 +43,7 @@ class TripComputer extends JPanel
 	public void paintComponent (Graphics graphics)
 	{
 		graphics.setColor(Color.black);
+		
 		graphics.fillRect(0, 0, 240, 353);
 		
 		//draws the background on the screen
