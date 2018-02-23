@@ -9,17 +9,40 @@ import java.util.*;
 
 import javax.swing.*;
 
+/**
+ *In Where To mode:
+ *The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
+ *The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
+ *The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
+ */
+
+//class WhereTo extends jPanel so the mode can be displayed on the screen of the XTrex
+
 class WhereTo extends JPanel
-{ 
+{
+	//stores the destination displayed on the keypad
+
 	private static String address = "";
+	
+	//stores the orange highlighted button displayed on the keypad
 	
 	public int button = 0;
 	
+	//stores the keypad displayed on the XTrex
+	//the alphabetic keypad is displayed on the XTrex when set to true
+	//the numeric keypad is displayed on the XTrex when set to false
+	
 	public boolean mode = false;
+	
+	//stores the buttons on the alphabetic keypad
 	
 	public ArrayList <Keycap> keycaps1 = new ArrayList <Keycap> (28);
 	
+	//stores the buttons on the numeric keypad
+	
 	public ArrayList <Keycap> keycaps2 = new ArrayList <Keycap> (12);
+	
+	//stores the information about the buttons on the keypads
 	
 	public Keycap buttonA = new Keycap ("A", 11, 52);
 	
@@ -100,6 +123,10 @@ class WhereTo extends JPanel
 	public Keycap buttonDEL = new Keycap ("DEL", 82, 228);
 		
 	public Keycap buttonLEF = new Keycap ("LEF", 9, 282);
+	
+	//sets up the class so the mode can be displayed on the screen of the XTrex
+	//adds the buttons on the alphabetic keypad to the alphabetic keypad buttons list
+	//adds the buttons on the numeric keypad to the numeric keypad buttons list
 	
 	public WhereTo ()
 	{
@@ -184,6 +211,10 @@ class WhereTo extends JPanel
 		keycaps2.add (buttonLEF);
 	}
 	
+	//plus method is used to cycle forwards through the buttons on the keypad
+	//traverses the buttons in the list of buttons on a keypad
+	//when the method reaches the end of the list, the method goes back to the beginning of the list
+	
 	public void plus ()
 	{
 		if (mode == true)
@@ -213,6 +244,10 @@ class WhereTo extends JPanel
 		}
 	}
 	
+	//minus method is used to cycle backwards through the buttons on the keypad
+	//traverses the buttons in the list of buttons on a keypad
+	//when the method reaches the beginning of the list, the method goes forward to the end of the list
+	
 	public void minus ()
 	{
 		if (mode == true)
@@ -241,6 +276,10 @@ class WhereTo extends JPanel
 			}
 		}
 	}
+	
+	//select method is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button
+	//select method is used to delete the last character from the display if the orange highlighted button is a delete button
+	//select method is used to switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button
 	
 	public void select ()
 	{
@@ -293,24 +332,38 @@ class WhereTo extends JPanel
 		}
 	}
 	
+	//paint component method is used to continuously display the screen on the Xtrex
+	
 	public void paintComponent (Graphics graphics)
 	{
 		if (mode == true)
 		{
+			//draws the background on the screen
+			
 			(new ImageIcon ("img/background.png")).paintIcon(this, graphics, 0, 0);
+			
+			//draws the text on the screen
 			
 			graphics.setColor (Color.black);
 			
 			graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
 			
+			//draws the destination on the display
+			
 			graphics.drawString (address, 16, 34);
+			
+			//draws the buttons on the keypad
 			
 			for (int index = 0; index<=27; index = index + 1)
 			{
+				//draws the orange highlighted button on the keypad
+				
 				if (index == button)
 				{
 					(new ImageIcon ("img/rollover" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
 				}
+				
+				//draws the non orange highlighted buttons on the keypad
 				
 				else
 				{
@@ -321,20 +374,32 @@ class WhereTo extends JPanel
 		
 		if (mode == false)
 		{
+			//draws the background on the screen
+			
 			(new ImageIcon ("img/background2.png")).paintIcon (this, graphics, 0, 0);
+			
+			//draws the text on the screen
 			
 			graphics.setColor (Color.black);
 			
 			graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
 			
+			//draws the destination on the display
+			
 			graphics.drawString (address, 16, 34);
+			
+			//draws the buttons on the keypad
 			
 			for (int index = 0; index<=11; index = index + 1)
 			{
+				//draws the orange highlighted button on the keypad
+				
 				if (index == button)
 				{
 					(new ImageIcon ("img/rollover" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
 				}
+				
+				//draws the non orange highlighted buttons on the keypad
 				
 				else
 				{
@@ -342,6 +407,8 @@ class WhereTo extends JPanel
 				}
 			}
 		}
+		
+		//continuously redraws the screen on the Xtrex
 		
 		repaint ();
 	}

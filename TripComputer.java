@@ -13,25 +13,25 @@ import java.awt.*;
  * In the future the screen will display the actual trip odometer, speed and moving time using real life data.
  */
 
-//class TripComputer extends jPanel so the mode can be displayed on the screen of the Xtrex
+//class TripComputer extends jPanel so the mode can be displayed on the screen of the XTrex
 
 class TripComputer extends JPanel
 {
-	//random trip odometer value
+	//stores a random value for the trip odometer
 	
 	private static String tripOdometer = "0.86";
 	
-	//random speed value
+	//stores a random value for the speed
 	
 	private static String speed = "7.00";
 	
-	//random moving time value
+	//stores a random value for the moving time
 	
 	private static String movingTimeMinuites = "027";
 	
 	private static String movingTimeSeconds = "08";
 	
-	//no argument constructor sets up the mode
+	//sets up the class so the mode can be displayed on the screen of the XTrex
 	
 	public TripComputer ()
 	{
@@ -42,33 +42,35 @@ class TripComputer extends JPanel
 	
 	public void paintComponent (Graphics graphics)
 	{
-		//draws the background
+		//draws the background on the screen
 		
 		(new ImageIcon ("img/background3.png")).paintIcon(this, graphics, 0, 27);
 		
-		//draws the text
+		//draws the text on the screen
 				
 		graphics.setColor (Color.black);
 			
 		graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
 		
-		//draws the trip odometer
+		//draws the trip odometer on the screen
 		
 		graphics.drawString ("trip odometer", 40, 75);
 		
 		graphics.drawString (tripOdometer + " KM", 65, 100);
 		
-		//draws the speed
+		//draws the speed on the screen
 		
 		graphics.drawString ("speed", 75, 175);
 		
 		graphics.drawString (speed + " KM/H", 50, 200);
 		
-		//draws the moving time
+		//draws the moving time on the screen
 		
 		graphics.drawString ("moving time", 45, 270);
 		
 		graphics.drawString (movingTimeMinuites + " min " + movingTimeSeconds + " sec", 30, 295);
+		
+		//continuously redraws the screen on the Xtrex
 		
 		repaint ();
 	}
