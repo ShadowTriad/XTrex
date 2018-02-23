@@ -27,7 +27,7 @@ class TripComputer extends JPanel
 	
 	//stores a random value for the moving time
 	
-	private static String movingTimeMinuites = "027";
+	private static String movingTimeMinutes = "027";
 	
 	private static String movingTimeSeconds = "08";
 	
@@ -38,10 +38,13 @@ class TripComputer extends JPanel
 		
 	}
 	
-	//paint component method is used to continuously display the screen on the Xtrex
+	//paint component method is used to continuously display the screen on the XTrex
 	
 	public void paintComponent (Graphics graphics)
 	{
+		graphics.setColor(Color.black);
+		graphics.fillRect(0, 0, 240, 353);
+		
 		//draws the background on the screen
 		
 		(new ImageIcon ("img/background3.png")).paintIcon(this, graphics, 0, 27);
@@ -68,7 +71,7 @@ class TripComputer extends JPanel
 		
 		graphics.drawString ("moving time", 45, 270);
 		
-		graphics.drawString (movingTimeMinuites + " min " + movingTimeSeconds + " sec", 30, 295);
+		graphics.drawString (movingTimeMinutes + " min " + movingTimeSeconds + " sec", 30, 295);
 		
 		//continuously redraws the screen on the Xtrex
 		

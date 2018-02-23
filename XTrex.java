@@ -28,6 +28,9 @@ public class XTrex extends JFrame
         getContentPane ().setLayout (null);
     }
 	
+   /*
+	* Takes different mode's screen as argument and display on screen.
+	*/ 
     private void showScreen (JPanel panel)
     {
         getContentPane ().removeAll ();
@@ -40,7 +43,12 @@ public class XTrex extends JFrame
 		
         this.setVisible (true);
     }
-		
+	
+   /*
+	* Currently can check modes manually by changing XTrex.showScreen(arg) argument.
+	* Speech mode used here as example; to check other modes, change arg and
+	* comment out speech.selectButton();.
+	*/
     public static void main (String [] array)
     {
         XTrex XTrex = new XTrex ();
