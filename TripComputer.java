@@ -30,13 +30,15 @@ class TripComputer extends JPanel
 	private static String movingTimeMinuites = "027";
 	
 	private static String movingTimeSeconds = "08";
-		
+	
+	//no argument constructor sets up the mode
+	
 	public TripComputer ()
 	{
 		
 	}
 	
-	//paint component method is used to constantly draw the screen on the Xtrex
+	//paint component method is used to continuously display the screen on the Xtrex
 	
 	public void paintComponent (Graphics graphics)
 	{
