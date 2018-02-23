@@ -19,11 +19,27 @@ import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 
+/**
+ * Alphabetic is a simulation of the alphabetic keypad in Where To mode and show the planed functionality of the mode.
+ * In Where To mode:
+ * The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
+ * The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
+ * The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
+ */
+
+//class Alphabetic extends jFrame so the mode can use clickable buttons and text display
+
 public class Alphabetic extends JFrame
 {
+	//stores the destination displayed on the keypad
+	
 	private static String string = "";
+	
+	//stores the destination display
 		
 	public final TextField field = new TextField ();
+	
+	//stores the buttons on the keypad
 	
 	public final CharacterButton buttonA = new CharacterButton ("A");
 	
@@ -81,17 +97,26 @@ public class Alphabetic extends JFrame
 		
 	public final RightButton buttonRIG = new RightButton ("RIG");
 	
+	//sets up the class so the simulation can be displayed
+	//adds the buttons and the displays to the simulation
+	
 	public Alphabetic ()
 	{
 		setTitle ("Alphabetic");
+		
+		//displays the background on the simulation
 		
 		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
 		
 		setLayout (null);
 		
+		//displays the destination on the simulation
+		
 		field.setBounds (14, 12, 208, 25);
 		
 		add (field);
+		
+		//displays the buttons on the simulation
 		
 		buttonA.setBounds (11, 52, 52, 40);
 		
@@ -206,21 +231,33 @@ public class Alphabetic extends JFrame
 		add (buttonRIG);
 	}
 	
+	//sets up the class so the simulation can be displayed
+	//adds the buttons and the displays to the simulation
+	//sets the destination to the destination in the argument
+	
 	public Alphabetic (String string)
 	{
+		//sets the destination
+		
 		this.string = string;
 		
 		field.setText (string);
 		
 		setTitle ("Alphabetic");
 		
+		//displays the background on the simulation
+		
 		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
 		
 		setLayout (null);
 		
+		//displays the destination on the simulation
+		
 		field.setBounds (14, 12, 208, 25);
 		
 		add (field);
+		
+		//displays the buttons on the simulation
 		
 		buttonA.setBounds (11, 52, 52, 40);
 		
@@ -334,6 +371,10 @@ public class Alphabetic extends JFrame
 		
 		add (buttonRIG);
 	}
+	
+	//stores the information about the character buttons on the keypads
+	//buttons highlight orange when rolled over
+	//button adds the character to the display
 	
 	private class CharacterButton extends JButton
 	{
@@ -356,6 +397,10 @@ public class Alphabetic extends JFrame
 			});
 		}
 	}
+	
+	//stores the information about the arrow button on the keypad
+	//button highlights orange when rolled over
+	//button switches the keypad to the numeric keypad
 	
 	private class RightButton extends JButton
 	{
@@ -387,8 +432,12 @@ public class Alphabetic extends JFrame
 		}
 	}
 	
+	//displays the simulation
+	
 	public static void main (String [] array)
 	{
+		//creates a simulation and displays the simulation
+		
 		JFrame frame = new Alphabetic ();
 		
 		frame.setLocationRelativeTo (null);

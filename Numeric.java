@@ -21,11 +21,27 @@ import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 
+/**
+ * Numeric is a simulation of the alphabetic keypad in Where To mode and show the planed functionality of the mode.
+ * In Where To mode:
+ * The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
+ * The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
+ * The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
+ */
+
+//class Numeric extends jFrame so the mode can use clickable buttons and text display
+
 public class Numeric extends JFrame
 {
+	//stores the destination displayed on the keypad
+	
 	private static String string = "";
+	
+	//stores the destination display
 		
 	public final TextField field = new TextField ();
+	
+	//stores the buttons on the keypad
 	
 	public final CharacterButton button1 = new CharacterButton ("1");
 	
@@ -51,17 +67,26 @@ public class Numeric extends JFrame
 	
 	public final LeftButton buttonLEF = new LeftButton ("LEF");
 	
+	//sets up the class so the simulation can be displayed
+	//adds the buttons and the displays to the simulation
+	
 	public Numeric ()
 	{
 		setTitle ("Numeric");
+		
+		//displays the background on the simulation
 		
 		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
 		
 		setLayout (null);
 		
+		//displays the destination on the simulation
+		
 		field.setBounds (14, 12, 208, 25);
 		
 		add (field);
+		
+		//displays the buttons on the simulation
 		
 		button1.setBounds (9, 52, 72, 61);
 		
@@ -112,21 +137,33 @@ public class Numeric extends JFrame
 		add (buttonLEF);
 	}
 	
+	//sets up the class so the simulation can be displayed
+	//adds the buttons and the displays to the simulation
+	//sets the destination to the destination in the argument
+	
 	public Numeric (String string)
 	{
+		//sets the destination
+		
 		this.string = string;
 		
 		field.setText (string);
 		
 		setTitle ("Numeric");
 		
+		//displays the background on the simulation
+		
 		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
 		
 		setLayout (null);
 		
+		//displays the destination on the simulation
+		
 		field.setBounds (14, 12, 208, 25);
 		
 		add (field);
+		
+		//displays the buttons on the simulation
 		
 		button1.setBounds (9, 52, 72, 61);
 		
@@ -176,6 +213,10 @@ public class Numeric extends JFrame
 		
 		add (buttonLEF);
 	}
+	
+	//stores the information about the character buttons on the keypads
+	//buttons highlight orange when rolled over
+	//button adds the character to the display
 	
 	private class CharacterButton extends JButton
 	{
@@ -200,6 +241,10 @@ public class Numeric extends JFrame
 			});
 		}
 	}
+	
+	//stores the information about the delete button on the keypad
+	//button highlights orange when rolled over
+	//button deletes the last character from the display
 	
 	private class DeleteButton extends JButton
 	{
@@ -240,6 +285,10 @@ public class Numeric extends JFrame
 		}
 	}
 	
+	//stores the information about the arrow button on the keypad
+	//button highlights orange when rolled over
+	//button switches the keypad to the alphabetic keypad
+	
 	private class LeftButton extends JButton
 	{
 		LeftButton (String left)
@@ -270,8 +319,12 @@ public class Numeric extends JFrame
 		}
 	}
 	
+	//displays the simulation
+	
 	public static void main (String [] array)
 	{
+		//creates a simulation and displays the simulation
+		
 		JFrame frame = new Numeric ();
 		
 		frame.setLocationRelativeTo (null);

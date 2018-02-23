@@ -63,7 +63,7 @@ public class Reader extends JFrame
 	public final JTextField field6 = new JTextField (string2 + " min " + string4 + " sec");
 	
 	//sets up the class so the simulation can be displayed
-	//adds the buttons and the displays to the simulation
+	//adds the displays to the simulation
 	
 	public Reader ()
 	{

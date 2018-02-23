@@ -10,10 +10,10 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- *In Where To mode:
- *The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
- *The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
- *The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
+ * In Where To mode:
+ * The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
+ * The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
+ * The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
  */
 
 //class WhereTo extends jPanel so the mode can be displayed on the screen of the XTrex
