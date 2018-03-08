@@ -40,8 +40,8 @@ public class XTrex extends JFrame
     public static TripComputer tripComputer = new TripComputer ();
 	
     public static WhereTo whereTo = new WhereTo ();
-    
-    public static mode currentMode; //purely symbolic for now, does not change what appears on screen
+        
+    public static Mode mode;
 	
     public XTrex ()
     {
@@ -94,16 +94,16 @@ public class XTrex extends JFrame
             
             addMouseListener ( new MouseAdapter ()
             {
-            	public void mouseClicked (MouseEvent evenet)
+            	public void mouseClicked (MouseEvent event)
             	{
-                    if (currentMode == mode.OnOff)
+                    if (mode == Mode.ONOFF)
                     {
-                    	currentMode = mode.Menu;
+                    	mode == Mode.MENU;
                     }
                     
                     else
                     {
-                        currentMode = mode.OnOff;
+                    	mode == Mode.ONOFF;
                     }
                 }
             });
@@ -127,9 +127,9 @@ public class XTrex extends JFrame
             
             addMouseListener ( new MouseAdapter ()
             {
-            	public void mouseClicked (MouseEvent evenet)
+            	public void mouseClicked (MouseEvent event)
             	{
-                    if (currentMode == mode.WhereTo)
+                    if (mode == Mode.WHERETO)
                     {
                     	whereTo.plusButton ();
                     }
@@ -155,9 +155,9 @@ public class XTrex extends JFrame
             
             addMouseListener ( new MouseAdapter ()
             {
-            	public void mouseClicked (MouseEvent evenet)
+            	public void mouseClicked (MouseEvent event)
             	{
-                    if (currentMode == mode.WhereTo)
+                    if (mode == Mode.WHERETO)
                     {
                     	whereTo.minusButton ();
                     }
@@ -182,9 +182,9 @@ public class XTrex extends JFrame
             
             addMouseListener ( new MouseAdapter ()
             {
-            	public void mouseClicked (MouseEvent evenet)
+            	public void mouseClicked (MouseEvent event)
             	{
-					if (currentMode == mode.WhereTo)
+					if (mode == Mode.WHERETO)
                     {
                     	whereTo.selectButton ();
                     }
@@ -209,9 +209,9 @@ public class XTrex extends JFrame
             
             addMouseListener ( new MouseAdapter ()
             {
-            	public void mouseClicked (MouseEvent evenet)
+            	public void mouseClicked (MouseEvent event)
             	{
-                	currentMode = mode.Menu;
+                	mode = Mode.MENU;
                 }
             });
         }
@@ -240,11 +240,11 @@ public class XTrex extends JFrame
     
     public static void main (String [] array)
     {
-        currentMode = mode.OnOff;
+        mode = Mode.WHERETO;
         
         XTrex XTrex = new XTrex ();
 		
-        XTrex.showScreen (about);
+        XTrex.showScreen (whereTo);
 		
         //speech.selectButton ();
     }
