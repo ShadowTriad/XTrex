@@ -68,6 +68,8 @@ class TripComputer extends JPanel
 		startingTimeSeconds = getSeconds (time);
 	}
 	
+	//
+	
 	public int getOdometer (String longitude, String latitude)
 	{
 		String differenceLongitude = (Integer.parseInt (longitude) - Integer.parseInt (startingLongitude)).toRadians ();
@@ -107,9 +109,9 @@ class TripComputer extends JPanel
 		
 		String time = gps.getTime ();
 				
-		int minutes = getMinutes (String time);
+		int minutes = getMinutes (time);
 		
-		int seconds = getSeconds (String time);
+		int seconds = getSeconds (time);
 		
 		if (minutes > startingTimeMinutes)
 		{
