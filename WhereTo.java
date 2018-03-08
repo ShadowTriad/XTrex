@@ -1,5 +1,5 @@
 /**
- * @version 22/02/18
+ * @version 08/03/18
  * @author Faith Yemofio
  */
 
@@ -12,7 +12,7 @@ import javax.swing.*;
 /**
  * In Where To mode:
  * The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
- * The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
+ * The + button and the - button are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
  * The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
  */
 
@@ -211,11 +211,11 @@ class WhereTo extends JPanel
 		keycaps2.add (buttonLEF);
 	}
 	
-	//plus method is used to cycle forwards through the buttons on the keypad
+	//plusButton method is used to cycle forwards through the buttons on the keypad
 	//traverses the buttons in the list of buttons on a keypad
 	//when the method reaches the end of the list, the method goes back to the beginning of the list
 	
-	public void plus ()
+	public void plusButton ()
 	{
 		if (mode == true)
 		{
@@ -244,11 +244,11 @@ class WhereTo extends JPanel
 		}
 	}
 	
-	//minus method is used to cycle backwards through the buttons on the keypad
+	//minusButton method is used to cycle backwards through the buttons on the keypad
 	//traverses the buttons in the list of buttons on a keypad
 	//when the method reaches the beginning of the list, the method goes forward to the end of the list
 	
-	public void minus ()
+	public void minusButton ()
 	{
 		if (mode == true)
 		{
@@ -277,11 +277,11 @@ class WhereTo extends JPanel
 		}
 	}
 	
-	//select method is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button
-	//select method is used to delete the last character from the display if the orange highlighted button is a delete button
-	//select method is used to switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button
+	//selectButton method is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button
+	//selectButton method is used to delete the last character from the display if the orange highlighted button is a delete button
+	//selectButton method is used to switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button
 	
-	public void select ()
+	public void selectButton ()
 	{
 		if (mode == true)
 		{			

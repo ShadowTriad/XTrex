@@ -1,11 +1,11 @@
-
 /**
- * Enumeration class mode - write a description of the enum class here
- * 
- * @author (your name here)
- * @version (version number or date here)
+ * @version 08/03/18
+ * @author Faith Yemofio
  */
-public enum mode
+
+//enum Mode is used to store the modes of the XTrex
+
+public enum Mode
 {
-    OnOff, Menu, WhereTo, TripComputer, Map, Speech, Satallite, About
+    ABOUT, MAP, MENU, ONOFF, SATELLITE, SPEECH, TRIPCOMPUTER, WHERETO
 }
