@@ -1,9 +1,9 @@
 /**
- * Enumeration class mode - write a description of the enum class here
- * 
+ * @version 08/03/18
  * @author Faith Yemofio
- * @version 8/3/2018
  */
+
+//enum Mode is used to store the modes of the XTrex
 
 public enum Mode
 {

@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 
+import java.util.Random;
+
 /**
  * Reader is a simulation of Trip Computer mode and show the planed functionality of the mode.
  * In Trip Computer mode the screen displays the users trip odometer, speed and moving time.
@@ -29,20 +31,22 @@ import javax.swing.JLabel;
 //class Reader extends jFrame so the mode can use clickable buttons and text display
 
 public class Reader extends JFrame
-{
+{	
+	private static Random randomNumberGenerator = new Random ();
+	
 	//stores a random value for the trip odometer
 	
-	private static String string1 = "0.86";
+	private static String string1 =  Integer.toString (randomNumberGenerator.nextInt (30));
 	
 	//stores a random value for the speed
 	
-	private static String string2 = "7.00";
+	private static String string2 =  Integer.toString (randomNumberGenerator.nextInt (112));
 	
 	//stores a random value for the moving time
 	
-	private static String string3 = "27";
+	private static String string3 = Integer.toString (randomNumberGenerator.nextInt (60));
 	
-	private static String string4 = "8";
+	private static String string4 = Integer.toString (randomNumberGenerator.nextInt (60));
 	
 	//stores the trip odometer display
 		
@@ -60,7 +64,7 @@ public class Reader extends JFrame
 	
 	public final JTextField field5 = new JTextField ("moving time");
 	
-	public final JTextField field6 = new JTextField (string2 + " min " + string4 + " sec");
+	public final JTextField field6 = new JTextField (string3 + " min " + string4 + " sec");
 	
 	//sets up the class so the simulation can be displayed
 	//adds the displays to the simulation
