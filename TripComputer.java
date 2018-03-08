@@ -7,8 +7,6 @@ import javax.swing.*;
 
 import java.awt.*;
 
-import static java.lang.Math.abs;
-
 /**
  * In Trip Computer mode the screen displays the users trip odometer, speed and moving time.
  * At the moment the screen displays a random trip odometer, speed and moving time using default values.
@@ -19,71 +17,31 @@ import static java.lang.Math.abs;
 
 class TripComputer extends JPanel
 {
-	private static GPS gps = new GPS ();
+	//stores a random value for the trip odometer
 	
-	private static int startingLatitude = 0;
+	private static String tripOdometer = "0.86";
 	
-	private static int startingLongitude = 0;
-		
-	private static int tripOdometer = 0;
-		
-	private static int speed = 0;
-		
-	private static int startingTimeMinutes = 0;
+	//stores a random value for the speed
 	
-	private static int startingTimeSeconds = 0;
+	private static String speed = "7.00";
 	
-	private static int movingTimeMinutes = 0;
+	//stores a random value for the moving time
 	
-	private static int movingTimeSeconds = 0;
+	private static String movingTimeMinutes = "027";
+	
+	private static String movingTimeSeconds = "08";
 	
 	//sets up the class so the mode can be displayed on the screen of the XTrex
 	
 	public TripComputer ()
 	{
-		string latitude = gps.getLatitude ();
 		
-		string longitude = gps.getLongitude ();
-		
-		startingLatitude = Integer.parseInt (latitude);
-		
-		startingLongitude = Integer.parseInt (longitude);
-		
-		String time = gps.getTime ();
-		
-		startingTimeMinutes = getMinutes (time)
-		
-		startingTimeSeconds = getSeconds (time)
-	}
-	
-	public int getMinutes (String string)
-	{
-		String hours = string.substring (0, 2);
-		
-		String minutes = string.substring (2, 4);
-		
-		return Integer.parseInt (hours) * 60 + Integer.parseInt (minutes);
-	}
-	
-	public String getSeconds (String string)
-	{
-		String seconds = string.substring (4);
-		
-		return Integer.parseInt (seconds);
 	}
 	
 	//paint component method is used to continuously display the screen on the XTrex
 	
 	public void paintComponent (Graphics graphics)
 	{
-		String time = gps.getTime ();
-		 
-		movingTimeMinutes = abs (getMinutes (String time) - startingTimeMinutes)
-		
-		movingTimeSeconds = abs (getSeconds (String time) - startingTimeSeconds)
-		
-		speed = tripOdometer / (movingTimeMinutes / 60 + movingTimeSeconds / 3600)
-		
 		graphics.setColor(Color.black);
 		
 		graphics.fillRect(0, 0, 240, 353);
