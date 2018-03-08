@@ -1,11 +1,11 @@
 /**
  * Enumeration class mode - write a description of the enum class here
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author Faith Yemofio
+ * @version 8/3/2018
  */
 
 public enum Mode
 {
-    About, Map, Menu, OnOff, Satellite, Speech, TripComputer, WhereTo
+    ABOUT, MAP, MENU, ONOFF, SATELLITE, SPEECH, TRIPCOMPUTER, WHERETO
 }
