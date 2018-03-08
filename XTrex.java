@@ -19,29 +19,29 @@ import javax.swing.border.LineBorder;
 
 public class XTrex extends JFrame
 {
-    final OnOffButton onOffButton = new OnOffButton();
+    public final OnOffButton onOffButton = new OnOffButton();
     
-    final PlusButton plusButton = new PlusButton ("+");
+    public final PlusButton plusButton = new PlusButton ("+");
     
-    final MinusButton minusButton = new MinusButton ("-");
+    public final MinusButton minusButton = new MinusButton ("-");
     
-    final SelectButton selectButton = new SelectButton ("SELECT");
+    public final SelectButton selectButton = new SelectButton ("SELECT");
     
-    final MenuButton menuButton = new MenuButton ("MENU");
+    public final MenuButton menuButton = new MenuButton ("MENU");
     
-    static About about = new About ();
+    public static About about = new About ();
 	
-    static Map map = new Map ();
+    public static Map map = new Map ();
 	
-    static Satellite satellite = new Satellite ();
+    public static Satellite satellite = new Satellite ();
 	
-    static Speech speech = new Speech ();
+    public static Speech speech = new Speech ();
 	
-    static TripComputer tripComputer = new TripComputer ();
+    public static TripComputer tripComputer = new TripComputer ();
 	
-    static WhereTo whereTo = new WhereTo ();
+    public static WhereTo whereTo = new WhereTo ();
     
-    static mode currentMode; //purely symbolic for now, does not change what appears on screen
+    public static mode currentMode; //purely symbolic for now, does not change what appears on screen
 	
     public XTrex ()
     {

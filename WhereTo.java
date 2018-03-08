@@ -215,7 +215,7 @@ class WhereTo extends JPanel
 	//traverses the buttons in the list of buttons on a keypad
 	//when the method reaches the end of the list, the method goes back to the beginning of the list
 	
-	public void plus ()
+	public void plusButton ()
 	{
 		if (mode == true)
 		{
@@ -248,7 +248,7 @@ class WhereTo extends JPanel
 	//traverses the buttons in the list of buttons on a keypad
 	//when the method reaches the beginning of the list, the method goes forward to the end of the list
 	
-	public void minus ()
+	public void minusButton ()
 	{
 		if (mode == true)
 		{
@@ -281,7 +281,7 @@ class WhereTo extends JPanel
 	//select method is used to delete the last character from the display if the orange highlighted button is a delete button
 	//select method is used to switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button
 	
-	public void select ()
+	public void selectButton ()
 	{
 		if (mode == true)
 		{			
