@@ -120,9 +120,9 @@ public class XTrex extends JFrame
         PlusButton (String plus)
         {
             setBorder(new LineBorder(Color.RED));
-    		
-    		setContentAreaFilled(false);
-    		
+            
+            setContentAreaFilled(false);
+            
             setOpaque(false);
             
             addMouseListener ( new MouseAdapter ()
@@ -132,7 +132,7 @@ public class XTrex extends JFrame
                     if (currentMode == mode.WhereT0)
                     {
                     	whereTo.plus ();
-					}
+                    }
                 }
             });
         }
@@ -148,9 +148,9 @@ public class XTrex extends JFrame
         MinusButton (String plus)
         {
             setBorder(new LineBorder(Color.RED));
-    		
-    		setContentAreaFilled(false);
-    		
+            
+            setContentAreaFilled(false);
+            
             setOpaque(false);
             
             addMouseListener ( new MouseAdapter ()
@@ -160,7 +160,7 @@ public class XTrex extends JFrame
                     if (currentMode == mode.WhereT0)
                     {
                     	whereTo.minus ();
-					}
+                    }
                 }
             });
         }
@@ -175,9 +175,9 @@ public class XTrex extends JFrame
         SelectButton (String plus)
         {
             setBorder(new LineBorder(Color.RED));
-    		
-    		setContentAreaFilled(false);
-    		
+            
+            setContentAreaFilled(false);
+            
             setOpaque(false);
             
             addMouseListener ( new MouseAdapter ()
@@ -199,8 +199,8 @@ public class XTrex extends JFrame
         MenuButton (String plus)
         {
             setBorder(new LineBorder(Color.RED));
-    		
-    		setContentAreaFilled(false);
+            
+            setContentAreaFilled(false);
     		
             setOpaque(false);
             
