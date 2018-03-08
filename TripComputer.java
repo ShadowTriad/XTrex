@@ -23,29 +23,29 @@ class TripComputer extends JPanel
 	
 	//stores the starting coordinate
 	
-	private static int startingLongitude = 0;
+	private static double startingLongitude = 0;
 	
-	private static int startingLatitude = 0;
+	private static double startingLatitude = 0;
 	
 	//stores the trip odometer
 	
-	private static int tripOdometer = 0;
+	private static double tripOdometer = 0;
 	
 	//stores the speed
 	
-	private static int speed = 0;
+	private static double speed = 0;
 	
 	//stores the starting time
 	
-	private static int startingTimeMinutes = 0;
+	private static double startingTimeMinutes = 0;
 	
-	private static int startingTimeSeconds = 0;
+	private static double startingTimeSeconds = 0;
 	
 	//stores the moving time
 	
-	private static int movingTimeMinutes = 0;
+	private static double movingTimeMinutes = 0;
 	
-	private static int movingTimeSeconds = 0;
+	private static double movingTimeSeconds = 0;
 	
 	//sets up the class so the mode can be displayed on the screen of the XTrex
 	//sets the starting coordinate to the starting coordinate attribute
@@ -53,13 +53,13 @@ class TripComputer extends JPanel
 	
 	public TripComputer ()
 	{
-		string longitude = gps.getLongitude ();
+		String longitude = gps.getLongitude ();
 		
-		string latitude = gps.getLatitude ();
+		String latitude = gps.getLatitude ();
 		
-		startingLongitude = Integer.parseInt (longitude);
+		startingLongitude = Double.parseDouble (longitude);
 		
-		startingLatitude = Integer.parseInt (latitude);
+		startingLatitude = Double.parseDouble (latitude);
 		
 		String time = gps.getTime ();
 		
@@ -68,33 +68,34 @@ class TripComputer extends JPanel
 		startingTimeSeconds = getSeconds (time);
 	}
 	
-	//
+	//getOdometer method is used to calculate the trip odometer
+	//uses the haversine formula to calculate the trip odometer
 	
-	public int getOdometer (String longitude, String latitude)
+	public double getOdometer (String longitude, String latitude)
 	{
-		String differenceLongitude = (Integer.parseInt (longitude) - Integer.parseInt (startingLongitude)).toRadians ();
+		double differenceLongitude = Math.toRadians(Double.parseDouble (longitude) - startingLongitude);
 		
-		String differenceLatitude = (Integer.parseInt (latitude) - Integer.parseInt (startingLatitude)).toRadians ();
+		double differenceLatitude = Math.toRadians(Double.parseDouble (latitude) - startingLatitude);
 		
-		int odometer = Math.pow (Math.sin (differenceLatitude / 2), 2) + Math.cos (startingLatitude) * Math.cos (latitude) * Math.pow (Math.sin (differenceLongitude / 2), 2);
+		double odometer = Math.pow (Math.sin (differenceLatitude / 2), 2) + Math.cos (startingLatitude) * Math.cos (Double.parseDouble(latitude)) * Math.pow (Math.sin (differenceLongitude / 2), 2);
 		
 		return 6371 * 2 * Math.atan2 (Math.sqrt (odometer), Math.sqrt (1 - odometer));
 	}
 	
-	public int getMinutes (String time)
+	public double getMinutes (String time)
 	{
 		String hours = time.substring (0, 2);
 		
 		String minutes = time.substring (2, 4);
 		
-		return Integer.parseInt (hours) * 60 + Integer.parseInt (minutes);
+		return Double.parseDouble (hours) * 60 + Double.parseDouble (minutes);
 	}
 	
-	public int getSeconds (String time)
+	public double getSeconds (String time)
 	{
 		String seconds = time.substring (4);
 		
-		return Integer.parseInt (seconds);
+		return Double.parseDouble (seconds);
 	}
 	
 	//paint component method is used to continuously display the screen on the XTrex
@@ -105,13 +106,13 @@ class TripComputer extends JPanel
 		
 		String latitude = gps.getLatitude ();
 		
-		tripOdometer = tripOdometer (longitude, latitude);
+		tripOdometer = getOdometer (longitude, latitude);
 		
 		String time = gps.getTime ();
 				
-		int minutes = getMinutes (time);
+		double minutes = getMinutes (time);
 		
-		int seconds = getSeconds (time);
+		double seconds = getSeconds (time);
 		
 		if (minutes > startingTimeMinutes)
 		{
