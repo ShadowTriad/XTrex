@@ -1,5 +1,5 @@
 /**
- * @version 22/02/18
+ * @version 08/03/18
  * @author Chris Tyson
  * @author Faith Yemofio
  * @author Jasmine Cooke
@@ -98,12 +98,12 @@ public class XTrex extends JFrame
             	{
                     if (mode == Mode.ONOFF)
                     {
-                    	mode == Mode.MENU;
+                    	mode = Mode.MENU;
                     }
                     
                     else
                     {
-                    	mode == Mode.ONOFF;
+                    	mode = Mode.ONOFF;
                     }
                 }
             });
