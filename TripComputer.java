@@ -68,20 +68,35 @@ class TripComputer extends JPanel
 		startingTimeSeconds = getSeconds (time);
 	}
 	
-	//getOdometer method is used to calculate the trip odometer
-	//uses the haversine formula to calculate the trip odometer
+	//updateTripOdometer method is used to update the trip odometer
+	//uses the haversine formula to compute the shortest distance over a spherical approximation of the Earth's surface between the starting position and the current position
 	
-	public double getOdometer (String longitude, String latitude)
+	public void updateTripOdometer ()
 	{
+		String longitude = gps.getLongitude ();
+		
+		String latitude = gps.getLatitude ();
+		
 		double differenceLongitude = Math.toRadians(Double.parseDouble (longitude) - startingLongitude);
 		
 		double differenceLatitude = Math.toRadians(Double.parseDouble (latitude) - startingLatitude);
 		
 		double odometer = Math.pow (Math.sin (differenceLatitude / 2), 2) + Math.cos (startingLatitude) * Math.cos (Double.parseDouble(latitude)) * Math.pow (Math.sin (differenceLongitude / 2), 2);
 		
-		return 6371 * 2 * Math.atan2 (Math.sqrt (odometer), Math.sqrt (1 - odometer));
+		tripOdometer = 6371 * 2 * Math.atan2 (Math.sqrt (odometer), Math.sqrt (1 - odometer));
 	}
 	
+	//updateSpeed method is used to update the speed
+	//uses the equation speed = distance / time to compute an approximation of the speed
+	
+	public void updateSpeed ()
+	{
+		speed = tripOdometer / (movingTimeMinutes / 60 + movingTimeSeconds / 3600);
+	}
+	
+	//getMinutes method is used to compute the minutes of a time
+	//uses the hours and minutes of a time
+		
 	public double getMinutes (String time)
 	{
 		String hours = time.substring (0, 2);
@@ -91,23 +106,22 @@ class TripComputer extends JPanel
 		return Double.parseDouble (hours) * 60 + Double.parseDouble (minutes);
 	}
 	
+	//getSeconds method is used to compute the seconds of a time 
+	//uses the seconds of a time
+	
 	public double getSeconds (String time)
 	{
 		String seconds = time.substring (4);
 		
 		return Double.parseDouble (seconds);
 	}
+
 	
-	//paint component method is used to continuously display the screen on the XTrex
+	//updateMovingTime method is used to update the moving time
+	//uses the equation Δtime = ending time - starting time to compute an approximation of the elapsed time
 	
-	public void paintComponent (Graphics graphics)
+	public void updateMovingTime ()
 	{
-		String longitude = gps.getLongitude ();
-		
-		String latitude = gps.getLatitude ();
-		
-		tripOdometer = getOdometer (longitude, latitude);
-		
 		String time = gps.getTime ();
 				
 		double minutes = getMinutes (time);
@@ -125,14 +139,29 @@ class TripComputer extends JPanel
 		}
 		
 		movingTimeSeconds = seconds - startingTimeSeconds;
+	}
 		
-		speed = tripOdometer / (movingTimeMinutes / 60 + movingTimeSeconds / 3600);
+	//paint component method is used to continuously display the screen on the XTrex
+	
+	public void paintComponent (Graphics graphics)
+	{
+		//updates the trip odometer
+				
+		updateTripOdometer ();
+		
+		//updates the moving time
+		
+		updateMovingTime ();
+		
+		//updates the speed
+		
+		updateSpeed ();
+		
+		//draws the background on the screen
 		
 		graphics.setColor(Color.black);
 		
 		graphics.fillRect(0, 0, 240, 353);
-		
-		//draws the background on the screen
 		
 		(new ImageIcon ("img/background3.png")).paintIcon(this, graphics, 0, 27);
 		
