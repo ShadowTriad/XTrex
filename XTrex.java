@@ -129,9 +129,9 @@ public class XTrex extends JFrame
             {
             	public void mouseClicked (MouseEvent evenet)
             	{
-                    if (currentMode == mode.WhereT0)
+                    if (currentMode == mode.WhereTo)
                     {
-                    	whereTo.plus ();
+                    	whereTo.plusButton ();
                     }
                 }
             });
@@ -157,9 +157,9 @@ public class XTrex extends JFrame
             {
             	public void mouseClicked (MouseEvent evenet)
             	{
-                    if (currentMode == mode.WhereT0)
+                    if (currentMode == mode.WhereTo)
                     {
-                    	whereTo.minus ();
+                    	whereTo.minusButton ();
                     }
                 }
             });
@@ -184,7 +184,10 @@ public class XTrex extends JFrame
             {
             	public void mouseClicked (MouseEvent evenet)
             	{
-					
+					if (currentMode == mode.WhereTo)
+                    {
+                    	whereTo.selectButton ();
+                    }
                 }
             });
         }
