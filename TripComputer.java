@@ -21,48 +21,62 @@ class TripComputer extends JPanel
 {
 	private static GPS gps = new GPS ();
 	
-	private static int startingLatitude = 0;
+	//stores the starting coordinate
 	
 	private static int startingLongitude = 0;
-		
+	
+	private static int startingLatitude = 0;
+	
+	//stores the trip odometer
+	
 	private static int tripOdometer = 0;
-		
+	
+	//stores the speed
+	
 	private static int speed = 0;
-		
+	
+	//stores the starting time
+	
 	private static int startingTimeMinutes = 0;
 	
 	private static int startingTimeSeconds = 0;
+	
+	//stores the moving time
 	
 	private static int movingTimeMinutes = 0;
 	
 	private static int movingTimeSeconds = 0;
 	
 	//sets up the class so the mode can be displayed on the screen of the XTrex
+	//sets the starting coordinate to the starting coordinate attribute
+	//sets the starting time to the starting time attribute
 	
 	public TripComputer ()
 	{
-		string latitude = gps.getLatitude ();
-		
 		string longitude = gps.getLongitude ();
 		
-		startingLatitude = Integer.parseInt (latitude);
+		string latitude = gps.getLatitude ();
 		
 		startingLongitude = Integer.parseInt (longitude);
 		
+		startingLatitude = Integer.parseInt (latitude);
+		
 		String time = gps.getTime ();
 		
-		startingTimeMinutes = getMinutes (time)
+		startingTimeMinutes = getMinutes (time);
 		
-		startingTimeSeconds = getSeconds (time)
+		startingTimeSeconds = getSeconds (time);
 	}
 	
-	public int getOdometer (String latitude, String longitude)
+	public int getOdometer (String longitude, String latitude)
 	{
-		String differenceLatitude = (Integer.parseInt (latitude) - Integer.parseInt (startingLatitude)).toRadians ();
-		
 		String differenceLongitude = (Integer.parseInt (longitude) - Integer.parseInt (startingLongitude)).toRadians ();
 		
-		odometer = Math.sin (differenceLatitude / 2) * Math.sin (differenceLatitude / 2) + Math.cos (startingLatitude) * Math.cos (latitude) * Math.sin (differenceLongitude / 2) * Math.sin (differenceLongitude / 2)
+		String differenceLatitude = (Integer.parseInt (latitude) - Integer.parseInt (startingLatitude)).toRadians ();
+		
+		int odometer = Math.pow (Math.sin (differenceLatitude / 2), 2) + Math.cos (startingLatitude) * Math.cos (latitude) * Math.pow (Math.sin (differenceLongitude / 2), 2);
+		
+		return 6371 * 2 * Math.atan2 (Math.sqrt (odometer), Math.sqrt (1 - odometer));
 	}
 	
 	public int getMinutes (String time)
@@ -74,7 +88,7 @@ class TripComputer extends JPanel
 		return Integer.parseInt (hours) * 60 + Integer.parseInt (minutes);
 	}
 	
-	public String getSeconds (String time)
+	public int getSeconds (String time)
 	{
 		String seconds = time.substring (4);
 		
@@ -85,11 +99,11 @@ class TripComputer extends JPanel
 	
 	public void paintComponent (Graphics graphics)
 	{
-		string latitude = gps.getLatitude ();
+		String longitude = gps.getLongitude ();
 		
-		string longitude = gps.getLongitude ();
+		String latitude = gps.getLatitude ();
 		
-		tripOdometer = tripOdometer (latitude, longitude)
+		tripOdometer = tripOdometer (longitude, latitude);
 		
 		String time = gps.getTime ();
 				
@@ -100,18 +114,16 @@ class TripComputer extends JPanel
 		if (minutes > startingTimeMinutes)
 		{
 			movingTimeMinutes = minutes - startingTimeMinutes;
-			
-			movingTimeSeconds = seconds - startingTimeSeconds;
 		}
 		
 		else
 		{
 			movingTimeMinutes = minutes + 24 * 60 - startingTimeMinutes;
-			
-			movingTimeSeconds = seconds + 24 * 3600 - startingTimeSeconds;
 		}
 		
-		speed = tripOdometer / (movingTimeMinutes / 60 + movingTimeSeconds / 3600)
+		movingTimeSeconds = seconds - startingTimeSeconds;
+		
+		speed = tripOdometer / (movingTimeMinutes / 60 + movingTimeSeconds / 3600);
 		
 		graphics.setColor(Color.black);
 		
