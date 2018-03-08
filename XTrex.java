@@ -57,7 +57,7 @@ public class XTrex extends JFrame
 
         getContentPane ().setLayout (null);
 
-        onOffButton.setBounds ( 417, 114, 62, 62);
+        onOffButton.setBounds (417, 114, 62, 62);
         
         add (onOffButton);
 
@@ -145,7 +145,7 @@ public class XTrex extends JFrame
     
     private class MinusButton extends JButton
     {
-        MinusButton (String plus)
+        MinusButton (String minus)
         {
             setBorder(new LineBorder(Color.RED));
             
@@ -172,7 +172,7 @@ public class XTrex extends JFrame
      
     private class SelectButton extends JButton
     {
-        SelectButton (String plus)
+        SelectButton (String select)
         {
             setBorder(new LineBorder(Color.RED));
             
@@ -199,7 +199,7 @@ public class XTrex extends JFrame
     
     private class MenuButton extends JButton
     {
-        MenuButton (String plus)
+        MenuButton (String menu)
         {
             setBorder(new LineBorder(Color.RED));
             
