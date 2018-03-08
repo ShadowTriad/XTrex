@@ -21,22 +21,21 @@ import java.lang.Math;
  */
 
 public class Map extends JPanel {
-    //private int screenHeight = 353; // put somewhere else accessible to all  
-    //private int screenWidth = 240; // move
-    private GPS gps = new GPS();
+	private GPS gps = new GPS();
     public static String output = "map.png";     
-    public static String latitude = "50.7225";  
-    public static String longitude = "3.5299";   
-    public int zoom = 20;
+    public static String latitude;  
+    public static String longitude;   
+    public int zoom = 15;
     public String strZoom = Integer.toString(zoom);        /* 0 .. 21           */   
     public ImageIcon map;
-    public static double goalLat = 51.51;
-    public static double goalLong = 0.1277;
+    public static double goalLat;
+    public static double goalLong;
 
     /*
      * Constructor
      */
     public Map() {
+		updateCoords();
         repaint();
     }
 
@@ -75,7 +74,7 @@ public class Map extends JPanel {
     private byte[] readData() {
         String url = (
                 "https://maps.googleapis.com/maps/api/staticmap?center=" 
-                + "50.7226" + "," + "-3.529"
+                + latitude + "," + longitude
                 + "&zoom=" + strZoom
                 + "&size=" + Constants.STRWIDTH + "x" + Constants.STRHEIGHT
                 );
@@ -100,6 +99,9 @@ public class Map extends JPanel {
         }
     }
     
+	/*
+	 * Find the bearing between two GPS coordinates supplied, to be used to rotate map direction of travel.
+	 */
     public double getDirection() { 
         double cLat  = Double.parseDouble(latitude);  
         double cLong = Double.parseDouble(longitude);
@@ -109,29 +111,41 @@ public class Map extends JPanel {
         return theta;
     }
     
+    
+	/*
+	 * 	VERY IMPORTANT: NOW NEEDS TO BE CALLED BEFORE DISPLAYING
+	 */
+	public void update() {
+		this.updateCoords(); // NEED TO UNCOMMENT
+
+        final byte[] data = this.readData(); //NEED TO UNCOMMENT
+        this.writeData( output, data ); 		
+		
+	}
+    
     /*
      * Method to display map on screen with red marker in centre.
      */
     public void paintComponent( Graphics g ) {
-        this.updateCoords();
 
         super.paintComponent(g);
-
-        final byte[] data = this.readData(); 
-        this.writeData( output, data ); 
+		
         map = new ImageIcon(output);
+		
+        double radians = Math.toRadians( (double) this.getDirection() );
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.rotate( radians , Constants.SCREENWIDTH/2, Constants.SCREENHEIGHT/2);
 
-        map.paintIcon(this, g, 0, 0);
-        this.redDot(g);
+        map.paintIcon(this, g2d, 0, 0);
+        this.redDot(g2d);
         
         repaint();
     }
     
-    //it is possible this is nonsense? bit mystified
     private void redDot(Graphics g) {
         g.setColor(Color.red);
         
         int dotSize = zoom/2;
-        g.fillOval(Constants.SCREENWIDTH/2-dotSize/2, Constants.SCREENHEIGHT/2-dotSize/2, dotSize, dotSize); //make less ugly
+        g.fillOval(Constants.SCREENWIDTH/2-dotSize/2, Constants.SCREENHEIGHT/2-dotSize/2, dotSize, dotSize); 
     }
 }
