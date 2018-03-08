@@ -12,8 +12,13 @@ public class GPS {
 
     private String latitude;
     private String longitude;
+    private String time;
+
+    private LinuxUblox7 reader;
 
     public GPS() {
+        this.reader = new LinuxUblox7();
+
         getCurrentCoordinates();
     }
 
@@ -25,22 +30,19 @@ public class GPS {
         return this.longitude;
     }
 
-    //generate a random latitude enclosed within the UK
-    private String randomLatitude() {
-        Double lat = 51.5 + Math.random();
-        return (new DecimalFormat("###.####")).format(lat);
-    }
-
-    //generate a random longitude enclosed within the UK
-    private String randomLongitude() {
-        Double lon = -1.9 + Math.random() * 1.78;
-        return (new DecimalFormat("###.####")).format(lon);
+    public String getTime() {
+        return this.time;
     }
 
     //update the lat and lon with random values
-    private void getCurrentCoordinates() {
-        this.latitude  = randomLatitude();
-        this.longitude = randomLongitude();
+    public void getCurrentCoordinates() {
+
+        String[] latLonTime = reader.read();
+
+        this.latitude = latLonTime[0];
+        this.longitude = latLonTime[1];
+        this.time = latLonTime[2];
+
     }
 
 }

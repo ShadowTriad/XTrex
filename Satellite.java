@@ -34,10 +34,11 @@ class Satellite extends JPanel {
 
         g.setColor(Color.black);
         g.setFont(new Font("Arial", Font.PLAIN, 30));
-        g.drawString(lon + "  N", 50, 100);
-        g.drawString(lat + "  W", 50, 200);
+        g.drawString(lon + "  N", 25, 100);
+        g.drawString(lat + "  W", 25, 200);
 
-        //repaint();
+        gps.getCurrentCoordinates();
+        repaint();
     }
 
 }
