@@ -239,10 +239,9 @@ public class XTrex extends JFrame
     {
         currentMode = mode.OnOff;
         
-        XTrex XTrex = new XTrex ();
+        XTrex xt = new XTrex ();
 		
-        XTrex.showScreen (about);
-		
-        //speech.selectButton ();
+		xt.currentMode = mode.OnOff;
+
     }
 }
