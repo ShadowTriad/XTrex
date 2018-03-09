@@ -62,33 +62,33 @@ public class Speech extends JPanel
         //creates a box in orange if the current language state isn't "Off
         g.setColor(Color.orange);
         if (currentLanguageCount == 1){
-            g.fillRect(50, 100, 200, 50);
+            g.fillRect(25, 50, 200, 50);
         } else if (currentLanguageCount == 2){
-            g.fillRect(50, 150, 200, 50);
+            g.fillRect(25, 100, 200, 50);
         } else if (currentLanguageCount == 3){
-            g.fillRect(50, 200, 200, 50);
+            g.fillRect(25, 150, 200, 50);
         } else if (currentLanguageCount == 4){
-            g.fillRect(50, 250, 200, 50);
+            g.fillRect(25, 200, 200, 50);
         } else if (currentLanguageCount == 5){
-            g.fillRect(50, 300, 200, 50);
+            g.fillRect(25, 250, 200, 50);
         } 
         
         //draws all the box outlines
         g.setColor(Color.black);
-        g.drawRect(50, 100 , 200, 50);
-        g.drawRect(50, 150 , 200, 50);
-        g.drawRect(50, 200 , 200, 50);
-        g.drawRect(50, 250 , 200, 50);
-        g.drawRect(50, 300 , 200, 50);
+        g.drawRect(25, 50 , 200, 50);
+        g.drawRect(25, 100 , 200, 50);
+        g.drawRect(25, 150 , 200, 50);
+        g.drawRect(25, 200 , 200, 50);
+        g.drawRect(25, 250 , 200, 50);
         
         
         //writes the text for each box
         g.setFont(new Font("Arial", Font.PLAIN, 30));
-        g.drawString("English",80,140);
-        g.drawString("French",80,190);
-        g.drawString("German",80,240);
-        g.drawString("Italian",80,290);
-        g.drawString("Spanish",80,340);
+        g.drawString("English",80,90);
+        g.drawString("French",80,140);
+        g.drawString("German",80,190);
+        g.drawString("Italian",80,240);
+        g.drawString("Spanish",80,290);
 
         repaint();
     }
