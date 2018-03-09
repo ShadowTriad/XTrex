@@ -33,6 +33,10 @@ public class XTrex extends JFrame
 	
     public static Map map = new Map ();
 	
+    public static Menu menu = new Menu ();
+	
+    public static OnOff onOff = new OnOff ();
+	
     public static Satellite satellite = new Satellite ();
 	
     public static Speech speech = new Speech ();
@@ -80,6 +84,7 @@ public class XTrex extends JFrame
 	
     /*
      * @author Oonagh
+	 * @author Jasmine
      */
     
     private class OnOffButton extends JButton
@@ -98,12 +103,15 @@ public class XTrex extends JFrame
             	{
                     if (mode == Mode.ONOFF)
                     {
-                    	mode = Mode.MENU;
+						switchMode(Mode.MENU);
+						menu.repaint();
                     }
                     
                     else
                     {
-                    	mode = Mode.ONOFF;
+
+                    	switchMode(Mode.ONOFF);
+						onOff.repaint();
                     }
                 }
             });
@@ -113,6 +121,7 @@ public class XTrex extends JFrame
     /*
      * @author Oonagh
      * @author Faith
+	 * @author Jasmine
      */
     
     private class PlusButton extends JButton
@@ -133,6 +142,11 @@ public class XTrex extends JFrame
                     {
                     	whereTo.plusButton ();
                     }
+					
+					if(mode == Mode.MENU){
+						
+						menu.plusButton();
+					}
                 }
             });
         }
@@ -141,6 +155,7 @@ public class XTrex extends JFrame
     /*
      * @author Oonagh
      * @author Faith
+	 * @author Jasmine
      */
     
     private class MinusButton extends JButton
@@ -161,6 +176,10 @@ public class XTrex extends JFrame
                     {
                     	whereTo.minusButton ();
                     }
+					
+					if (mode == Mode.MENU){
+						menu.minusButton();
+					}
                 }
             });
         }
@@ -168,6 +187,7 @@ public class XTrex extends JFrame
 
     /*
      * @author Oonagh
+	 * @author Jasmine
      */
      
     private class SelectButton extends JButton
@@ -188,6 +208,13 @@ public class XTrex extends JFrame
                     {
                     	whereTo.selectButton ();
                     }
+					
+					if(mode == Mode.MENU)
+					{
+						menu.selectButton();
+						
+						switchMode(mode);
+					}
                 }
             });
         }
@@ -195,6 +222,7 @@ public class XTrex extends JFrame
     
     /*
      * @author Oonagh
+	 * @author Jasmine
      */
     
     private class MenuButton extends JButton
@@ -211,14 +239,15 @@ public class XTrex extends JFrame
             {
             	public void mouseClicked (MouseEvent event)
             	{
-                	mode = Mode.MENU;
+					switchMode(Mode.MENU);
+					XTrex.menu.repaint();
                 }
             });
         }
     }
     
     /*
-     * Takes different mode's screen as argument and display on screen.
+     * Takes different modes screen as argument and display on screen.
      */
      
     private void showScreen (JPanel panel)
@@ -229,8 +258,39 @@ public class XTrex extends JFrame
 
         panel.setBounds (240, 260, 240, 353);
 
-        this.setVisible (true);
+		panel.setVisible (true);
+		
     }
+	
+	/*
+	* @author Jasmine
+	*/
+	
+	public void switchMode(Mode newMode){
+		mode = newMode;
+		System.out.print(mode);
+		
+		
+		switch(this.mode){
+			case ABOUT: 		showScreen(about);
+								break;
+			case MAP: 			showScreen(map);
+								break;
+			case MENU: 			showScreen(menu);
+								break;
+			case ONOFF: 		showScreen(onOff);
+								break;
+			case SATELLITE:		showScreen(satellite);
+								break;
+			case SPEECH:		showScreen(speech);
+								break;
+			case TRIPCOMPUTER: 	showScreen(tripComputer);
+								break;
+			case WHERETO: 		showScreen(whereTo);
+								break;
+		}
+		
+	}
 
     /*
      * Currently can check modes manually by changing XTrex.showScreen(arg) argument.
@@ -240,11 +300,8 @@ public class XTrex extends JFrame
     
     public static void main (String [] array)
     {
-        mode = Mode.WHERETO;
-        
         XTrex xt = new XTrex ();
-		
-        XTrex.showScreen (whereTo);
+		xt.setVisible(true);
 		
     }
 }
