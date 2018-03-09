@@ -1,5 +1,5 @@
 /*
-*Jasmine
+*@author Jasmine Green Cooke
 *version 1.0
 */
 
@@ -8,30 +8,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class OnOff extends JPanel{
-	//change mode to onoff mode
-	
-	
+
 	 public void paintComponent( Graphics g ) {
         super.paintComponent(g);
-
-        setBackground(new Color(243,213,12));
-
         g.setColor(Color.black);
-        g.fillRect(0,0, 330, 415);
+        g.fillRect(0,0, 240, 353);		
     }
-	
-	public OnOff(){
-		repaint();
-		
-	}
-	
-	private class OnOffButton extends JButton{
-		OnOffButton(){
-		addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e){
-				//change current mode to menu mode
-			};
-		});
-		}
-	}
+
 }
