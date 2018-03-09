@@ -30,6 +30,8 @@ public class Speech extends JPanel
     final static String region      = "uk";
     final static String mode        = "driving"; //as walking is in beta and is flawed
     
+    GPS gps = new GPS();
+    
     //languages counter is used to record what language is currently selected
     public int currentLanguageCount = 3;
     
@@ -88,7 +90,7 @@ public class Speech extends JPanel
         g.drawString("Italian",80,290);
         g.drawString("Spanish",80,340);
 
-
+        repaint();
     }
     
      /*
@@ -223,7 +225,11 @@ public class Speech extends JPanel
                               , String region 
                   , String mode ) {
         try {
-          //this will be where the GPS is taken, and used instead of the String origin argument.
+          //to be used when I've sorted the JSON
+          String lat = gps.getLatitude();
+          String lon = gps.getLongitude();
+            
+          
           final String encOrigin      = URLEncoder.encode( origin,      "UTF-8" ); 
           final String encDestination = URLEncoder.encode( destination, "UTF-8" );
           String language = languages.get(currentLanguageCount);
