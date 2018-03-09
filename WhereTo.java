@@ -242,6 +242,7 @@ class WhereTo extends JPanel
 				button = button + 1;
 			}
 		}
+		repaint();
 	}
 	
 	//minusButton method is used to cycle backwards through the buttons on the keypad
@@ -275,6 +276,7 @@ class WhereTo extends JPanel
 				button = button - 1;
 			}
 		}
+		repaint();
 	}
 	
 	//selectButton method is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button
@@ -330,6 +332,7 @@ class WhereTo extends JPanel
 				address = address + (keycaps2.get (button)).getName ();
 			}
 		}
+		repaint();
 	}
 	
 	//paint component method is used to continuously display the screen on the Xtrex
@@ -410,6 +413,6 @@ class WhereTo extends JPanel
 		
 		//continuously redraws the screen on the Xtrex
 		
-		repaint ();
+		//repaint ();
 	}
 }
