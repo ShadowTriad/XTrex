@@ -1,15 +1,17 @@
 /**
- * @version 08/03/18
+ * @version 23/03/18
  * @author Faith Yemofio
  */
 
-import java.awt.Color;
+/**
+ * program is a prototype of the numeric keyboard in where to mode and implements the planed functionality of the numeric keyboard
+ */
+
+//package Numeric imports the java awt and java swing packages so the class Numeric can use clickable buttons and text displays
 
 import java.awt.event.MouseAdapter;
 
 import java.awt.event.MouseEvent;
-
-import java.awt.Color;
 
 import java.awt.TextField;
 
@@ -21,28 +23,10 @@ import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 
-/**
- * Numeric is a simulation of the alphabetic keypad in Where To mode and show the planed functionality of the mode.
- * In Where To mode:
- * The screen displays the users destination (place name or post code) and either an alphabetic or a numeric keypad.
- * The + and - buttons are used to cycle either forward or backwards through the buttons on the keypad which highlight orange when cycled through.
- * The select button is used to add the orange highlighted button on the keypad to the display if the orange highlighted button is a character button, delete the last character from the display if the orange highlighted button is a DEL button or switch the keypad to either an alphabetic or a numeric keypad if the orange highlighted button is an arrow button.
- */
+//class Numeric extends the Keyboard class so the class Numeric can use character buttons and destination displays
 
-//class Numeric extends jFrame so the mode can use clickable buttons and text display
-
-public class Numeric extends JFrame
-{
-	//stores the destination displayed on the keypad
-	
-	private static String string = "";
-	
-	//stores the destination display
-		
-	public final TextField field = new TextField ();
-	
-	//stores the buttons on the keypad
-	
+public class Numeric extends Keyboard
+{	
 	public final CharacterButton button1 = new CharacterButton ("1");
 	
 	public final CharacterButton button2 = new CharacterButton ("2");
@@ -67,26 +51,23 @@ public class Numeric extends JFrame
 	
 	public final LeftButton buttonLEF = new LeftButton ("LEF");
 	
-	//sets up the class so the simulation can be displayed
-	//adds the buttons and the displays to the simulation
+	//sets up the class so the numeric keyboard can be displayed on the screen
+	//displays the character buttons, delete buttons and left arrow buttons on the keyboard on the screen
+	//displays the destination in the display on the keyboard on the screen
 	
 	public Numeric ()
 	{
-		setTitle ("Numeric");
-		
-		//displays the background on the simulation
-		
+		setTitle ("Where To");
+				
 		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
 		
 		setLayout (null);
 		
-		//displays the destination on the simulation
+		field.setText(string);
 		
 		field.setBounds (14, 12, 208, 25);
 		
 		add (field);
-		
-		//displays the buttons on the simulation
 		
 		button1.setBounds (9, 52, 72, 61);
 		
@@ -137,114 +118,9 @@ public class Numeric extends JFrame
 		add (buttonLEF);
 	}
 	
-	//sets up the class so the simulation can be displayed
-	//adds the buttons and the displays to the simulation
-	//sets the destination to the destination in the argument
-	
-	public Numeric (String string)
-	{
-		//sets the destination
-		
-		this.string = string;
-		
-		field.setText (string);
-		
-		setTitle ("Numeric");
-		
-		//displays the background on the simulation
-		
-		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
-		
-		setLayout (null);
-		
-		//displays the destination on the simulation
-		
-		field.setBounds (14, 12, 208, 25);
-		
-		add (field);
-		
-		//displays the buttons on the simulation
-		
-		button1.setBounds (9, 52, 72, 61);
-		
-		add (button1);
-		
-		button2.setBounds (82, 52, 74, 61);
-		
-		add (button2);
-		
-		button3.setBounds (157, 52, 74, 61);
-		
-		add (button3);
-		
-		button4.setBounds (9, 114, 72, 59);
-		
-		add (button4);
-		
-		button5.setBounds (82, 114, 74, 59);
-		
-		add (button5);
-		
-		button6.setBounds (157, 114, 74, 59);
-		
-		add (button6);
-		
-		button7.setBounds (9, 174, 72, 53);
-		
-		add (button7);
-		
-		button8.setBounds (82, 174, 74, 53);
-		
-		add (button8);
-		
-		button9.setBounds (157, 174, 74, 53);
-		
-		add (button9);
-		
-		button0.setBounds (9, 228, 72, 53);
-		
-		add (button0);
-		
-		buttonDEL.setBounds (82, 228, 149, 116);
-		
-		add (buttonDEL);
-		
-		buttonLEF.setBounds (9, 282, 72, 62);
-		
-		add (buttonLEF);
-	}
-	
-	//stores the information about the character buttons on the keypads
-	//buttons highlight orange when rolled over
-	//button adds the character to the display
-	
-	private class CharacterButton extends JButton
-	{
-		CharacterButton (String character)
-		{
-			setIcon (new ImageIcon ("img/keycap" + character + ".png"));
-			
-			setRolloverIcon (new ImageIcon ("img/rollover" + character + ".png")); 
-			
-			setBorder (null);
-			
-			addMouseListener (new MouseAdapter ()
-			{
-				public void mouseClicked (MouseEvent event)
-				{
-					setBackground (Color.orange);
-					
-					string = string + character;
-					
-					field.setText("" + string);
-				}
-			});
-		}
-	}
-	
-	//stores the information about the delete button on the keypad
-	//button highlights orange when rolled over
-	//button deletes the last character from the display
+	//stores the information about the delete buttons on the keyboard
+	//delete buttons highlight orange when the delete buttons is rolled over
+	//delete buttons remove the last character added to the destination from the destination
 	
 	private class DeleteButton extends JButton
 	{
@@ -285,9 +161,9 @@ public class Numeric extends JFrame
 		}
 	}
 	
-	//stores the information about the arrow button on the keypad
-	//button highlights orange when rolled over
-	//button switches the keypad to the alphabetic keypad
+	//stores the information about the left arrow buttons on the keyboard
+	//left arrow buttons highlight orange when the left arrow buttons is rolled over
+	//left arrow buttons changes the numeric keyboard to the alphabetic keyboard
 	
 	private class LeftButton extends JButton
 	{
@@ -305,7 +181,7 @@ public class Numeric extends JFrame
 				{
 					Numeric.this.dispose ();
 					
-					JFrame frame = new Alphabetic (string);
+					JFrame frame = new Alphabetic ();
 					
 					frame.setLocationRelativeTo (null);
 					
@@ -319,12 +195,10 @@ public class Numeric extends JFrame
 		}
 	}
 	
-	//displays the simulation
+	//displays the alphabetic keyboard on the screen
 	
 	public static void main (String [] array)
-	{
-		//creates a simulation and displays the simulation
-		
+	{		
 		JFrame frame = new Numeric ();
 		
 		frame.setLocationRelativeTo (null);

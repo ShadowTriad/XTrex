@@ -1,5 +1,5 @@
 /**
- * @version 08/03/18
+ * @version 23/03/18
  * @author Faith Yemofio
  */
 
@@ -7,5 +7,5 @@
 
 public enum Mode
 {
-    WHERETO, TRIPCOMPUTER, MAP, SPEECH, SATELLITE, ABOUT, MENU, ONOFF
+    ABOUT, MAP, MENU, ONOFF, SATELLITE, SPEECH, TRIPCOMPUTER, WHERETO
 }
