@@ -38,7 +38,7 @@ class Satellite extends JPanel {
         g.drawString(lat + "  W", 25, 200);
 
         gps.getCurrentCoordinates();
-        repaint();
+        //repaint();
     }
 
 }

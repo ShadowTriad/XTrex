@@ -17,36 +17,41 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.border.LineBorder;
 
+import java.util.HashMap;
+
 public class XTrex extends JFrame
 {
-    public final OnOffButton onOffButton = new OnOffButton();
-    
-    public final PlusButton plusButton = new PlusButton ("+");
-    
-    public final MinusButton minusButton = new MinusButton ("-");
-    
-    public final SelectButton selectButton = new SelectButton ("SELECT");
-    
-    public final MenuButton menuButton = new MenuButton ("MENU");
-    
-    public static About about = new About ();
-	
-    public static Map map = new Map ();
-	
+    private final OnOffButton onOffButton = new OnOffButton();
+
+    private final PlusButton plusButton = new PlusButton ("+");
+
+    private final MinusButton minusButton = new MinusButton ("-");
+
+    private final SelectButton selectButton = new SelectButton ("SELECT");
+
+    private final MenuButton menuButton = new MenuButton ("MENU");
+
+    private About about = new About ();
+
+    private Map map = new Map ();
+
     public static Menu menu = new Menu ();
-	
-    public static OnOff onOff = new OnOff ();
-	
-    public static Satellite satellite = new Satellite ();
-	
-    public static Speech speech = new Speech ();
-	
-    public static TripComputer tripComputer = new TripComputer ();
-	
-    public static WhereTo whereTo = new WhereTo ();
-        
+
+    private OnOff onOff = new OnOff ();
+
+    private Satellite satellite = new Satellite ();
+
+    private Speech speech = new Speech ();
+
+    private TripComputer tripComputer = new TripComputer ();
+
+    private WhereTo whereTo = new WhereTo ();
+
     public static Mode mode;
-	
+
+    private HashMap<Mode, JPanel> screens = new HashMap<Mode, JPanel>();
+
+
     public XTrex ()
     {
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -62,41 +67,55 @@ public class XTrex extends JFrame
         getContentPane ().setLayout (null);
 
         onOffButton.setBounds (417, 114, 62, 62);
-        
+
         add (onOffButton);
 
         plusButton.setBounds (155, 70, 40, 50);
-        
+
         add (plusButton);
 
         minusButton.setBounds (155, 135, 40, 50);
-        
+
         add (minusButton);
-        
+
         selectButton.setBounds (145, 225, 60, 70);
-        
+
         add (selectButton);
-        
+
         menuButton.setBounds (515, 75, 50, 70);
-        
+
         add (menuButton);
+
+        About about = new About ();
+
+        screens.put(Mode.ABOUT, about);
+        screens.put(Mode.MAP, map);
+        screens.put(Mode.MENU, menu);
+        screens.put(Mode.ONOFF, onOff);
+        screens.put(Mode.SATELLITE, satellite);
+        screens.put(Mode.SPEECH, speech);
+        screens.put(Mode.TRIPCOMPUTER, tripComputer);
+        screens.put(Mode.WHERETO, whereTo);
+
+        mode = Mode.ONOFF;
+        showScreen( onOff );
     }
-	
+
     /*
      * @author Oonagh
 	 * @author Jasmine
      */
-    
+
     private class OnOffButton extends JButton
     {
     	OnOffButton ()
     	{
     		setBorder(new LineBorder(Color.RED));
-    		
+
     		setContentAreaFilled(false);
-    		
+
             setOpaque(false);
-            
+
             addMouseListener ( new MouseAdapter ()
             {
             	public void mouseClicked (MouseEvent event)
@@ -106,7 +125,7 @@ public class XTrex extends JFrame
 						switchMode(Mode.MENU);
 						menu.repaint();
                     }
-                    
+
                     else
                     {
 
@@ -117,23 +136,23 @@ public class XTrex extends JFrame
             });
         }
     }
-	
+
     /*
      * @author Oonagh
      * @author Faith
 	 * @author Jasmine
      */
-    
+
     private class PlusButton extends JButton
     {
-        PlusButton (String plus)
+        PlusButton (String label)
         {
             setBorder(new LineBorder(Color.RED));
-            
+
             setContentAreaFilled(false);
-            
+
             setOpaque(false);
-            
+
             addMouseListener ( new MouseAdapter ()
             {
             	public void mouseClicked (MouseEvent event)
@@ -142,32 +161,32 @@ public class XTrex extends JFrame
                     {
                     	whereTo.plusButton ();
                     }
-					
+
 					if(mode == Mode.MENU){
-						
+
 						menu.plusButton();
 					}
                 }
             });
         }
     }
-    
+
     /*
      * @author Oonagh
      * @author Faith
 	 * @author Jasmine
      */
-    
+
     private class MinusButton extends JButton
     {
-        MinusButton (String minus)
+        MinusButton (String label)
         {
             setBorder(new LineBorder(Color.RED));
-            
+
             setContentAreaFilled(false);
-            
+
             setOpaque(false);
-            
+
             addMouseListener ( new MouseAdapter ()
             {
             	public void mouseClicked (MouseEvent event)
@@ -176,7 +195,7 @@ public class XTrex extends JFrame
                     {
                     	whereTo.minusButton ();
                     }
-					
+
 					if (mode == Mode.MENU){
 						menu.minusButton();
 					}
@@ -189,17 +208,17 @@ public class XTrex extends JFrame
      * @author Oonagh
 	 * @author Jasmine
      */
-     
+
     private class SelectButton extends JButton
     {
-        SelectButton (String select)
+        SelectButton (String label)
         {
             setBorder(new LineBorder(Color.RED));
-            
+
             setContentAreaFilled(false);
-            
+
             setOpaque(false);
-            
+
             addMouseListener ( new MouseAdapter ()
             {
             	public void mouseClicked (MouseEvent event)
@@ -208,48 +227,48 @@ public class XTrex extends JFrame
                     {
                     	whereTo.selectButton ();
                     }
-					
-					if(mode == Mode.MENU)
+
+					if (mode == Mode.MENU)
 					{
-						menu.selectButton();
-						
-						switchMode(mode);
+						Mode newMode = menu.selectButton();
+						switchMode(newMode);
+                        screens.get(newMode).repaint();
 					}
                 }
             });
         }
     }
-    
+
     /*
      * @author Oonagh
 	 * @author Jasmine
      */
-    
+
     private class MenuButton extends JButton
     {
-        MenuButton (String menu)
+        MenuButton (String label)
         {
             setBorder(new LineBorder(Color.RED));
-            
+
             setContentAreaFilled(false);
-    		
+
             setOpaque(false);
-            
+
             addMouseListener ( new MouseAdapter ()
             {
             	public void mouseClicked (MouseEvent event)
             	{
 					switchMode(Mode.MENU);
-					XTrex.menu.repaint();
+                    menu.repaint();
                 }
             });
         }
     }
-    
+
     /*
      * Takes different modes screen as argument and display on screen.
      */
-     
+
     private void showScreen (JPanel panel)
     {
 		this.add (panel);
@@ -259,37 +278,29 @@ public class XTrex extends JFrame
         panel.setBounds (240, 260, 240, 353);
 
 		panel.setVisible (true);
-		
+
     }
-	
+
 	/*
 	* @author Jasmine
 	*/
-	
+
 	public void switchMode(Mode newMode){
-		mode = newMode;
-		System.out.print(mode);
-		
-		
-		switch(this.mode){
-			case ABOUT: 		showScreen(about);
-								break;
-			case MAP: 			showScreen(map);
-								break;
-			case MENU: 			showScreen(menu);
-								break;
-			case ONOFF: 		showScreen(onOff);
-								break;
-			case SATELLITE:		showScreen(satellite);
-								break;
-			case SPEECH:		showScreen(speech);
-								break;
-			case TRIPCOMPUTER: 	showScreen(tripComputer);
-								break;
-			case WHERETO: 		showScreen(whereTo);
-								break;
-		}
-		
+
+        JPanel currentScreen = screens.get( mode );
+        JPanel nextScreen = screens.get( newMode );
+
+        System.out.print(mode);
+
+        mode = newMode;
+
+        System.out.println(mode);
+
+        showScreen( nextScreen );
+        getContentPane().remove( currentScreen );
+
+        showScreen( nextScreen );
+
 	}
 
     /*
@@ -297,11 +308,11 @@ public class XTrex extends JFrame
      * Speech mode used here as example; to check other modes, change arg and
      * comment out speech.selectButton();.
      */
-    
+
     public static void main (String [] array)
     {
-        XTrex xt = new XTrex ();
+        XTrex xt = new XTrex();
 		xt.setVisible(true);
-		
+
     }
 }
