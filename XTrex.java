@@ -2,7 +2,7 @@
  * @version 08/03/18
  * @author Chris Tyson
  * @author Faith Yemofio
- * @author Jasmine Green Cooke
+ * @author Jasmine Cooke
  * @author Oonagh Madden-Wells
  * @author Tilly Porthouse
  */
