@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 //class Keyboard extends the jFrame class so the class Keyboard can use clickable buttons and text displays
 public class Keyboard extends JFrame
 {	
+	public static Constant constant = new Constant ();
 	public static String string = "";	
 	public static final TextField field = new TextField ("");
 	
@@ -35,8 +36,8 @@ public class Keyboard extends JFrame
 	{
 		CharacterButton (String character)
 		{
-			setIcon (new ImageIcon ("img/keycap" + character + ".png"));
-			setRolloverIcon (new ImageIcon ("img/rollover" + character + ".png")); 
+			setIcon (new ImageIcon (constant.getIcon () + character + constant.getIconExtenction ()));
+			setRolloverIcon (new ImageIcon (constant.getRolloverIcon () + character + constant.getIconExtenction ())); 
 			setBorder (null);
 			addMouseListener (new MouseAdapter ()
 			{

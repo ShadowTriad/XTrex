@@ -54,67 +54,67 @@ public class Alphabetic extends Keyboard
 	//displays the destination in the display on the keyboard on the screen
 	public Alphabetic ()
 	{
-		setTitle ("Where To");
-		setContentPane (new JLabel (new ImageIcon ("img/background.png")));
+		setTitle (constant.getWhereTo ());
+		setContentPane (new JLabel (new ImageIcon (constant.getAlphabeticBackground ())));
 		setLayout (null);
 		field.setText(string);
-		field.setBounds (14, 12, 208, 25);
+		field.setBounds (constant.getWhereToColumn0 (), constant.getWhereToRow0 (), constant.getWhereToWidth0 (), constant.getWhereToHeight0 ());
 		add (field);	
-		buttonA.setBounds (11, 52, 52, 40);
+		buttonA.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow1 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight1 ());
 		add (buttonA);
-		buttonB.setBounds (65, 52, 54, 40);
+		buttonB.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow1 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight1 ());
 		add (buttonB);
-		buttonC.setBounds (121, 52, 54, 40);
+		buttonC.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow1 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight1 ());
 		add (buttonC);
-		buttonD.setBounds (177, 52, 52, 40);
+		buttonD.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow1 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight1 ());
 		add (buttonD);
-		buttonE.setBounds (11, 94, 52, 40);
+		buttonE.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow2 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight1 ());
 		add (buttonE);
-		buttonF.setBounds (65, 94, 54, 40);
+		buttonF.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow2 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight1 ());
 		add (buttonF);
-		buttonG.setBounds (121, 94, 54, 40);
+		buttonG.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow2 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight1 ());
 		add (buttonG);
-		buttonH.setBounds (177, 94, 52, 40);
+		buttonH.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow2 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight1 ());
 		add (buttonH);
-		buttonI.setBounds (11, 136, 52, 40);
+		buttonI.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow3 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight1 ());
 		add (buttonI);
-		buttonJ.setBounds (65, 136, 54, 40);
+		buttonJ.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow3 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight1 ());
 		add (buttonJ);
-		buttonK.setBounds (121, 136, 54, 40);
+		buttonK.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow3 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight1 ());
 		add (buttonK);
-		buttonL.setBounds (177, 136, 52, 40);
+		buttonL.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow3 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight1 ());
 		add (buttonL);
-		buttonM.setBounds (11, 177, 52, 41);
+		buttonM.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow4 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight2 ());
 		add (buttonM);
-		buttonN.setBounds (65, 177, 54, 41);
+		buttonN.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow4 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight2 ());
 		add (buttonN);
-		buttonO.setBounds (121, 177, 54, 41);
+		buttonO.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow4 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight2 ());
 		add (buttonO);
-		buttonP.setBounds (177, 177, 52, 41);
+		buttonP.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow4 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight2 ());
 		add (buttonP);
-		buttonQ.setBounds (11, 219, 52, 41);
+		buttonQ.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow5 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight2 ());
 		add (buttonQ);
-		buttonR.setBounds (65, 219, 54, 41);
+		buttonR.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow5 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight2 ());
 		add (buttonR);
-		buttonS.setBounds (121, 219, 54, 41);
+		buttonS.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow5 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight2 ());
 		add (buttonS);
-		buttonT.setBounds (177, 219, 52, 41);
+		buttonT.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow5 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight2 ());
 		add (buttonT);
-		buttonU.setBounds (11, 262, 52, 39);
+		buttonU.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow6 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight3 ());
 		add (buttonU);
-		buttonV.setBounds (65, 262, 54, 39);
+		buttonV.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow6 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight3 ());
 		add (buttonV);
-		buttonW.setBounds (121, 262, 54, 39);
+		buttonW.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow6 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight3 ());
 		add (buttonW);
-		buttonX.setBounds (177, 262, 52, 39);
+		buttonX.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow6 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight3 ());
 		add (buttonX);
-		buttonY.setBounds (11, 303, 52, 38);
+		buttonY.setBounds (constant.getAlphabeticColumn1 (), constant.getAlphabeticRow7 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight4 ());
 		add (buttonY);
-		buttonZ.setBounds (65, 303, 54, 38);
+		buttonZ.setBounds (constant.getAlphabeticColumn2 (), constant.getAlphabeticRow7 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight4 ());
 		add (buttonZ);
-		button_.setBounds (121, 303, 54, 38);
+		button_.setBounds (constant.getAlphabeticColumn3 (), constant.getAlphabeticRow7 (), constant.getAlphabeticWidth2 (), constant.getAlphabeticHeight4 ());
 		add (button_);
-		buttonRIG.setBounds (177, 303, 52, 38);
+		buttonRIG.setBounds (constant.getAlphabeticColumn4 (), constant.getAlphabeticRow7 (), constant.getAlphabeticWidth1 (), constant.getAlphabeticHeight4 ());
 		add (buttonRIG);
 	}
 	
@@ -125,8 +125,8 @@ public class Alphabetic extends Keyboard
 	{
 		RightButton (String right)
 		{
-			setIcon (new ImageIcon ("img/keycap" + right + ".png"));
-			setRolloverIcon (new ImageIcon ("img/rollover" + right + ".png"));
+			setIcon (new ImageIcon (constant.getIcon () + right + constant.getIconExtenction ()));
+			setRolloverIcon (new ImageIcon (constant.getRolloverIcon () + right + constant.getIconExtenction ()));
 			setBorder (null);
 			addMouseListener (new MouseAdapter ()
 			{
@@ -135,7 +135,7 @@ public class Alphabetic extends Keyboard
 					Alphabetic.this.dispose ();
 					JFrame frame = new Numeric ();
 					frame.setLocationRelativeTo (null);
-					frame.setSize (240, 375);
+					frame.setSize (constant.getWhereToWidth (), constant.getWhereToHeight ());
 					frame.setResizable (false);
 					frame.setVisible (true);
 				}
@@ -148,7 +148,7 @@ public class Alphabetic extends Keyboard
 	{
 		JFrame frame = new Alphabetic ();
 		frame.setLocationRelativeTo (null);
-		frame.setSize (240, 375);
+		frame.setSize (constant.getWhereToWidth (), constant.getWhereToHeight ());
 		frame.setResizable (false);
 		frame.setVisible (true);
 	}
