@@ -3,9 +3,8 @@
  * @author Faith Yemofio
  */
 
-//enum Mode is used to store the modes of the XTrex
-
+//enum Mode is used to store the information about the modes in the XTrex
 public enum Mode
 {
-    ABOUT, MAP, MENU, ONOFF, SATELLITE, SPEECH, TRIPCOMPUTER, WHERETO
+	WHERETO, TRIPCOMPUTER, MAP, SPEECH, SATELLITE, ABOUT, MENU, ONOFF
 }
