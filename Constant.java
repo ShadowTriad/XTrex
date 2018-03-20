@@ -38,6 +38,19 @@ public class Constant
 	private int numericColumn1 = 9;
 	private int numericColumn2 = 82;
 	private int numericColumn3 = 157;
+	private int numericRow1 = 52;
+	private int numericRow2 = 114;
+	private int numericRow3 = 174;
+	private int numericRow4 = 228;
+	private int numericRow5 = 282;
+	private int numericWidth1 = 72;
+	private int numericWidth2 = 74;
+	private int numericWidth3 = 149;
+	private int numericHeight1 = 61;
+	private int numericHeight2 = 59;
+	private int numericHeight3 = 53;
+	private int numericHeight4 = 116;
+	private int numericHeight5 = 62;
 	
 	//sets up the class so the information about the constants in the XTrex can be stored
 	public Constant ()
@@ -116,6 +129,30 @@ public class Constant
 		return whereToHeight0;
 	}
 	
+	//returns the x coordinate of the icons in column 1 of the alphabetic keyboard
+	public int getAlphabeticColumn1 ()
+	{			
+		return alphabeticColumn1;
+	}
+	
+	//returns the x coordinate of the icons in column 2 of the alphabetic keyboard
+	public int getAlphabeticColumn2 ()
+	{			
+		return alphabeticColumn2;
+	}
+	
+	//returns the x coordinate of the icons in column 3 of the alphabetic keyboard
+	public int getAlphabeticColumn3 ()
+	{			
+		return alphabeticColumn3;
+	}
+	
+	//returns the x coordinate of the icons in column 4 of the alphabetic keyboard
+	public int getAlphabeticColumn4 ()
+	{			
+		return alphabeticColumn4;
+	}
+	
 	//returns the y coordinate of the icons in row 1 of the alphabetic keyboard
 	public int getAlphabeticRow1 ()
 	{			
@@ -156,30 +193,6 @@ public class Constant
 	public int getAlphabeticRow7 ()
 	{			
 		return alphabeticRow7;
-	}
-	
-	//returns the x coordinate of the icons in column 1 of the alphabetic keyboard
-	public int getAlphabeticColumn1 ()
-	{			
-		return alphabeticColumn1;
-	}
-	
-	//returns the x coordinate of the icons in column 2 of the alphabetic keyboard
-	public int getAlphabeticColumn2 ()
-	{			
-		return alphabeticColumn2;
-	}
-	
-	//returns the x coordinate of the icons in column 3 of the alphabetic keyboard
-	public int getAlphabeticColumn3 ()
-	{			
-		return alphabeticColumn3;
-	}
-	
-	//returns the x coordinate of the icons in column 4 of the alphabetic keyboard
-	public int getAlphabeticColumn4 ()
-	{			
-		return alphabeticColumn4;
 	}
 	
 	//returns the width of the icons in columns 1 and 4 of the alphabetic keyboard
@@ -234,5 +247,83 @@ public class Constant
 	public int getNumericColumn3 ()
 	{			
 		return numericColumn3;
+	}
+	
+	//returns the y coordinate of the icons in row 1 of the numeric keyboard
+	public int getNumericRow1 ()
+	{			
+		return numericRow1;
+	}
+	
+	//returns the y coordinate of the icons in row 2 of the numeric keyboard
+	public int getNumericRow2 ()
+	{			
+		return numericRow2;
+	}
+	
+	//returns the y coordinate of the icons in row 3 of the numeric keyboard
+	public int getNumericRow3 ()
+	{			
+		return numericRow3;
+	}
+	
+	//returns the y coordinate of the icons in row 4 of the numeric keyboard
+	public int getNumericRow4 ()
+	{			
+		return numericRow4;
+	}
+	
+	//returns the y coordinate of the icons in row 5 of the numeric keyboard
+	public int getNumericRow5 ()
+	{			
+		return numericRow5;
+	}
+	
+	//returns the width of the icons in column 1 of the numeric keyboard
+	public int getNumericWidth1 ()
+	{			
+		return numericWidth1;
+	}
+	
+	//returns the width of the icons in columns 2 and 3 of the numeric keyboard
+	public int getNumericWidth2 ()
+	{			
+		return numericWidth2;
+	}
+	
+	//returns the width of the delete icon of the numeric keyboard
+	public int getNumericWidth3 ()
+	{			
+		return numericWidth3;
+	}
+	
+	//returns the height of the icons in row 1 of the numeric keyboard
+	public int getNumericHeight1 ()
+	{			
+		return numericHeight1;
+	}
+	
+	//returns the height of the icons in row 2 of the numeric keyboard
+	public int getNumericHeight2 ()
+	{			
+		return numericHeight2;
+	}
+	
+	//returns the height of the icons in rows 3 and 4 of the numeric keyboard
+	public int getNumericHeight3 ()
+	{			
+		return numericHeight3;
+	}
+	
+	//returns the height of the delete icon of the numeric keyboard
+	public int getNumericHeight4 ()
+	{			
+		return numericHeight4;
+	}
+	
+	//returns the height of the icons in row 5 of the numeric keyboard
+	public int getNumericHeight5 ()
+	{			
+		return numericHeight5;
 	}
 }

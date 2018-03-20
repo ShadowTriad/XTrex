@@ -38,35 +38,35 @@ public class Numeric extends Keyboard
 	//displays the destination in the display on the keyboard on the screen
 	public Numeric ()
 	{
-		setTitle ("Where To");	
-		setContentPane (new JLabel (new ImageIcon ("img/background2.png")));
+		setTitle (constant.getWhereTo ());
+		setContentPane (new JLabel (new ImageIcon (constant.getNumericBackground ())));
 		setLayout (null);
 		field.setText(string);
-		field.setBounds (14, 12, 208, 25);
+		field.setBounds (constant.getWhereToColumn0 (), constant.getWhereToRow0 (), constant.getWhereToWidth0 (), constant.getWhereToHeight0 ());
 		add (field);
-		button1.setBounds (9, 52, 72, 61);
+		button1.setBounds (constant.getNumericColumn1 (), constant.getNumericRow1 (), constant.getNumericWidth1 (), 61);
 		add (button1);
-		button2.setBounds (82, 52, 74, 61);
+		button2.setBounds (constant.getNumericColumn2 (), constant.getNumericRow1 (), constant.getNumericWidth2 (), 61);
 		add (button2);
-		button3.setBounds (157, 52, 74, 61);
+		button3.setBounds (constant.getNumericColumn3 (), constant.getNumericRow1 (), constant.getNumericWidth2 (), 61);
 		add (button3);
-		button4.setBounds (9, 114, 72, 59);
+		button4.setBounds (constant.getNumericColumn1 (), constant.getNumericRow2 (), constant.getNumericWidth1 (), 59);
 		add (button4);
-		button5.setBounds (82, 114, 74, 59);
+		button5.setBounds (constant.getNumericColumn2 (), constant.getNumericRow2 (), constant.getNumericWidth2 (), 59);
 		add (button5);
-		button6.setBounds (157, 114, 74, 59);
+		button6.setBounds (constant.getNumericColumn3 (), constant.getNumericRow2 (), constant.getNumericWidth2 (), 59);
 		add (button6);
-		button7.setBounds (9, 174, 72, 53);
+		button7.setBounds (constant.getNumericColumn1 (), constant.getNumericRow3 (), constant.getNumericWidth1 (), 53);
 		add (button7);
-		button8.setBounds (82, 174, 74, 53);
+		button8.setBounds (constant.getNumericColumn2 (), constant.getNumericRow3 (), constant.getNumericWidth2 (), 53);
 		add (button8);
-		button9.setBounds (157, 174, 74, 53);
+		button9.setBounds (constant.getNumericColumn3 (), constant.getNumericRow3 (), constant.getNumericWidth2 (), 53);
 		add (button9);
-		button0.setBounds (9, 228, 72, 53);
+		button0.setBounds (constant.getNumericColumn1 (), constant.getNumericRow4 (), constant.getNumericWidth1 (), 53);
 		add (button0);
-		buttonDEL.setBounds (82, 228, 149, 116);
+		buttonDEL.setBounds (constant.getNumericColumn2 (), constant.getNumericRow4 (), constant.getNumericWidth3 (), 116);
 		add (buttonDEL);
-		buttonLEF.setBounds (9, 282, 72, 62);
+		buttonLEF.setBounds (constant.getNumericColumn1 (), constant.getNumericRow5 (), constant.getNumericWidth1 (), 62);
 		add (buttonLEF);
 	}
 	
@@ -77,8 +77,8 @@ public class Numeric extends Keyboard
 	{
 		LeftButton (String left)
 		{
-			setIcon (new ImageIcon ("img/keycap" + left + ".png"));
-			setRolloverIcon (new ImageIcon ("img/rollover" + left + ".png")); 
+			setIcon (new ImageIcon (constant.getIcon () + left + constant.getIconExtenction ()));
+			setRolloverIcon (new ImageIcon (constant.getRolloverIcon () + left + constant.getIconExtenction ()));
 			setBorder (null);
 			addMouseListener (new MouseAdapter ()
 			{
@@ -87,7 +87,7 @@ public class Numeric extends Keyboard
 					Numeric.this.dispose ();
 					JFrame frame = new Alphabetic ();
 					frame.setLocationRelativeTo (null);
-					frame.setSize (240, 375);
+					frame.setSize (constant.getWhereToWidth (), constant.getWhereToHeight ());
 					frame.setResizable (false);
 					frame.setVisible (true);
 				}
@@ -102,8 +102,8 @@ public class Numeric extends Keyboard
 	{
 		DeleteButton (String delete)
 		{
-			setIcon (new ImageIcon ("img/keycap" + delete + ".png"));
-			setRolloverIcon (new ImageIcon ("img/rollover" + delete + ".png")); 
+			setIcon (new ImageIcon (constant.getIcon () + delete + constant.getIconExtenction ()));
+			setRolloverIcon (new ImageIcon (constant.getRolloverIcon () + delete + constant.getIconExtenction ()));
 			setBorder (null);
 			addMouseListener (new MouseAdapter ()
 			{
@@ -133,7 +133,7 @@ public class Numeric extends Keyboard
 	{
 		JFrame frame = new Numeric ();
 		frame.setLocationRelativeTo (null);
-		frame.setSize (240, 375);
+		frame.setSize (constant.getWhereToWidth (), constant.getWhereToHeight ());
 		frame.setResizable (false);
 		frame.setVisible (true);
 	}
