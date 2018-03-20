@@ -7,13 +7,24 @@
 public class Constant
 {
 	private String whereTo = "Where To";
-	private String alphabeticBackground = "img/backgroundAlphabetic.png";
-	private String numericBackground = "img/backgroundNumeric.png";
+	private String tripComputer = "Trip Computer";
+	private String alphabeticBackground = "img/backgroundalphabetic.png";
+	private String numericBackground = "img/backgroundnumeric.png";
+	private String meterBackground = "img/backgroundmeter.png";
 	private String icon = "img/icon";
 	private String rolloverIcon = "img/rollovericon";
 	private String iconExtenction = ".png";
+	private String tripOdometer = "trip odometer";
+	private String speed = "speed";
+	private String movingTime = "moving time";
+	private String distanceUnits = " KM";
+	private String speedUnits = " KM/H";
+	private String timeUnits1 = " min ";
+	private String timeUnits2 = " sec";
 	private int whereToWidth = 240;
 	private int whereToHeight = 375;
+	private int tripComputerWidth = 240;
+	private int tripComputerHeight = 321;
 	private int whereToColumn0 = 14;
 	private int whereToRow0 = 12;
 	private int whereToWidth0 = 208;
@@ -51,6 +62,15 @@ public class Constant
 	private int numericHeight3 = 53;
 	private int numericHeight4 = 116;
 	private int numericHeight5 = 62;
+	private int meterColumn1 = 16;
+	private int meterRow1 = 17;
+	private int meterRow2 = 64;
+	private int meterRow3 = 115;
+	private int meterRow4 = 162;
+	private int meterRow5 = 213;
+	private int meterRow6 = 257;
+	private int meterWidth1 = 208;
+	private int meterHeight1 = 25;
 	
 	//sets up the class so the information about the constants in the XTrex can be stored
 	public Constant ()
@@ -63,6 +83,12 @@ public class Constant
 		return whereTo;
 	}
 	
+	//returns the name of the trip computer mode
+	public String getTripComputer ()
+	{			
+		return tripComputer;
+	}
+	
 	//returns the name of the alphabetic keyboard background file path
 	public String getAlphabeticBackground ()
 	{			
@@ -73,6 +99,12 @@ public class Constant
 	public String getNumericBackground ()
 	{			
 		return numericBackground;
+	}
+	
+	//returns the name of the meter reader background file path
+	public String getMeterBackground ()
+	{			
+		return meterBackground;
 	}
 	
 	//returns the name of the icon file path
@@ -93,6 +125,48 @@ public class Constant
 		return iconExtenction;
 	}
 	
+	//returns the name of the trip odometer meter reader
+	public String getTripOdometer ()
+	{			
+		return tripOdometer;
+	}
+	
+	//returns the name of the speed meter reader
+	public String getSpeed ()
+	{			
+		return speed;
+	}
+	
+	//returns the name of the moving time meter reader
+	public String getMovingTime ()
+	{			
+		return movingTime;
+	}
+	
+	//returns the name of the units of distance
+	public String getDistanceUnits ()
+	{			
+		return distanceUnits;
+	}
+	
+	//returns the name of the units of speed
+	public String getSpeedUnits ()
+	{			
+		return speedUnits;
+	}
+	
+	//returns the name of the first units of time
+	public String getTimeUnits1 ()
+	{			
+		return timeUnits1;
+	}
+	
+	//returns the name of the second units of time
+	public String getTimeUnits2 ()
+	{			
+		return timeUnits2;
+	}
+	
 	//returns the width of the screen in where to mode
 	public int getWhereToWidth ()
 	{			
@@ -103,6 +177,18 @@ public class Constant
 	public int getWhereToHeight ()
 	{			
 		return whereToHeight;
+	}
+	
+	//returns the width of the screen in trip computer mode
+	public int getTripComputerWidth ()
+	{			
+		return tripComputerWidth;
+	}
+	
+	//returns the height of the screen in trip computer mode
+	public int getTripComputerHeight ()
+	{			
+		return tripComputerHeight;
 	}
 	
 	//returns the x coordinate of the field in where to mode
@@ -325,5 +411,59 @@ public class Constant
 	public int getNumericHeight5 ()
 	{			
 		return numericHeight5;
+	}
+	
+	//returns the x coordinate of the fields in column 1 of the meter reader
+	public int getMeterColumn1 ()
+	{			
+		return meterColumn1;
+	}
+	
+	//returns the y coordinate of the field in row 1 of the meter reader
+	public int getMeterRow1 ()
+	{			
+		return meterRow1;
+	}
+	
+	//returns the y coordinate of the field in row 2 of the meter reader
+	public int getMeterRow2 ()
+	{			
+		return meterRow2;
+	}
+	
+	//returns the y coordinate of the field in row 3 of the meter reader
+	public int getMeterRow3 ()
+	{			
+		return meterRow3;
+	}
+	
+	//returns the y coordinate of the field in row 4 of the meter reader
+	public int getMeterRow4 ()
+	{			
+		return meterRow4;
+	}
+	
+	//returns the y coordinate of the field in row 5 of the meter reader
+	public int getMeterRow5 ()
+	{			
+		return meterRow5;
+	}
+	
+	//returns the y coordinate of the field in row 6 of the meter reader
+	public int getMeterRow6 ()
+	{			
+		return meterRow6;
+	}
+	
+	//returns the width of the fields in columns 1 of the meter reader
+	public int getMeterWidth1 ()
+	{			
+		return meterWidth1;
+	}
+	
+	//returns the height of the fields in columns 1 of the meter reader
+	public int getMeterHeight1 ()
+	{			
+		return meterHeight1;
 	}
 }
