@@ -29,6 +29,7 @@ public class XTrexModel extends Observable
 	public XTrexModel (Mode mode)
 	{
 		setCoordinates (longitude, latitude, time);
+		setStartingTime (getTime ());
 		setMode (mode);
 	}
 	
