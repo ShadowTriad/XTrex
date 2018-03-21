@@ -66,7 +66,7 @@ public class TripComputer extends JPanel
 		}
 		else
 		{
-			seconds = seconds + constant.getHourSeconds () - startingTime;
+			seconds = seconds + constant.getDaySeconds () - startingTime;
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();

@@ -75,6 +75,7 @@ public class Constant
 	private int meterRow6 = 257;
 	private int meterWidth1 = 208;
 	private int meterHeight1 = 25;
+	private int daySeconds = 86400;
 	private int hourSeconds = 3600;
 	private int minuteSeconds = 60;
 	private String textFont = "Arial";
@@ -512,6 +513,12 @@ public class Constant
 	public int getMeterHeight1 ()
 	{			
 		return meterHeight1;
+	}
+	
+	//returns the number of seconds in a day
+	public int getDaySeconds ()
+	{			
+		return daySeconds;
 	}
 	
 	//returns the number of seconds in a hour
