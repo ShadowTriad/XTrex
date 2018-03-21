@@ -232,7 +232,7 @@ class WhereTo extends JPanel
 			(new ImageIcon (constant.getAlphabeticBackground ())).paintIcon (this, graphics, 0, 0);
 			graphics.setColor (Color.black);
 			graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
-			graphics.drawString (address, constant.getTextColumn (), constant.getTextRow ());
+			graphics.drawString (address, constant.getWhereToTextColumn (), constant.getWhereToTextRow ());
 			for (int index = 0; index <= constant.getAlphabeticButtons () - 1; index = index + 1)
 			{
 				if (index == highlightedButton)
@@ -250,7 +250,7 @@ class WhereTo extends JPanel
 			(new ImageIcon (constant.getNumericBackground ())).paintIcon (this, graphics, 0, 0);
 			graphics.setColor (Color.black);
 			graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
-			graphics.drawString (address, constant.getTextColumn (), constant.getTextRow ());
+			graphics.drawString (address, constant.getWhereToTextColumn (), constant.getWhereToTextRow ());
 			for (int index = 0; index <= constant.getNumericButtons () - 1; index = index + 1)
 			{
 				if (index == highlightedButton)

@@ -6,6 +6,8 @@
 //class Constant is used to store the information about the constants in the XTrex
 public class Constant
 {
+	private int xtrexWidth = 240;
+	private int xtrexHeight = 353;
 	private String whereTo = "Where To";
 	private String tripComputer = "Trip Computer";
 	private String alphabeticBackground = "img/backgroundalphabetic.png";
@@ -73,14 +75,28 @@ public class Constant
 	private int meterRow6 = 257;
 	private int meterWidth1 = 208;
 	private int meterHeight1 = 25;
-	private int textColumn = 16;
-	private int textRow = 34;
+	private int hourSeconds = 3600;
+	private int minuteSeconds = 60;
 	private String textFont = "Arial";
 	private int textSize = 27;
+	private int whereToTextColumn = 16;
+	private int whereToTextRow = 34;
 	
 	//sets up the class so the information about the constants in the XTrex can be stored
 	public Constant ()
 	{		
+	}
+	
+	//returns the width of the screen of the XTrex
+	public int getXTrexWidth ()
+	{			
+		return xtrexWidth;
+	}
+	
+	//returns the height of the screen of the XTrex
+	public int getXTrexHeight ()
+	{			
+		return xtrexHeight;
 	}
 	
 	//returns the name of the where to mode
@@ -485,27 +501,39 @@ public class Constant
 		return meterHeight1;
 	}
 	
-	//returns the x coordinate of the text space
-	public int getTextColumn ()
+	//returns the number of seconds in a hour
+	public int getHourSeconds ()
 	{			
-		return textColumn;
+		return hourSeconds;
 	}
 	
-	//returns the y coordinate of the text space
-	public int getTextRow ()
+	//returns the number of seconds in a minute
+	public int getMinuteSeconds ()
 	{			
-		return textRow;
+		return minuteSeconds;
 	}
 	
-	//returns the name of the text font
+	//returns the fornt of the text
 	public String getTextFont ()
 	{			
 		return textFont;
 	}
 	
-	//returns the name of the text font
+	//returns the size of the text
 	public int getTextSize ()
 	{			
 		return textSize;
+	}
+	
+	//returns the x coordinate of the text space in Where To mode
+	public int getWhereToTextColumn ()
+	{			
+		return whereToTextColumn;
+	}
+	
+	//returns the y coordinate of the text space in Where To mode
+	public int getWhereToTextRow ()
+	{			
+		return whereToTextRow;
 	}
 }

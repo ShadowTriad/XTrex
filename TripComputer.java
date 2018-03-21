@@ -52,13 +52,13 @@ class TripComputer extends JPanel
 	//converts time in hours, minutes and second to seconds
 	public double inSeconds (String time)
 	{
-		return Double.parseDouble (time.substring (0, 2)) * 3600 + Double.parseDouble (time.substring (2, 4)) * 60 + Double.parseDouble (time.substring (4));
+		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
 	}
 	
 	//converts time in minutes and seconds to hours
 	public double inHours (Double minutes, Double seconds)
 	{
-		return minutes / 60 + seconds / 3600;
+		return minutes / constant.getMinuteSeconds () + seconds / constant.getHourSeconds ();
 	}
 	
 	//updates the moving time using time difference
@@ -67,14 +67,14 @@ class TripComputer extends JPanel
 		double seconds = inSeconds (gps.getTime ());
 		if (seconds > startingTime)
 		{
-			seconds = seconds - startingTime;
+			seconds = seconds - startingTime
 		}
 		else
 		{
-			seconds = seconds + 3600 - startingTime;
+			seconds = seconds + constant.getHourSeconds () - startingTime
 		}
-		movingTimeMinutes = seconds / 60;
-		movingTimeSeconds = seconds % 60;
+		movingTimeMinutes = seconds \ constant.getMinuteSeconds ();
+		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
 	}
 	
 	//updates the screen continuously
@@ -84,7 +84,7 @@ class TripComputer extends JPanel
 		updateMovingTime ();
 		updateSpeed ();
 		graphics.setColor(Color.black);
-		graphics.fillRect(0, 0, 240, 353);
+		graphics.fillRect(0, 0, constant.getXTrexWidth (), constant.getXTrexHeight ());
 		(new ImageIcon (constant.getMeterBackground ())).paintIcon(this, graphics, 0, 27);
 		graphics.setColor (Color.black);	
 		graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
