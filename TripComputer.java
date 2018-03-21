@@ -18,8 +18,6 @@ public class TripComputer extends JPanel
 	private static Constant constant = new Constant ();
 	private static GPS gps = new GPS ();	
 	private static Speech speech = new Speech ();
-	private static double startingLongitude = 0;
-	private static double startingLatitude = 0;
 	private static double startingTime = 0;	
 	private double tripOdometer = 0;
 	private double speed = 0;
@@ -31,8 +29,6 @@ public class TripComputer extends JPanel
 	//sets the starting time to the starting time attribute
 	public TripComputer ()
 	{
-		startingLongitude = Double.parseDouble (gps.getLongitude ());
-		startingLatitude = Double.parseDouble (gps.getLatitude ());
 		startingTime = inSeconds (gps.getTime ());
 	}
 	
