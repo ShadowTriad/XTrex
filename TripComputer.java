@@ -1,196 +1,99 @@
 /**
- * @version 08/03/18
+ * @version 23/03/18
  * @author Faith Yemofio
  */
 
-import javax.swing.*;
-
-import java.awt.*;
-
-import java.lang.Math.*;
-
 /**
- * In Trip Computer mode the screen displays the users trip odometer, speed and moving time.
- * At the moment the screen displays a random trip odometer, speed and moving time using default values.
- * In the future the screen will display the actual trip odometer, speed and moving time using real life data.
+ * In Trip Computer mode:
+ * The screen displays the trip odometer, speed and moving time in a meter reader using data from directions and satellite.
  */
 
-//class TripComputer extends jPanel so the mode can be displayed on the screen of the XTrex
+//imports the java awt and java swing packages so the class can use screens
+import java.awt.*;
+import javax.swing.*;
+import java.lang.Math.*;
 
+//extends jPanel so the class can use screens
 class TripComputer extends JPanel
 {
-	private static GPS gps = new GPS ();
-	
-	//stores the starting coordinate
-	
+	private static Constant constant = new Constant ();
+	private static GPS gps = new GPS ();	
+	private static Speech speech = new Speech ();
 	private static double startingLongitude = 0;
-	
 	private static double startingLatitude = 0;
+	private static double startingTime = 0;	
+	private double tripOdometer = 0;
+	private double speed = 0;
+	private double movingTimeMinutes = 0;
+	private double movingTimeSeconds = 0;
 	
-	//stores the trip odometer
-	
-	private static double tripOdometer = 0;
-	
-	//stores the speed
-	
-	private static double speed = 0;
-	
-	//stores the starting time
-	
-	private static double startingTimeMinutes = 0;
-	
-	private static double startingTimeSeconds = 0;
-	
-	//stores the moving time
-	
-	private static double movingTimeMinutes = 0;
-	
-	private static double movingTimeSeconds = 0;
-	
-	//sets up the class so the mode can be displayed on the screen of the XTrex
-	//sets the starting coordinate to the starting coordinate attribute
+	//sets up the class so the mode can be displayed on the screen
+	//sets the starting coordinates to the starting coordinate attributes
 	//sets the starting time to the starting time attribute
-	
 	public TripComputer ()
 	{
-		String longitude = gps.getLongitude ();
-		
-		String latitude = gps.getLatitude ();
-		
-		startingLongitude = Double.parseDouble (longitude);
-		
-		startingLatitude = Double.parseDouble (latitude);
-		
-		String time = gps.getTime ();
-		
-		startingTimeMinutes = getMinutes (time);
-		
-		startingTimeSeconds = getSeconds (time);
+		startingLongitude = Double.parseDouble (gps.getLongitude ());
+		startingLatitude = Double.parseDouble (gps.getLatitude ());
+		startingTime = inSeconds (gps.getTime ());
 	}
 	
-	//updateTripOdometer method is used to update the trip odometer
-	//uses the haversine formula to compute the shortest distance over a spherical approximation of the Earth's surface between the starting position and the current position
-	
+	//updates the trip odometer using directions
 	public void updateTripOdometer ()
 	{
-		String longitude = gps.getLongitude ();
-		
-		String latitude = gps.getLatitude ();
-		
-		double differenceLongitude = Math.toRadians(Double.parseDouble (longitude) - startingLongitude);
-		
-		double differenceLatitude = Math.toRadians(Double.parseDouble (latitude) - startingLatitude);
-		
-		double odometer = Math.pow (Math.sin (differenceLatitude / 2), 2) + Math.cos (startingLatitude) * Math.cos (Double.parseDouble(latitude)) * Math.pow (Math.sin (differenceLongitude / 2), 2);
-		
-		tripOdometer = 6371 * 2 * Math.atan2 (Math.sqrt (odometer), Math.sqrt (1 - odometer));
+		tripOdometer = speech.getRouteLengthSoFar (speech.getDirections ());
 	}
 	
-	//updateSpeed method is used to update the speed
-	//uses the equation speed = distance / time to compute an approximation of the speed
-	
+	//updates the speed using trip odometer and moving time
 	public void updateSpeed ()
 	{
-		speed = tripOdometer / (movingTimeMinutes / 60 + movingTimeSeconds / 3600);
+		speed = tripOdometer / (inHours(movingTimeMinutes, movingTimeSeconds);
 	}
 	
-	//getMinutes method is used to compute the minutes of a time
-	//uses the hours and minutes of a time
-		
-	public double getMinutes (String time)
+	//converts time in hours, minutes and second to seconds
+	public double inSeconds (String time)
 	{
-		String hours = time.substring (0, 2);
-		
-		String minutes = time.substring (2, 4);
-		
-		return Double.parseDouble (hours) * 60 + Double.parseDouble (minutes);
+		return Double.parseDouble (time.substring (0, 2)) * 3600 + Double.parseDouble (time.substring (2, 4)) * 60 + Double.parseDouble (time.substring (4));
 	}
 	
-	//getSeconds method is used to compute the seconds of a time 
-	//uses the seconds of a time
-	
-	public double getSeconds (String time)
+	//converts time in minutes and seconds to hours
+	public double inHours (Double minutes, Double seconds)
 	{
-		String seconds = time.substring (4);
-		
-		return Double.parseDouble (seconds);
+		return minutes / 60 + seconds / 3600;
 	}
-
 	
-	//updateMovingTime method is used to update the moving time
-	//uses the equation Δtime = ending time - starting time to compute an approximation of the elapsed time
-	
+	//updates the moving time using time difference
 	public void updateMovingTime ()
 	{
-		String time = gps.getTime ();
-				
-		double minutes = getMinutes (time);
-		
-		double seconds = getSeconds (time);
-		
-		if (minutes > startingTimeMinutes)
+		double seconds = inSeconds (gps.getTime ());
+		if (seconds > startingTime)
 		{
-			movingTimeMinutes = minutes - startingTimeMinutes;
+			seconds = seconds - startingTime
 		}
-		
 		else
 		{
-			movingTimeMinutes = minutes + 24 * 60 - startingTimeMinutes;
+			seconds = seconds + 3600 - startingTime
 		}
-		
-		movingTimeSeconds = seconds - startingTimeSeconds;
+		movingTimeMinutes = seconds \ 60;
+		movingTimeSeconds = seconds % 60;
 	}
-		
-	//paint component method is used to continuously display the screen on the XTrex
 	
+	//updates the screen continuously
 	public void paintComponent (Graphics graphics)
 	{
-		//updates the trip odometer
-				
 		updateTripOdometer ();
-		
-		//updates the moving time
-		
 		updateMovingTime ();
-		
-		//updates the speed
-		
 		updateSpeed ();
-		
-		//draws the background on the screen
-		
 		graphics.setColor(Color.black);
-		
 		graphics.fillRect(0, 0, 240, 353);
-		
-		(new ImageIcon ("img/background3.png")).paintIcon(this, graphics, 0, 27);
-		
-		//draws the text on the screen
-				
-		graphics.setColor (Color.black);
-			
-		graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
-		
-		//draws the trip odometer on the screen
-		
-		graphics.drawString ("trip odometer", 40, 75);
-		
-		graphics.drawString (tripOdometer + " KM", 65, 100);
-		
-		//draws the speed on the screen
-		
-		graphics.drawString ("speed", 75, 175);
-		
-		graphics.drawString (speed + " KM/H", 50, 200);
-		
-		//draws the moving time on the screen
-		
-		graphics.drawString ("moving time", 45, 270);
-		
-		graphics.drawString (movingTimeMinutes + " min " + movingTimeSeconds + " sec", 30, 295);
-		
-		//continuously redraws the screen on the Xtrex
-		
+		(new ImageIcon (constant.getMeterBackground ())).paintIcon(this, graphics, 0, 27);
+		graphics.setColor (Color.black);	
+		graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
+		graphics.drawString (constant.getTripOdometer (), 40, 75);
+		graphics.drawString (tripOdometer + constant.getDistanceUnits (), 65, 100);
+		graphics.drawString (constant.getSpeed (), 75, 175);
+		graphics.drawString (speed + constant.getSpeedUnits (), 50, 200);
+		graphics.drawString (constant.getMovingTime (), 45, 270);
+		graphics.drawString (movingTimeMinutes + constant.getTimeUnits1 () + movingTimeSeconds + constant.getTimeUnits2 (), 30, 295);
 		repaint ();
 	}
 }

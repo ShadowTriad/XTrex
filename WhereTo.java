@@ -10,12 +10,12 @@
  * The select button is used to either add the orange highlighted button on the keyboard to the address in the display if the orange highlighted button is a character button, delete the last character from the address in the display if the orange highlighted button is a DEL button or switch the alphabetic or the numeric keyboard displayed to the alphabetic or the numeric keyboard not displayed if the orange highlighted button is an arrow button.
  */
 
-//package WhereTo imports the java awt, java swing and java util packages so the class WhereTo can use screens and lists
+//imports the java awt, java swing and java util packages so the class can use screens and lists
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-//class WhereTo extends jPanel so the mode can use screens
+//extends jPanel so the class can use screens
 class WhereTo extends JPanel
 {
 	private static Constant constant = new Constant ();
@@ -65,7 +65,7 @@ class WhereTo extends JPanel
 	private Keycap buttonLEF = new Keycap ("LEF", constant.getNumericColumn1 (), constant.getNumericRow5 ());
 	private Keycap buttonDEL = new Keycap ("DEL", constant.getNumericColumn2 (), constant.getNumericRow4 ());
 	
-	//sets up the class so the mode can be displayed on the screen of the XTrex
+	//sets up the class so the mode can be displayed on the screen
 	//adds the buttons on the alphabetic keyboard to the alphabetic keyboard buttons list
 	//adds the buttons on the numeric keyboard to the numeric keyboard buttons list
 	public WhereTo ()
@@ -112,9 +112,9 @@ class WhereTo extends JPanel
 		numericButtons.add (buttonDEL);
 	}
 	
-	//plusButton method is used to cycle forwards through the buttons on the keyboard
+	//cycles forwards through the buttons on the keyboard
 	//traverses the buttons in the list of buttons on a keyboard
-	//when the method reaches the end of the list, the method goes back to the beginning of the list
+	//if the end of the list is reached, it goes back to the beginning of the list
 	public void plusButton ()
 	{
 		if (keyboard == Keypad.ALPHABETIC)
@@ -142,9 +142,9 @@ class WhereTo extends JPanel
 		repaint ();
 	}
 	
-	//minusButton method is used to cycle backwards through the buttons on the keyboard
+	//cycles backwards through the buttons on the keyboard
 	//traverses the buttons in the list of buttons on a keyboard
-	//when the method reaches the beginning of the list, the method goes forward to the end of the list
+	//if the beginning of the list is reached, it goes forward to the end of the list
 	public void minusButton ()
 	{
 		if (keyboard == Keypad.ALPHABETIC)
@@ -172,9 +172,9 @@ class WhereTo extends JPanel
 		repaint ();
 	}
 	
-	//selectButton method is used to add the orange highlighted button on the keyboard to the display if the orange highlighted button is a character button
-	//selectButton method is used to delete the last character from the display if the orange highlighted button is a delete button
-	//selectButton method is used to switch the keyboard to either an alphabetic or a numeric keyboard if the orange highlighted button is an arrow button
+	//adds the orange highlighted button on the keyboard to the display if the orange highlighted button is a character button
+	//deletes the last character from the display if the orange highlighted button is a delete button
+	//switches the keyboard to either an alphabetic or a numeric keyboard if the orange highlighted button is an arrow button
 	public void selectButton ()
 	{
 		if (keyboard == Keypad.ALPHABETIC)
@@ -224,7 +224,7 @@ class WhereTo extends JPanel
 		return address;
 	}
 	
-	//paint component method is used to continuously display the screen on the Xtrex
+	//updates the screen continuously
 	public void paintComponent (Graphics graphics)
 	{
 		if (keyboard == Keypad.ALPHABETIC)
