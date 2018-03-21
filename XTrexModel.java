@@ -141,7 +141,7 @@ public class XTrexModel extends Observable
 		}
 		else
 		{
-			seconds = seconds + constant.getHourSeconds () - startingTime;
+			seconds = seconds + constant.getDaySeconds () - startingTime;
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
