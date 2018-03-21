@@ -21,7 +21,7 @@ public class WhereTo extends JPanel
 	private static Constant constant = new Constant ();
 	private static String address = "";
 	private int highlightedButton = 0;
-	private Keypad keyboard = Keypad.ALPHABETIC;
+	private Keyboard keyboard = Keyboard.ALPHABETIC;
 	private ArrayList <Keycap> alphabeticButtons = new ArrayList <Keycap> (constant.getAlphabeticButtons ());
 	private ArrayList <Keycap> numericButtons = new ArrayList <Keycap> (constant.getNumericButtons ());
 	private Keycap buttonA = new Keycap ("A", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow1 ());
@@ -117,7 +117,7 @@ public class WhereTo extends JPanel
 	//if the end of the list is reached, it goes back to the beginning of the list
 	public void plusButton ()
 	{
-		if (keyboard == Keypad.ALPHABETIC)
+		if (keyboard == Keyboard.ALPHABETIC)
 		{
 			if (highlightedButton == constant.getAlphabeticButtons () - 1)
 			{
@@ -147,7 +147,7 @@ public class WhereTo extends JPanel
 	//if the beginning of the list is reached, it goes forward to the end of the list
 	public void minusButton ()
 	{
-		if (keyboard == Keypad.ALPHABETIC)
+		if (keyboard == Keyboard.ALPHABETIC)
 		{
 			if (highlightedButton == 0)
 			{
@@ -177,11 +177,11 @@ public class WhereTo extends JPanel
 	//switches the keyboard to either an alphabetic or a numeric keyboard if the orange highlighted button is an arrow button
 	public void selectButton ()
 	{
-		if (keyboard == Keypad.ALPHABETIC)
+		if (keyboard == Keyboard.ALPHABETIC)
 		{		
 			if ((alphabeticButtons.get (highlightedButton)).getName () == "RIG")
 			{
-				keyboard = Keypad.NUMERIC;
+				keyboard = Keyboard.NUMERIC;
 				highlightedButton = 0;
 			}
 			else
@@ -207,7 +207,7 @@ public class WhereTo extends JPanel
 			}
 			else if ((numericButtons.get (highlightedButton)).getName () == "LEF")
 			{
-				keyboard = Keypad.ALPHABETIC;
+				keyboard = Keyboard.ALPHABETIC;
 				highlightedButton = 0;
 			}
 			else
@@ -227,7 +227,7 @@ public class WhereTo extends JPanel
 	//updates the screen continuously
 	public void paintComponent (Graphics graphics)
 	{
-		if (keyboard == Keypad.ALPHABETIC)
+		if (keyboard == Keyboard.ALPHABETIC)
 		{
 			(new ImageIcon (constant.getAlphabeticBackground ())).paintIcon (this, graphics, 0, 0);
 			graphics.setColor (Color.black);
