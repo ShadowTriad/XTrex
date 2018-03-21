@@ -224,7 +224,7 @@ public class WhereTo extends JPanel
 		return address;
 	}
 	
-	//updates the screen continuously
+	//updates the screen
 	public void paintComponent (Graphics graphics)
 	{
 		if (keyboard == Keyboard.ALPHABETIC)

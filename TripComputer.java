@@ -32,18 +32,6 @@ public class TripComputer extends JPanel
 		startingTime = inSeconds (gps.getTime ());
 	}
 	
-	//updates the trip odometer using directions
-	public void updateTripOdometer ()
-	{
-		tripOdometer = speech.getRouteLengthSoFar (speech.getDirections ());
-	}
-	
-	//updates the speed using trip odometer and moving time
-	public void updateSpeed ()
-	{
-		speed = tripOdometer \ (inHours(movingTimeMinutes, movingTimeSeconds));
-	}
-	
 	//converts time in hours, minutes and second to seconds
 	public double inSeconds (String time)
 	{
@@ -53,7 +41,19 @@ public class TripComputer extends JPanel
 	//converts time in minutes and seconds to hours
 	public double inHours (Double minutes, Double seconds)
 	{
-		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
+		return minutes / constant.getMinuteSeconds () + seconds / constant.getHourSeconds ();
+	}
+	
+	//updates the trip odometer using directions
+	public void updateTripOdometer ()
+	{
+		tripOdometer = speech.getRouteLengthSoFar (speech.getDirections ());
+	}
+	
+	//updates the speed using trip odometer and moving time
+	public void updateSpeed ()
+	{
+		speed = tripOdometer / inHours(movingTimeMinutes, movingTimeSeconds);
 	}
 	
 	//updates the moving time using time difference
@@ -66,13 +66,13 @@ public class TripComputer extends JPanel
 		}
 		else
 		{
-			seconds = seconds + constant.getHourSeconds () - startingTime
+			seconds = seconds + constant.getHourSeconds () - startingTime;
 		}
-		movingTimeMinutes = seconds \ constant.getMinuteSeconds ();
+		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
 	}
 	
-	//updates the screen continuously
+	//updates the screen
 	public void paintComponent (Graphics graphics)
 	{
 		graphics.setColor(Color.black);
