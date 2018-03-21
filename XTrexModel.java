@@ -119,7 +119,7 @@ public class XTrexModel extends Observable
 	
 	public void updateSpeed ()
 	{
-		speed = getTripOdometer () \ (inHours(getMovingTimeMinutes (), getMovingTimeSecondd ()));
+		speed = tripOdometer \ (inHours(movingTimeMinutes, movingTimeSeconds));
 	}
 	
 	public double getMovingTimeMinutes ()
@@ -134,17 +134,17 @@ public class XTrexModel extends Observable
 	
 	public void updateMovingTime ()
 	{
-		double seconds = inSeconds (getTime ());
-		if (seconds > getStartingTime ())
+		double seconds = inSeconds (gps.getTime ());
+		if (seconds > startingTime)
 		{
-			seconds = seconds - getStartingTime;
+			seconds = seconds - startingTime;
 		}
 		else
 		{
-			seconds = seconds + getConstant.getHourSeconds () - getStartingTime;
+			seconds = seconds + constant.getHourSeconds () - startingTime;
 		}
-		movingTimeMinutes = seconds \ getConstant.getMinuteSeconds ();
-		movingTimeSeconds = seconds % getConstant.getMinuteSeconds ();
+		movingTimeMinutes = seconds \ constant.getMinuteSeconds ();
+		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
 	}
 	
 	public String getZoom() {
