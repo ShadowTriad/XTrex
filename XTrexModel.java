@@ -84,7 +84,7 @@ public class XTrexModel extends Observable
 		notifyObservers ();
 	}
 	
-	public void updateCoordinates ()
+	public void updateCoordinates () /// will update current coordinates later
 	{
 	}
 	
