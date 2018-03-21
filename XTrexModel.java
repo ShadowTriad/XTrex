@@ -134,7 +134,7 @@ public class XTrexModel extends Observable
 	
 	public void updateMovingTime ()
 	{
-		double seconds = inSeconds (time ());
+		double seconds = inSeconds (time);
 		if (seconds > startingTime)
 		{
 			seconds = seconds - startingTime;
