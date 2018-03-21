@@ -88,6 +88,16 @@ public class XTrexModel extends Observable
 	{
 	}
 	
+	public double inSeconds (String time)
+	{
+		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
+	}
+	
+	public double inHours (Double minutes, Double seconds)
+	{
+		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
+	}
+	
 	public double getStartingTime ()
 	{
 		return startingTime;
@@ -127,14 +137,19 @@ public class XTrexModel extends Observable
 		return movingTimeSeconds;
 	}
 	
-	public double inSeconds (String time)
+	public void updateMovingTime ()
 	{
-		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
-	}
-	
-	public double inHours (Double minutes, Double seconds)
-	{
-		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
+		double seconds = inSeconds (getTime ());
+		if (seconds > getStartingTime ())
+		{
+			seconds = seconds - getStartingTime;
+		}
+		else
+		{
+			seconds = seconds + getConstant.getHourSeconds () - getStartingTime;
+		}
+		movingTimeMinutes = seconds \ getConstant.getMinuteSeconds ();
+		movingTimeSeconds = seconds % getConstant.getMinuteSeconds ();
 	}
 	
 	public String getZoom() {
