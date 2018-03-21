@@ -98,7 +98,7 @@ public class XTrex extends JFrame
         screens.put(Mode.WHERETO, whereTo);
 
         mode = Mode.ONOFF;
-        showScreen( onOff );
+        showScreen(onOff);
     }
 
     /*
@@ -116,21 +116,21 @@ public class XTrex extends JFrame
 
             setOpaque(false);
 
-            addMouseListener ( new MouseAdapter ()
+            addMouseListener (new MouseAdapter()
             {
             	public void mouseClicked (MouseEvent event)
             	{
                     if (mode == Mode.ONOFF)
                     {
-						switchMode(Mode.MENU);
-						menu.repaint();
+		    	switchMode(Mode.MENU);
+			menu.repaint();
                     }
 
                     else
                     {
 
                     	switchMode(Mode.ONOFF);
-						onOff.repaint();
+			onOff.repaint();
                     }
                 }
             });
@@ -140,7 +140,7 @@ public class XTrex extends JFrame
     /*
      * @author Oonagh
      * @author Faith
-	 * @author Jasmine
+     * @author Jasmine
      */
 
     private class PlusButton extends JButton
@@ -153,19 +153,17 @@ public class XTrex extends JFrame
 
             setOpaque(false);
 
-            addMouseListener ( new MouseAdapter ()
+            addMouseListener (new MouseAdapter()
             {
             	public void mouseClicked (MouseEvent event)
             	{
                     if (mode == Mode.WHERETO)
                     {
-                    	whereTo.plusButton ();
+                    	whereTo.plusButton();
                     }
-
-					if(mode == Mode.MENU){
-
-						menu.plusButton();
-					}
+		    	if(mode == Mode.MENU){
+				menu.plusButton();
+				}
                 }
             });
         }
@@ -174,7 +172,7 @@ public class XTrex extends JFrame
     /*
      * @author Oonagh
      * @author Faith
-	 * @author Jasmine
+     * @author Jasmine
      */
 
     private class MinusButton extends JButton
@@ -187,18 +185,17 @@ public class XTrex extends JFrame
 
             setOpaque(false);
 
-            addMouseListener ( new MouseAdapter ()
+            addMouseListener (new MouseAdapter()
             {
             	public void mouseClicked (MouseEvent event)
             	{
                     if (mode == Mode.WHERETO)
                     {
-                    	whereTo.minusButton ();
+                    	whereTo.minusButton();
                     }
-
-					if (mode == Mode.MENU){
-						menu.minusButton();
-					}
+		    	if (mode == Mode.MENU){
+				menu.minusButton();
+			}
                 }
             });
         }
@@ -206,7 +203,7 @@ public class XTrex extends JFrame
 
     /*
      * @author Oonagh
-	 * @author Jasmine
+     * @author Jasmine
      */
 
     private class SelectButton extends JButton
@@ -219,21 +216,21 @@ public class XTrex extends JFrame
 
             setOpaque(false);
 
-            addMouseListener ( new MouseAdapter ()
+            addMouseListener (new MouseAdapter()
             {
             	public void mouseClicked (MouseEvent event)
             	{
-					if (mode == Mode.WHERETO)
-                    {
-                    	whereTo.selectButton ();
-                    }
+			if (mode == Mode.WHERETO)
+                    	{
+                    		whereTo.selectButton ();
+                   	 }
 
-					if (mode == Mode.MENU)
-					{
-						Mode newMode = menu.selectButton();
-						switchMode(newMode);
-                        screens.get(newMode).repaint();
-					}
+			if (mode == Mode.MENU)
+			{
+				Mode newMode = menu.selectButton();
+				switchMode(newMode);
+                        	screens.get(newMode).repaint();
+			}
                 }
             });
         }
@@ -241,7 +238,7 @@ public class XTrex extends JFrame
 
     /*
      * @author Oonagh
-	 * @author Jasmine
+     * @author Jasmine
      */
 
     private class MenuButton extends JButton
@@ -254,12 +251,12 @@ public class XTrex extends JFrame
 
             setOpaque(false);
 
-            addMouseListener ( new MouseAdapter ()
+            addMouseListener (new MouseAdapter()
             {
             	public void mouseClicked (MouseEvent event)
             	{
-					switchMode(Mode.MENU);
-                    menu.repaint();
+			switchMode(Mode.MENU);
+			menu.repaint();
                 }
             });
         }
@@ -271,13 +268,13 @@ public class XTrex extends JFrame
 
     private void showScreen (JPanel panel)
     {
-		this.add (panel);
+	this.add (panel);
 
         panel.setSize (new Dimension (240, 353));
 
         panel.setBounds (240, 260, 240, 353);
 
-		panel.setVisible (true);
+	panel.setVisible (true);
 
     }
 
@@ -287,8 +284,8 @@ public class XTrex extends JFrame
 
 	public void switchMode(Mode newMode){
 
-        JPanel currentScreen = screens.get( mode );
-        JPanel nextScreen = screens.get( newMode );
+        JPanel currentScreen = screens.get(mode);
+        JPanel nextScreen = screens.get(newMode);
 
         System.out.print(mode);
 
@@ -296,10 +293,10 @@ public class XTrex extends JFrame
 
         System.out.println(mode);
 
-        showScreen( nextScreen );
-        getContentPane().remove( currentScreen );
+        showScreen(nextScreen);
+        getContentPane().remove(currentScreen);
 
-        showScreen( nextScreen );
+        showScreen(nextScreen);
 
 	}
 
