@@ -34,7 +34,7 @@ public class MenuView extends JPanel implements Observer {
 		int x = 0;
 		int y = 0;
 
-		if(model.getIndex() % 2 == 0){
+		if(model.getIndex() % 2 == 0) {
 			x = 0;
 			y = (model.getIndex()/2 * 97) + 20;
 		}
@@ -46,27 +46,6 @@ public class MenuView extends JPanel implements Observer {
 		(new ImageIcon("img/orange" + model.getTiles()[model.getIndex()] + ".jpeg")).paintIcon(this, g, x, y); 
 		
 	}
-	
-	/*
-
-	public void minusButton (){
-		if(index == 0){
-			index = 5;
-		}
-		else{
-			index--;
-		}
-		repaint();
-	}
-
-	public Mode selectButton() {
-
-		Mode m = Mode.values()[ index ];
-		return m;
-
-	}
-
-	*/
 	
 	public void update( Observable obs, Object obj ) {
 		repaint();

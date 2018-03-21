@@ -38,6 +38,7 @@ public class XTrexModel extends Observable {
 	
 	public void setMode(Mode mode) {
 		this.mode = mode;
+		System.out.println(mode);
 		setChanged();
 		notifyObservers(mode);
 	}
@@ -69,7 +70,6 @@ public class XTrexModel extends Observable {
 		this.map = map;
 		setChanged(); ////????????????????????????????????????
 		notifyObservers();
-		System.out.println("map set");
 	}
 	public ImageIcon getMap() {
 		return map;

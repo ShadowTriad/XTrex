@@ -135,17 +135,12 @@ public class XTrexView extends JFrame implements Observer {
 	/////////////////////////////////////////////////////
 	public void update( Observable obs, Object obj ) {
 		// use the hash map here later somehow
-		System.out.println( "CURRENT:" );
-		System.out.println( model.getMode() );
 		if (model.getMode() == Mode.ONOFF) {
 			showScreen(onOff);
-			System.out.println( 2 );
 		} else if (model.getMode() == Mode.MENU) {
 			showScreen(menu);
-			System.out.println( 3 );
 		} else if (model.getMode() == Mode.MAP) {
 			showScreen(map);
-			System.out.println( 4 );
 		}
 		
 		repaint(); //////////////////////////////////////////
