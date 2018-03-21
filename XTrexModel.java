@@ -84,6 +84,10 @@ public class XTrexModel extends Observable
 		notifyObservers ();
 	}
 	
+	public void updateCoordinates ()
+	{
+	}
+	
 	public double getStartingTime ()
 	{
 		return startingTime;
