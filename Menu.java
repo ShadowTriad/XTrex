@@ -1,7 +1,7 @@
 /**
 * Provides the Menu mode for the XTrex
 * @author Jasmine Green Cooke
-* @version 14/03/2018
+* @version 21/03/2018
 */
 
 import javax.swing.*;
