@@ -28,7 +28,7 @@ public class XTrexModel extends Observable
 	// need current gps coords, goal gps coords, mode, time, speed..?, language, map
 	public XTrexModel (Mode mode)
 	{
-		setCoordinates (longitude, latitude);
+		setCoordinates (longitude, latitude, time);
 		setMode (mode);
 	}
 	
