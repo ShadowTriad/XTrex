@@ -83,17 +83,6 @@ public class XTrexModel extends Observable
 		notifyObservers ();
 	}
 	
-	//converts time in hours, minutes and second to seconds
-	public double inSeconds (String time)
-	{
-		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
-	}
-	
-	public double inHours (Double minutes, Double seconds)
-	{
-		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
-	}
-	
 	public double getStartingTime ()
 	{
 		return startingTime;
@@ -117,6 +106,16 @@ public class XTrexModel extends Observable
 	public double getMovingTimeSeconds ()
 	{
 		return movingTimeSeconds;
+	}
+	
+	public double inSeconds (String time)
+	{
+		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
+	}
+	
+	public double inHours (Double minutes, Double seconds)
+	{
+		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
 	}
 	
 	public String getZoom() {
