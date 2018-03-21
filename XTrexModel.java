@@ -1,32 +1,29 @@
-import javax.swing.*;
 import java.awt.*;
-import java.util.Observable;
-import javax.swing.border.LineBorder;
-import java.util.HashMap;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Observable;
+import javax.swing.*;
 
-public class XTrexModel extends Observable {
+public class XTrexModel extends Observable
+{
 	private Mode mode;
-	String latitude = "50.1"; // will be retrieved from gps later
-	String longitude = "-3.1";
-	public int zoom = 15;
-    public String strZoom = Integer.toString(zoom);  
-	public ImageIcon map;
-	private String[ ] tiles = {
-				"WhereTo", "TripComputer", 
-				"Map", "Speech", 
-				"Satellite", "About"
-				};
-	public int index = 0; //??????????????????????????
+	private Constant constant = new Constant ();
+	private String longitude = "-3.1"; // will be retrieved from gps later
+	private String latitude = "50.1";
+	private int zoom = 15;
+	private String strZoom = Integer.toString (zoom);  
+	private ImageIcon map;
+	private String[ ] tiles = {"WhereTo", "TripComputer", "Map", "Speech", "Satellite", "About"};
+	private int index = 0;
 	
 	// need current gps coords, goal gps coords, mode, time, speed..?, language, map
-	
-	public XTrexModel(Mode mode) {
-		setCoords(latitude, longitude);
-		setMode(mode);
+	public XTrexModel (Mode mode)
+	{
+		setCoordinates (longitude, latitude);
+		setMode (mode);
 	}
 	
 	/*
@@ -35,31 +32,40 @@ public class XTrexModel extends Observable {
 	public void switchMode(Mode newMode){
         mode = newMode;
 	}///////////////////////////////////////////
-	
 	public void setMode(Mode mode) {
 		this.mode = mode;
 		System.out.println(mode);
 		setChanged();
 		notifyObservers(mode);
 	}
-	public Mode getMode() {
+	
+	public Mode getMode ()
+	{
 		return mode;
 	}
-
-	public void setCoords(String latitude, String longitude) {
-		this.latitude  = latitude;
-		this.longitude = longitude;
-		updateMap();
-		setChanged(); ////????????????????????????????????????
-		notifyObservers();
-		
-	}
-	public String getLat() {
-		return latitude;
+	
+	public getConstant ()
+	{
+		return constant;
 	}
 	
-	public String getLong() {
+	public void setCoordinates (String longitude, String latitude)
+	{
+		this.longitude = longitude;
+		this.latitude  = latitude;
+		updateMap ();
+		setChanged (); ////????????????????????????????????????
+		notifyObservers ();
+	}
+	
+	public String getLongitude ()
+	{
 		return longitude;
+	}
+	
+	public String getLatitude ()
+	{
+		return latitude;
 	}
 	
 	public String getZoom() {
@@ -80,16 +86,16 @@ public class XTrexModel extends Observable {
 		return tiles;
 	}
 	
-	public int getIndex() {
+	public int getIndex()
+	{
 		return index;
 	}
-	public void setIndex(int index) {
+	public void setIndex (int index)
+	{
 		this.index = index;
 		setChanged(); ////????????????????????????????????????
 		notifyObservers();
 	}
-	
-		
 	
 	/* REALLY not happy about putting this functionality in the model but 
 	 * was experiencing issues putting it in controller 
