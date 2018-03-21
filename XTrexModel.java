@@ -54,7 +54,7 @@ public class XTrexModel extends Observable
         	mode = newMode;
 	}
 	
-	public getConstant ()
+	public Constant getConstant ()
 	{
 		return constant;
 	}
