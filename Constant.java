@@ -21,6 +21,8 @@ public class Constant
 	private String speedUnits = " KM/H";
 	private String timeUnits1 = " min ";
 	private String timeUnits2 = " sec";
+	private int alphabeticButtons = 28;
+	private int numericButtons = 12;
 	private int whereToWidth = 240;
 	private int whereToHeight = 375;
 	private int tripComputerWidth = 240;
@@ -71,6 +73,10 @@ public class Constant
 	private int meterRow6 = 257;
 	private int meterWidth1 = 208;
 	private int meterHeight1 = 25;
+	private int textColumn = 16;
+	private int textRow = 34;
+	private String textFont = "Arial";
+	private int textSize = 27;
 	
 	//sets up the class so the information about the constants in the XTrex can be stored
 	public Constant ()
@@ -165,6 +171,18 @@ public class Constant
 	public String getTimeUnits2 ()
 	{			
 		return timeUnits2;
+	}
+	
+	//returns the number of alphabetic buttons
+	public int getAlphabeticButtons ()
+	{			
+		return alphabeticButtons;
+	}
+	
+	//returns the number of numeric buttons
+	public int getNumericButtons ()
+	{			
+		return numericButtons;
 	}
 	
 	//returns the width of the screen in where to mode
@@ -465,5 +483,29 @@ public class Constant
 	public int getMeterHeight1 ()
 	{			
 		return meterHeight1;
+	}
+	
+	//returns the x coordinate of the text space
+	public int getTextColumn ()
+	{			
+		return textColumn;
+	}
+	
+	//returns the y coordinate of the text space
+	public int getTextRow ()
+	{			
+		return textRow;
+	}
+	
+	//returns the name of the text font
+	public String getTextFont ()
+	{			
+		return textFont;
+	}
+	
+	//returns the name of the text font
+	public int getTextSize ()
+	{			
+		return textSize;
 	}
 }

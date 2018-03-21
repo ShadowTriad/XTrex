@@ -18,11 +18,11 @@ import java.util.Random;
 public class Meter extends JFrame
 {
 	public static Constant constant = new Constant ();
-	private static Random randomNumberGenerator = new Random ();
-	private static String string1 = Integer.toString (randomNumberGenerator.nextInt (30));
-	private static String string2 = Integer.toString (randomNumberGenerator.nextInt (112));
-	private static String string3 = Integer.toString (randomNumberGenerator.nextInt (60));
-	private static String string4 = Integer.toString (randomNumberGenerator.nextInt (60));	
+	public final Random randomNumberGenerator = new Random ();
+	public final String string1 = Integer.toString (randomNumberGenerator.nextInt (30));
+	public final String string2 = Integer.toString (randomNumberGenerator.nextInt (120));
+	public final String string3 = Integer.toString (randomNumberGenerator.nextInt (60));
+	public final String string4 = Integer.toString (randomNumberGenerator.nextInt (60));	
 	public final JTextField field1 = new JTextField (constant.getTripOdometer ());
 	public final JTextField field2 = new JTextField (string1 + constant.getDistanceUnits ());
 	public final JTextField field3 = new JTextField (constant.getSpeed ());

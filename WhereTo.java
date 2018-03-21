@@ -18,110 +18,98 @@ import java.util.ArrayList;
 //class WhereTo extends jPanel so the mode can use screens
 class WhereTo extends JPanel
 {
-	//stores the address displayed on the keyboard
+	private static Constant constant = new Constant ();
 	private static String address = "";
-	
-	//stores the orange highlighted button displayed on the keyboard
-	public int button = 0;
-	
-	//stores the keyboard displayed on the XTrex
-	//the alphabetic keyboard is displayed on the XTrex when set to true
-	//the numeric keyboard is displayed on the XTrex when set to false
-	public boolean mode = true;
-	
-	//stores the buttons on the alphabetic keyboard
-	public ArrayList <Keycap> keycaps1 = new ArrayList <Keycap> (28);
-	
-	//stores the buttons on the numeric keyboard
-	public ArrayList <Keycap> keycaps2 = new ArrayList <Keycap> (12);
-	
-	//stores the information about the buttons on the keyboards
-	public Keycap buttonA = new Keycap ("A", 11, 52);
-	public Keycap buttonB = new Keycap ("B", 65, 52);
-	public Keycap buttonC = new Keycap ("C", 121, 52);
-	public Keycap buttonD = new Keycap ("D", 177, 52);
-	public Keycap buttonE = new Keycap ("E", 11, 94);
-	public Keycap buttonF = new Keycap ("F", 65, 94);
-	public Keycap buttonG = new Keycap ("G", 121, 94);
-	public Keycap buttonH = new Keycap ("H", 177, 94);
-	public Keycap buttonI = new Keycap ("I", 11, 136);
-	public Keycap buttonJ = new Keycap ("J", 65, 136);
-	public Keycap buttonK = new Keycap ("K", 121, 136);
-	public Keycap buttonL = new Keycap ("L", 177, 136);
-	public Keycap buttonM = new Keycap ("M", 11, 177);
-	public Keycap buttonN = new Keycap ("N", 65, 177);
-	public Keycap buttonO = new Keycap ("O", 121, 177);
-	public Keycap buttonP = new Keycap ("P", 177, 177);
-	public Keycap buttonQ = new Keycap ("Q", 11, 219);
-	public Keycap buttonR = new Keycap ("R", 65, 219);
-	public Keycap buttonS = new Keycap ("S", 121, 219);
-	public Keycap buttonT = new Keycap ("T", 177, 219);
-	public Keycap buttonU = new Keycap ("U", 11, 262);
-	public Keycap buttonV = new Keycap ("V", 65, 262);
-	public Keycap buttonW = new Keycap ("W", 121, 262);
-	public Keycap buttonX = new Keycap ("X", 177, 262);
-	public Keycap buttonY = new Keycap ("Y", 11, 303);
-	public Keycap buttonZ = new Keycap ("Z", 65, 303);
-	public Keycap button_ = new Keycap ("_", 121, 303);
-	public Keycap buttonRIG = new Keycap ("RIG", 177, 303);
-	public Keycap button1 = new Keycap ("1", 9, 52);
-	public Keycap button2 = new Keycap ("2", 82, 52);
-	public Keycap button3 = new Keycap ("3", 157, 52);
-	public Keycap button4 = new Keycap ("4", 9, 114);
-	public Keycap button5 = new Keycap ("5", 82, 114);
-	public Keycap button6 = new Keycap ("6",  157, 114);
-	public Keycap button7 = new Keycap ("7", 9, 174);
-	public Keycap button8 = new Keycap ("8", 82, 174);
-	public Keycap button9 = new Keycap ("9", 157, 174);
-	public Keycap button0 = new Keycap ("0", 9, 228);
-	public Keycap buttonDEL = new Keycap ("DEL", 82, 228);
-	public Keycap buttonLEF = new Keycap ("LEF", 9, 282);
+	private int highlightedButton = 0;
+	private Keypad keyboard = Keypad.ALPHABETIC;
+	private ArrayList <Keycap> alphabeticButtons = new ArrayList <Keycap> (constant.getAlphabeticButtons ());
+	private ArrayList <Keycap> numericButtons = new ArrayList <Keycap> (constant.getNumericButtons ());
+	private Keycap buttonA = new Keycap ("A", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow1 ());
+	private Keycap buttonB = new Keycap ("B", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow1 ());
+	private Keycap buttonC = new Keycap ("C", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow1 ());
+	private Keycap buttonD = new Keycap ("D", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow1 ());
+	private Keycap buttonE = new Keycap ("E", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow2 ());
+	private Keycap buttonF = new Keycap ("F", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow2 ());
+	private Keycap buttonG = new Keycap ("G", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow2 ());
+	private Keycap buttonH = new Keycap ("H", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow2 ());
+	private Keycap buttonI = new Keycap ("I", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow3 ());
+	private Keycap buttonJ = new Keycap ("J", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow3 ());
+	private Keycap buttonK = new Keycap ("K", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow3 ());
+	private Keycap buttonL = new Keycap ("L", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow3 ());
+	private Keycap buttonM = new Keycap ("M", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow4 ());
+	private Keycap buttonN = new Keycap ("N", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow4 ());
+	private Keycap buttonO = new Keycap ("O", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow4 ());
+	private Keycap buttonP = new Keycap ("P", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow4 ());
+	private Keycap buttonQ = new Keycap ("Q", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow5 ());
+	private Keycap buttonR = new Keycap ("R", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow5 ());
+	private Keycap buttonS = new Keycap ("S", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow5 ());
+	private Keycap buttonT = new Keycap ("T", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow5 ());
+	private Keycap buttonU = new Keycap ("U", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow6 ());
+	private Keycap buttonV = new Keycap ("V", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow6 ());
+	private Keycap buttonW = new Keycap ("W", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow6 ());
+	private Keycap buttonX = new Keycap ("X", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow6 ());
+	private Keycap buttonY = new Keycap ("Y", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow7 ());
+	private Keycap buttonZ = new Keycap ("Z", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow7 ());
+	private Keycap button_ = new Keycap ("_", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow7 ());
+	private Keycap buttonRIG = new Keycap ("RIG", constant.getAlphabeticColumn4 (), constant.getAlphabeticRow7 ());
+	private Keycap button1 = new Keycap ("1", constant.getNumericColumn1 (), constant.getNumericRow1 ());
+	private Keycap button2 = new Keycap ("2", constant.getNumericColumn2 (), constant.getNumericRow1 ());
+	private Keycap button3 = new Keycap ("3", constant.getNumericColumn3 (), constant.getNumericRow1 ());
+	private Keycap button4 = new Keycap ("4", constant.getNumericColumn1 (), constant.getNumericRow2 ());
+	private Keycap button5 = new Keycap ("5", constant.getNumericColumn2 (), constant.getNumericRow2 ());
+	private Keycap button6 = new Keycap ("6", constant.getNumericColumn3 (), constant.getNumericRow2 ());
+	private Keycap button7 = new Keycap ("7", constant.getNumericColumn1 (), constant.getNumericRow3 ());
+	private Keycap button8 = new Keycap ("8", constant.getNumericColumn2 (), constant.getNumericRow3 ());
+	private Keycap button9 = new Keycap ("9", constant.getNumericColumn3 (), constant.getNumericRow3 ());
+	private Keycap button0 = new Keycap ("0", constant.getNumericColumn1 (), constant.getNumericRow4 ());
+	private Keycap buttonLEF = new Keycap ("LEF", constant.getNumericColumn1 (), constant.getNumericRow5 ());
+	private Keycap buttonDEL = new Keycap ("DEL", constant.getNumericColumn2 (), constant.getNumericRow4 ());
 	
 	//sets up the class so the mode can be displayed on the screen of the XTrex
 	//adds the buttons on the alphabetic keyboard to the alphabetic keyboard buttons list
 	//adds the buttons on the numeric keyboard to the numeric keyboard buttons list
 	public WhereTo ()
 	{
-		keycaps1.add (buttonA);
-		keycaps1.add (buttonB);
-		keycaps1.add (buttonC);
-		keycaps1.add (buttonD);
-		keycaps1.add (buttonE);
-		keycaps1.add (buttonF);
-		keycaps1.add (buttonG);
-		keycaps1.add (buttonH);
-		keycaps1.add (buttonI);
-		keycaps1.add (buttonJ);
-		keycaps1.add (buttonK);
-		keycaps1.add (buttonL);
-		keycaps1.add (buttonM);
-		keycaps1.add (buttonN);
-		keycaps1.add (buttonO);
-		keycaps1.add (buttonP);
-		keycaps1.add (buttonQ);
-		keycaps1.add (buttonR);
-		keycaps1.add (buttonS);
-		keycaps1.add (buttonT);
-		keycaps1.add (buttonU);
-		keycaps1.add (buttonV);
-		keycaps1.add (buttonW);
-		keycaps1.add (buttonX);
-		keycaps1.add (buttonY);
-		keycaps1.add (buttonZ);
-		keycaps1.add (button_);
-		keycaps1.add (buttonRIG);
-		keycaps2.add (button1);
-		keycaps2.add (button2);
-		keycaps2.add (button3);
-		keycaps2.add (button4);
-		keycaps2.add (button5);
-		keycaps2.add (button6);
-		keycaps2.add (button7);
-		keycaps2.add (button8);
-		keycaps2.add (button9);
-		keycaps2.add (button0);
-		keycaps2.add (buttonDEL);
-		keycaps2.add (buttonLEF);
+		alphabeticButtons.add (buttonA);
+		alphabeticButtons.add (buttonB);
+		alphabeticButtons.add (buttonC);
+		alphabeticButtons.add (buttonD);
+		alphabeticButtons.add (buttonE);
+		alphabeticButtons.add (buttonF);
+		alphabeticButtons.add (buttonG);
+		alphabeticButtons.add (buttonH);
+		alphabeticButtons.add (buttonI);
+		alphabeticButtons.add (buttonJ);
+		alphabeticButtons.add (buttonK);
+		alphabeticButtons.add (buttonL);
+		alphabeticButtons.add (buttonM);
+		alphabeticButtons.add (buttonN);
+		alphabeticButtons.add (buttonO);
+		alphabeticButtons.add (buttonP);
+		alphabeticButtons.add (buttonQ);
+		alphabeticButtons.add (buttonR);
+		alphabeticButtons.add (buttonS);
+		alphabeticButtons.add (buttonT);
+		alphabeticButtons.add (buttonU);
+		alphabeticButtons.add (buttonV);
+		alphabeticButtons.add (buttonW);
+		alphabeticButtons.add (buttonX);
+		alphabeticButtons.add (buttonY);
+		alphabeticButtons.add (buttonZ);
+		alphabeticButtons.add (button_);
+		alphabeticButtons.add (buttonRIG);
+		numericButtons.add (button1);
+		numericButtons.add (button2);
+		numericButtons.add (button3);
+		numericButtons.add (button4);
+		numericButtons.add (button5);
+		numericButtons.add (button6);
+		numericButtons.add (button7);
+		numericButtons.add (button8);
+		numericButtons.add (button9);
+		numericButtons.add (button0);
+		numericButtons.add (buttonLEF);
+		numericButtons.add (buttonDEL);
 	}
 	
 	//plusButton method is used to cycle forwards through the buttons on the keyboard
@@ -129,26 +117,26 @@ class WhereTo extends JPanel
 	//when the method reaches the end of the list, the method goes back to the beginning of the list
 	public void plusButton ()
 	{
-		if (mode == true)
+		if (keyboard == Keypad.ALPHABETIC)
 		{
-			if (button == 27)
+			if (highlightedButton == constant.getAlphabeticButtons () - 1)
 			{
-				button = 0;
+				highlightedButton = 0;
 			}
 			else
 			{
-				button = button + 1;
+				highlightedButton = highlightedButton + 1;
 			}
 		}
-		if (mode == false)
+		else
 		{
-			if (button == 11)
+			if (highlightedButton == constant.getNumericButtons () - 1)
 			{
-				button = 0;
+				highlightedButton = 0;
 			}
 			else
 			{
-				button = button + 1;
+				highlightedButton = highlightedButton + 1;
 			}
 		}
 		repaint ();
@@ -159,26 +147,26 @@ class WhereTo extends JPanel
 	//when the method reaches the beginning of the list, the method goes forward to the end of the list
 	public void minusButton ()
 	{
-		if (mode == true)
+		if (keyboard == Keypad.ALPHABETIC)
 		{
-			if (button == 0)
+			if (highlightedButton == 0)
 			{
-				button = 27;
+				highlightedButton = constant.getAlphabeticButtons () - 1;
 			}
 			else
 			{
-				button = button - 1;
+				highlightedButton = highlightedButton - 1;
 			}
 		}
-		if (mode == false)
+		else
 		{
-			if (button == 0)
+			if (highlightedButton == 0)
 			{
-				button = 11;
+				highlightedButton = constant.getNumericButtons () - 1;
 			}
 			else
 			{
-				button = button - 1;
+				highlightedButton = highlightedButton - 1;
 			}
 		}
 		repaint ();
@@ -189,21 +177,21 @@ class WhereTo extends JPanel
 	//selectButton method is used to switch the keyboard to either an alphabetic or a numeric keyboard if the orange highlighted button is an arrow button
 	public void selectButton ()
 	{
-		if (mode == true)
+		if (keyboard == Keypad.ALPHABETIC)
 		{		
-			if ((keycaps1.get (button)).getName () == "RIG")
+			if ((alphabeticButtons.get (highlightedButton)).getName () == "RIG")
 			{
-				mode = false;
-				button = 0;
+				keyboard = Keypad.NUMERIC;
+				highlightedButton = 0;
 			}
 			else
 			{
-				address = address + (keycaps1.get (button)).getName ();
+				address = address + (alphabeticButtons.get (highlightedButton)).getName ();
 			}
 		}
 		else
 		{
-			if ((keycaps2.get (button)).getName () == "DEL")
+			if ((numericButtons.get (highlightedButton)).getName () == "DEL")
 			{			
 				if (address.length () == 0)
 				{
@@ -217,21 +205,21 @@ class WhereTo extends JPanel
 					address = address.substring (0, address.length () - 1);
 				}
 			}
-			else if ((keycaps2.get (button)).getName () == "LEF")
+			else if ((numericButtons.get (highlightedButton)).getName () == "LEF")
 			{
-				mode = true;
-				button = 0;
+				keyboard = Keypad.ALPHABETIC;
+				highlightedButton = 0;
 			}
 			else
 			{
-				address = address + (keycaps2.get (button)).getName ();
+				address = address + (numericButtons.get (highlightedButton)).getName ();
 			}
 		}
 		repaint ();
 	}
 	
 	//returns the address in the display on the screen
-	public int getAddress ()
+	public String getAddress ()
 	{			
 		return address;
 	}
@@ -239,39 +227,39 @@ class WhereTo extends JPanel
 	//paint component method is used to continuously display the screen on the Xtrex
 	public void paintComponent (Graphics graphics)
 	{
-		if (mode == true)
+		if (keyboard == Keypad.ALPHABETIC)
 		{
-			(new ImageIcon ("img/background.png")).paintIcon (this, graphics, 0, 0);
+			(new ImageIcon (constant.getAlphabeticBackground ())).paintIcon (this, graphics, 0, 0);
 			graphics.setColor (Color.black);
-			graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
-			graphics.drawString (address, 16, 34);
-			for (int index = 0; index<=27; index = index + 1)
+			graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
+			graphics.drawString (address, constant.getTextColumn (), constant.getTextRow ());
+			for (int index = 0; index <= constant.getAlphabeticButtons () - 1; index = index + 1)
 			{
-				if (index == button)
+				if (index == highlightedButton)
 				{
-					(new ImageIcon ("img/rollover" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
+					(new ImageIcon (constant.getRolloverIcon () + (alphabeticButtons.get (index)).getName () + constant.getIconExtenction ())).paintIcon (this, graphics, (alphabeticButtons.get (index)).getX (), (alphabeticButtons.get (index)).getY ());
 				}
 				else
 				{
-					(new ImageIcon ("img/keycap" + (keycaps1.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps1.get (index)).getX (), (keycaps1.get (index)).getY ());
+					(new ImageIcon (constant.getIcon () + (alphabeticButtons.get (index)).getName () + constant.getIconExtenction ())).paintIcon (this, graphics, (alphabeticButtons.get (index)).getX (), (alphabeticButtons.get (index)).getY ());
 				}
 			}
 		}
-		if (mode == false)
+		else
 		{
-			(new ImageIcon ("img/background2.png")).paintIcon (this, graphics, 0, 0);
+			(new ImageIcon (constant.getNumericBackground ())).paintIcon (this, graphics, 0, 0);
 			graphics.setColor (Color.black);
-			graphics.setFont (new Font ("Arial", Font.PLAIN, 27));
-			graphics.drawString (address, 16, 34);
-			for (int index = 0; index<=11; index = index + 1)
+			graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
+			graphics.drawString (address, constant.getTextColumn (), constant.getTextRow ());
+			for (int index = 0; index <= constant.getNumericButtons () - 1; index = index + 1)
 			{
-				if (index == button)
+				if (index == highlightedButton)
 				{
-					(new ImageIcon ("img/rollover" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
+					(new ImageIcon (constant.getRolloverIcon () + (numericButtons.get (index)).getName () + constant.getIconExtenction ())).paintIcon (this, graphics, (numericButtons.get (index)).getX (), (numericButtons.get (index)).getY ());
 				}
 				else
 				{
-					(new ImageIcon ("img/keycap" + (keycaps2.get (index)).getName () + ".png")).paintIcon (this, graphics, (keycaps2.get (index)).getX (), (keycaps2.get (index)).getY ());
+					(new ImageIcon (constant.getIcon () + (numericButtons.get (index)).getName () + constant.getIconExtenction ())).paintIcon (this, graphics, (numericButtons.get (index)).getX (), (numericButtons.get (index)).getY ());
 				}
 			}
 		}
