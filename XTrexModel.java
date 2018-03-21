@@ -112,6 +112,11 @@ public class XTrexModel extends Observable
 		return speed;
 	}
 	
+	public void updateSpeed ()
+	{
+		speed = getTripOdometer () \ (inHours(getMovingTimeMinutes (), getMovingTimeSecondd ()));
+	}
+	
 	public double getMovingTimeMinutes ()
 	{
 		return movingTimeMinutes;
