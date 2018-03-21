@@ -103,6 +103,10 @@ public class XTrexModel extends Observable
 		return tripOdometer;
 	}
 	
+	public void updateTripOdometer () //will update trip odometer using speech mode later
+	{
+	}
+	
 	public double getSpeed ()
 	{
 		return speed;
