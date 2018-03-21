@@ -100,7 +100,7 @@ public class XTrexModel extends Observable
 	
 	public void setStartingTime (String time)
 	{
-		startingTime = time.Double.parseDouble (time);
+		startingTime = Double.parseDouble (time);
 	}
 	
 	public double getTripOdometer ()
@@ -134,7 +134,7 @@ public class XTrexModel extends Observable
 	
 	public void updateMovingTime ()
 	{
-		double seconds = inSeconds (gps.getTime ());
+		double seconds = inSeconds (time ());
 		if (seconds > startingTime)
 		{
 			seconds = seconds - startingTime;
@@ -186,7 +186,7 @@ public class XTrexModel extends Observable
 		byte[] response = null;
         String url = (
                 "https://maps.googleapis.com/maps/api/staticmap?center=" 
-                + getLat() + "," + getLong()
+                + getLatitude() + "," + getLongitude()
                 + "&zoom=" + getZoom()
                 + "&size=500x500" 
 				+ "&key=AIzaSyBfZkuFHznqWYthnTcstRKpN8Ia6UQUzas" ////////////////////////////////////////////////
