@@ -16,7 +16,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 //extends jPanel so the class can use screens
-class WhereTo extends JPanel
+public class WhereTo extends JPanel
 {
 	private static Constant constant = new Constant ();
 	private static String address = "";

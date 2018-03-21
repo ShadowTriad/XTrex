@@ -11,10 +11,9 @@
 //imports the java awt and java swing packages so the class can use screens
 import java.awt.*;
 import javax.swing.*;
-import java.lang.Math.*;
 
 //extends jPanel so the class can use screens
-class TripComputer extends JPanel
+public class TripComputer extends JPanel
 {
 	private static Constant constant = new Constant ();
 	private static GPS gps = new GPS ();	
