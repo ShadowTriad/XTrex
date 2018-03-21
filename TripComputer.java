@@ -80,14 +80,15 @@ class TripComputer extends JPanel
 	//updates the screen continuously
 	public void paintComponent (Graphics graphics)
 	{
-		updateTripOdometer ();
-		updateMovingTime ();
-		updateSpeed ();
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, constant.getXTrexWidth (), constant.getXTrexHeight ());
 		(new ImageIcon (constant.getMeterBackground ())).paintIcon(this, graphics, 0, constant.getTripComputerBackgroundRow ());
 		graphics.setColor (Color.black);	
 		graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
+		gps.getCurrentCoordinates();
+		updateTripOdometer ();
+		updateMovingTime ();
+		updateSpeed ();
 		graphics.drawString (constant.getTripOdometer (), constant.getTripComputerTextColumn1 (), constant.getTripComputerTextRow1 ());
 		graphics.drawString (tripOdometer + constant.getDistanceUnits (), constant.getTripComputerTextColumn2 (), constant.getTripComputerTextRow2 ());
 		graphics.drawString (constant.getSpeed (), constant.getTripComputerTextColumn3 (), constant.getTripComputerTextRow3 ());
