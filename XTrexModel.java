@@ -98,11 +98,6 @@ public class XTrexModel extends Observable
 		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
 	}
 	
-	public double getStartingTime ()
-	{
-		return startingTime;
-	}
-	
 	public void setStartingTime (String time)
 	{
 		startingTime = time.Double.parseDouble (time);
