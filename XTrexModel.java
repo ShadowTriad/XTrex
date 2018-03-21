@@ -95,7 +95,7 @@ public class XTrexModel extends Observable
 	
 	public double inHours (Double minutes, Double seconds)
 	{
-		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
+		return minutes / constant.getMinuteSeconds () + seconds / constant.getHourSeconds ();
 	}
 	
 	public void setStartingTime (String time)
@@ -119,7 +119,7 @@ public class XTrexModel extends Observable
 	
 	public void updateSpeed ()
 	{
-		speed = tripOdometer \ (inHours(movingTimeMinutes, movingTimeSeconds));
+		speed = tripOdometer / (inHours(movingTimeMinutes, movingTimeSeconds));
 	}
 	
 	public double getMovingTimeMinutes ()
@@ -143,7 +143,7 @@ public class XTrexModel extends Observable
 		{
 			seconds = seconds + constant.getHourSeconds () - startingTime;
 		}
-		movingTimeMinutes = seconds \ constant.getMinuteSeconds ();
+		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
 	}
 	
