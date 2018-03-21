@@ -88,6 +88,11 @@ public class XTrexModel extends Observable
 		return startingTime;
 	}
 	
+	public void setStartingTime (String time)
+	{
+		startingTime = time.Double.parseDouble (time);
+	}
+	
 	public double getTripOdometer ()
 	{
 		return tripOdometer;
