@@ -12,8 +12,8 @@ public class XTrexModel extends Observable
 	private Mode mode;
 	private Constant constant = new Constant ();
 	private String longitude = "-3.1"; // will be retrieved from gps later
-	private String latitude = "50.1";
-	private String time = 0;
+	private String latitude = "50.1"; // will be retrieved from gps later
+	private String time = "123456"; // will be retrieved from gps later
 	private double startingTime = 0;
 	private double tripOdometer = 0;
 	private double speed = 0;
