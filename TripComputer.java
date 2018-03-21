@@ -46,7 +46,7 @@ class TripComputer extends JPanel
 	//updates the speed using trip odometer and moving time
 	public void updateSpeed ()
 	{
-		speed = tripOdometer / (inHours(movingTimeMinutes, movingTimeSeconds);
+		speed = tripOdometer / (inHours(movingTimeMinutes, movingTimeSeconds));
 	}
 	
 	//converts time in hours, minutes and second to seconds
@@ -67,13 +67,13 @@ class TripComputer extends JPanel
 		double seconds = inSeconds (gps.getTime ());
 		if (seconds > startingTime)
 		{
-			seconds = seconds - startingTime
+			seconds = seconds - startingTime;
 		}
 		else
 		{
-			seconds = seconds + 3600 - startingTime
+			seconds = seconds + 3600 - startingTime;
 		}
-		movingTimeMinutes = seconds \ 60;
+		movingTimeMinutes = seconds / 60;
 		movingTimeSeconds = seconds % 60;
 	}
 	
