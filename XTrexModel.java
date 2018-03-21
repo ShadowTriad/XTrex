@@ -13,6 +13,11 @@ public class XTrexModel extends Observable
 	private Constant constant = new Constant ();
 	private String longitude = "-3.1"; // will be retrieved from gps later
 	private String latitude = "50.1";
+	private double startingTime = 0;	
+	private double tripOdometer = 0;
+	private double speed = 0;
+	private double movingTimeMinutes = 0;
+	private double movingTimeSeconds = 0;
 	private int zoom = 15;
 	private String strZoom = Integer.toString (zoom);  
 	private ImageIcon map;
@@ -26,27 +31,40 @@ public class XTrexModel extends Observable
 		setMode (mode);
 	}
 	
-	/*
-	* @author Jasmine
-	*/
-	public void switchMode(Mode newMode){
-        mode = newMode;
-	}///////////////////////////////////////////
-	public void setMode(Mode mode) {
-		this.mode = mode;
-		System.out.println(mode);
-		setChanged();
-		notifyObservers(mode);
-	}
-	
 	public Mode getMode ()
 	{
 		return mode;
 	}
 	
+	public void setMode (Mode mode)
+	{
+		this.mode = mode;
+		System.out.println (mode);
+		setChanged ();
+		notifyObservers (mode);
+	}
+	
+	/*
+	* @author Jasmine
+	*/
+	public void switchMode (Mode newMode)
+	{
+        	mode = newMode;
+	}
+	
 	public getConstant ()
 	{
 		return constant;
+	}
+	
+	public String getLongitude ()
+	{
+		return longitude;
+	}
+	
+	public String getLatitude ()
+	{
+		return latitude;
 	}
 	
 	public void setCoordinates (String longitude, String latitude)
@@ -58,14 +76,29 @@ public class XTrexModel extends Observable
 		notifyObservers ();
 	}
 	
-	public String getLongitude ()
+	public double getStartingTime ()
 	{
-		return longitude;
+		return startingTime;
 	}
 	
-	public String getLatitude ()
+	public double getTripOdometer ()
 	{
-		return latitude;
+		return tripOdometer;
+	}
+	
+	public double getSpeed ()
+	{
+		return speed;
+	}
+	
+	public double getMovingTimeMinutes ()
+	{
+		return movingTimeMinutes;
+	}
+	
+	public double getMovingTimeSeconds ()
+	{
+		return movingTimeSeconds;
 	}
 	
 	public String getZoom() {
