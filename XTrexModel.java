@@ -13,7 +13,8 @@ public class XTrexModel extends Observable
 	private Constant constant = new Constant ();
 	private String longitude = "-3.1"; // will be retrieved from gps later
 	private String latitude = "50.1";
-	private double startingTime = 0;	
+	private String time = 0;
+	private double startingTime = 0;
 	private double tripOdometer = 0;
 	private double speed = 0;
 	private double movingTimeMinutes = 0;
@@ -67,13 +68,30 @@ public class XTrexModel extends Observable
 		return latitude;
 	}
 	
-	public void setCoordinates (String longitude, String latitude)
+	public String getTime ()
+	{
+		return time;
+	}
+	
+	public void setCoordinates (String longitude, String latitude, String time)
 	{
 		this.longitude = longitude;
 		this.latitude  = latitude;
+		this.time  = time;
 		updateMap ();
 		setChanged (); ////????????????????????????????????????
 		notifyObservers ();
+	}
+	
+	//converts time in hours, minutes and second to seconds
+	public double inSeconds (String time)
+	{
+		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
+	}
+	
+	public double inHours (Double minutes, Double seconds)
+	{
+		return minutes \ constant.getMinuteSeconds () + seconds \ constant.getHourSeconds ();
 	}
 	
 	public double getStartingTime ()
