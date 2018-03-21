@@ -81,6 +81,19 @@ public class Constant
 	private int textSize = 27;
 	private int whereToTextColumn = 16;
 	private int whereToTextRow = 34;
+	private int tripComputerBackgroundRow = 27;
+	private int tripComputerTextColumn1 = 40;
+	private int tripComputerTextRow1 = 75;
+	private int tripComputerTextColumn2 = 65;
+	private int tripComputerTextRow2 = 100;
+	private int tripComputerTextColumn3 = 75;
+	private int tripComputerTextRow3 = 175;
+	private int tripComputerTextColumn4 = 50;
+	private int tripComputerTextRow4 = 200;
+	private int tripComputerTextColumn5 = 45;
+	private int tripComputerTextRow5 = 270;
+	private int tripComputerTextColumn6 = 30;
+	private int tripComputerTextRow6 = 295;
 	
 	//sets up the class so the information about the constants in the XTrex can be stored
 	public Constant ()
@@ -525,15 +538,93 @@ public class Constant
 		return textSize;
 	}
 	
-	//returns the x coordinate of the text space in Where To mode
+	//returns the x coordinate of the text in Where To mode
 	public int getWhereToTextColumn ()
 	{			
 		return whereToTextColumn;
 	}
 	
-	//returns the y coordinate of the text space in Where To mode
+	//returns the y coordinate of the text in Where To mode
 	public int getWhereToTextRow ()
 	{			
 		return whereToTextRow;
+	}
+	
+	//returns the y coordinate of the background in Trip Computer mode
+	public int getTripComputerBackgroundRow ()
+	{			
+		return tripComputerBackgroundRow;
+	}
+	
+	//returns the x coordinate of the text in row 1 in Trip Computer mode
+	public int getTripComputerTextRow1 ()
+	{			
+		return tripComputerTextRow1;
+	}
+	
+	//returns the y coordinate of the text in column 1 in Trip Computer mode
+	public int getTripComputerTextColumn1 ()
+	{			
+		return tripComputerTextColumn1;
+	}
+	
+	//returns the x coordinate of the text in row 2 in Trip Computer mode
+	public int getTripComputerTextRow2 ()
+	{			
+		return tripComputerTextRow2;
+	}
+	
+	//returns the y coordinate of the text in column 2 in Trip Computer mode
+	public int getTripComputerTextColumn2 ()
+	{			
+		return tripComputerTextColumn2;
+	}
+	
+	//returns the x coordinate of the text in row 3 in Trip Computer mode
+	public int getTripComputerTextRow3 ()
+	{			
+		return tripComputerTextRow3;
+	}
+	
+	//returns the y coordinate of the text in column 3 in Trip Computer mode
+	public int getTripComputerTextColumn3 ()
+	{			
+		return tripComputerTextColumn3;
+	}
+	
+	//returns the x coordinate of the text in row 4 in Trip Computer mode
+	public int getTripComputerTextRow4 ()
+	{			
+		return tripComputerTextRow4;
+	}
+	
+	//returns the y coordinate of the text in column 4 in Trip Computer mode
+	public int getTripComputerTextColumn4 ()
+	{			
+		return tripComputerTextColumn4;
+	}
+	
+	//returns the x coordinate of the text in row 5 in Trip Computer mode
+	public int getTripComputerTextRow5 ()
+	{			
+		return tripComputerTextRow5;
+	}
+	
+	//returns the y coordinate of the text in column 5 in Trip Computer mode
+	public int getTripComputerTextColumn5 ()
+	{			
+		return tripComputerTextColumn5;
+	}
+	
+	//returns the x coordinate of the text in row 6 in Trip Computer mode
+	public int getTripComputerTextRow6 ()
+	{			
+		return tripComputerTextRow6;
+	}
+	
+	//returns the y coordinate of the text in column 6 in Trip Computer mode
+	public int getTripComputerTextColumn6 ()
+	{			
+		return tripComputerTextColumn6;
 	}
 }

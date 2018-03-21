@@ -85,15 +85,15 @@ class TripComputer extends JPanel
 		updateSpeed ();
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, constant.getXTrexWidth (), constant.getXTrexHeight ());
-		(new ImageIcon (constant.getMeterBackground ())).paintIcon(this, graphics, 0, 27);
+		(new ImageIcon (constant.getMeterBackground ())).paintIcon(this, graphics, 0, constant.getTripComputerBackgroundRow ());
 		graphics.setColor (Color.black);	
 		graphics.setFont (new Font (constant.getTextFont (), Font.PLAIN, constant.getTextSize ()));
-		graphics.drawString (constant.getTripOdometer (), 40, 75);
-		graphics.drawString (tripOdometer + constant.getDistanceUnits (), 65, 100);
-		graphics.drawString (constant.getSpeed (), 75, 175);
-		graphics.drawString (speed + constant.getSpeedUnits (), 50, 200);
-		graphics.drawString (constant.getMovingTime (), 45, 270);
-		graphics.drawString (movingTimeMinutes + constant.getTimeUnits1 () + movingTimeSeconds + constant.getTimeUnits2 (), 30, 295);
+		graphics.drawString (constant.getTripOdometer (), constant.getTripComputerTextColumn1 (), constant.getTripComputerTextRow1 ());
+		graphics.drawString (tripOdometer + constant.getDistanceUnits (), constant.getTripComputerTextColumn2 (), constant.getTripComputerTextRow2 ());
+		graphics.drawString (constant.getSpeed (), constant.getTripComputerTextColumn3 (), constant.getTripComputerTextRow3 ());
+		graphics.drawString (speed + constant.getSpeedUnits (), constant.getTripComputerTextColumn4 (), constant.getTripComputerTextRow4 ());
+		graphics.drawString (constant.getMovingTime (), constant.getTripComputerTextColumn5 (), constant.getTripComputerTextRow5 ());
+		graphics.drawString (movingTimeMinutes + constant.getTimeUnits1 () + movingTimeSeconds + constant.getTimeUnits2 (), constant.getTripComputerTextColumn6 (), constant.getTripComputerTextRow6 ());
 		repaint ();
 	}
 }
