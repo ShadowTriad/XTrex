@@ -38,6 +38,7 @@ public class WhereToView extends JPanel implements Observer
 		alphabeticButtons = model.getAlphabeticButtons ();
 		numericButtons = model.getNumericButtons ();
 		model.addObserver (this);
+		repaint();
 	}
 	
 	public void update (Observable observable, Object object)

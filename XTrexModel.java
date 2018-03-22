@@ -20,10 +20,9 @@ public class XTrexModel extends Observable
 {
 	private Mode mode;
 	private Constant constant = new Constant ();
-	private String longitude = "-3.1"; // will be retrieved from gps later
-	private String latitude = "50.1"; // will be retrieved from gps later
+	private String longitude = "-3.53"; // will be retrieved from gps later
+	private String latitude = "50.71"; // will be retrieved from gps later
 	private String time = "123456"; // will be retrieved from gps later
-	private String destination = "Chagford"; //Change me
 	
 	private String address = "";
 	private int highlightedButton = 0;
@@ -245,6 +244,9 @@ public class XTrexModel extends Observable
 				highlightedButton = highlightedButton + 1;
 			}
 		}
+		
+		setChanged();
+        notifyObservers();
 	}
 	
 	public void whereToMinusButton ()
@@ -271,6 +273,8 @@ public class XTrexModel extends Observable
 				highlightedButton = highlightedButton - 1;
 			}
 		}
+		setChanged();
+        notifyObservers();
 	}
 	
 	public void whereToSelectButton ()
@@ -313,6 +317,8 @@ public class XTrexModel extends Observable
 				address = address + (numericButtons.get (highlightedButton)).getName ();
 			}
 		}
+		setChanged();
+        notifyObservers();
 	}
 	//Where To end
 	
@@ -514,7 +520,7 @@ public class XTrexModel extends Observable
           String lat = latitude;
           String lon = longitude;
              
-          String encDestination = URLEncoder.encode( destination, "UTF-8" );
+          String encDestination = URLEncoder.encode( getAddress(), "UTF-8" );
           String language = languages.get(currentLanguageCount);
           
           //fortunately the directions API just needs the first two characters of these language inputs used in the speech api.
@@ -523,6 +529,7 @@ public class XTrexModel extends Observable
           url 
             = ( "https://maps.googleapis.com/maps/api/directions/json"
               + "?" + "origin"      + "=" + lat + "," + lon 
+            
               + "&" + "destination" + "=" + encDestination
               + "&" + "key"         + "=" + "AIzaSyDaX_hkPxn_qxqMENGZEeSZWX5-Qkcjk8Y" //key can only be used 2500 times a day
               + "&" + "mode"        + "=" + travelMode
@@ -656,5 +663,35 @@ public class XTrexModel extends Observable
             }
         }
        
+    }
+    
+     /*
+     * Is prompted by the pushing of the plus button on side of the device.
+     * Changes the language by changing the currentLanguageCounter which represents an index of the list of languages.
+     */
+    public void speechPlusButton(){
+        //scroll up when button pressed.
+        if (currentLanguageCount == 0){
+            currentLanguageCount = 5;
+        } else {
+            currentLanguageCount -= 1;
+        }
+        setChanged();
+        notifyObservers();
+    }
+    
+    /*
+     * Is prompted by the pushing of the minus button on side of the device.
+     * Changes the language by changing the currentLanguageCounter which represents an index of the list of languages.
+     */
+    public void speechMinusButton(){
+        //scroll down when button pressed
+        if (currentLanguageCount == 5){
+            currentLanguageCount = 0;
+        } else {
+            currentLanguageCount += 1;
+        }
+        setChanged();
+        notifyObservers();
     }
 }
