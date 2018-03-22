@@ -6,7 +6,7 @@ public class XTrexMVC {
 		XTrexController controller = new XTrexController( model );
 		XTrexView       view       = new XTrexView( controller, model );
 		controller.setView( view );
-	
+		
 		view.pack();
 		view.setVisible( true );
 	}

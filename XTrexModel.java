@@ -31,8 +31,6 @@ public class XTrexModel extends Observable
 	private double movingTimeMinutes = 0;
 	private double movingTimeSeconds = 0;
 	
-	private int highlightedButton = 0;
-	
 	private int zoom = 15;
 	private String strZoom = Integer.toString (zoom);  
 	private ImageIcon map;
@@ -65,7 +63,6 @@ public class XTrexModel extends Observable
 	public void setMode (Mode mode)
 	{
 		this.mode = mode;
-		System.out.println (mode);
 		setChanged ();
 		notifyObservers (mode);
 	}
@@ -169,11 +166,6 @@ public class XTrexModel extends Observable
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
-	}
-	
-	public int getHighlightedButton ()
-	{
-		return highlightedButton;
 	}
 	
 	public String getZoom() {

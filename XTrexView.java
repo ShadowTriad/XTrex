@@ -1,24 +1,29 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
 import javax.swing.border.LineBorder;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class XTrexView extends JFrame implements Observer{
+public class XTrexView extends JFrame implements Observer {
 	
     public final OnOffButton onOffButton = new OnOffButton();
     public final PlusButton plusButton = new PlusButton("+");
     public final MinusButton minusButton = new MinusButton("-");
     public final SelectButton selectButton = new SelectButton("SELECT");
     public final MenuButton menuButton = new MenuButton("MENU"); 
+	private HashMap<Mode, JPanel> screens = new HashMap<Mode, JPanel>(); 
+   
 	
     private XTrexController controller;
     private XTrexModel model;
     private OnOffView onOff;
     private MenuView menu;
     private MapView map;
+	
+	private Mode mode;
 	
     public XTrexView(XTrexController controller, XTrexModel model) {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,13 +55,18 @@ public class XTrexView extends JFrame implements Observer{
 	    
 	    this.controller = controller;
 	    this.model = model;
+		this.mode = model.getMode();
 	    
 	    model.addObserver(this);
 	    onOff = new OnOffView(controller, model);
 	    menu = new MenuView(controller, model);
 	    map = new MapView(controller, model);
 		
-	
+		screens.put(Mode.ONOFF, onOff);
+		screens.put(Mode.MENU, menu);
+		screens.put(Mode.MAP, map);
+		
+		showScreen(onOff);
 	}
 	
 /*
@@ -65,10 +75,24 @@ public class XTrexView extends JFrame implements Observer{
     private void showScreen(JPanel panel)
     {
 	    this.add(panel);
-	    panel.setSize(new Dimension(240, 353));
+	    //panel.setSize(new Dimension(240, 353));
 	    panel.setBounds(240, 260, 240, 353);
 	    panel.setVisible(true);
     }
+	
+	private void switchMode(Mode newMode) {
+		JPanel currentScreen = screens.get(mode);
+        JPanel nextScreen = screens.get( newMode );
+		this.mode = newMode;
+
+		//move to controller later?
+		
+		getContentPane().remove(currentScreen);
+        //showScreen( nextScreen );
+        //getContentPane().remove( currentScreen );
+        showScreen( nextScreen );
+		
+	}
 	
      /*
      * @author Oonagh
@@ -130,18 +154,16 @@ public class XTrexView extends JFrame implements Observer{
         }
     }
 
-	/////////////////////////////////////////////////////
 	public void update(Observable obs, Object obj){
-		// use the hash map here later somehow
-		if (model.getMode() == Mode.ONOFF){
-			showScreen(onOff);
-		} else if (model.getMode() == Mode.MENU){
-			showScreen(menu);
-		} else if (model.getMode() == Mode.MAP){
-			showScreen(map);
+		//need to check whether the mode has actually been changed?
+		System.out.println(mode);
+		System.out.println(model.getMode());
+		if (mode != model.getMode()) {
+			Mode newMode = model.getMode();
+			System.out.println(newMode);
+			switchMode( newMode );
+			screens.get(newMode).repaint(); 
 		}
-		
-		repaint(); //////////////////////////////////////////
 	}
 	
 }
