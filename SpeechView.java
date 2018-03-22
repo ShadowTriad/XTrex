@@ -23,10 +23,12 @@ public class SpeechView extends ModeView implements Observer {
     public XTrexController controller;
     public XTrexModel model;
     
+    public int currentLanguageCount = model.currentLanguageCount;
+    
     public SpeechView(XTrexController controller, XTrexModel model) {
         this.controller = controller;
         this.model = model;
-        
+       
         model.addObserver( this );
         repaint();
     }
@@ -38,7 +40,7 @@ public class SpeechView extends ModeView implements Observer {
     /*
      * Creates a screen to be viewed on the XTrex JFrame
      */
-    protected void paintComponent( Graphics g ) {
+    public void paintComponent( Graphics g ) {
         super.paintComponent(g);
 
         //creating the while background
@@ -47,15 +49,15 @@ public class SpeechView extends ModeView implements Observer {
         
         //creates a box in orange if the current language state isn't "Off
         g.setColor(Color.orange);
-        if (model.currentLanguageCount == 1){
+        if (currentLanguageCount == 1){
             g.fillRect(25, 50, 200, 50);
-        } else if (model.currentLanguageCount == 2){
+        } else if (currentLanguageCount == 2){
             g.fillRect(25, 100, 200, 50);
-        } else if (model.currentLanguageCount == 3){
+        } else if (currentLanguageCount == 3){
             g.fillRect(25, 150, 200, 50);
-        } else if (model.currentLanguageCount == 4){
+        } else if (currentLanguageCount == 4){
             g.fillRect(25, 200, 200, 50);
-        } else if (model.currentLanguageCount == 5){
+        } else if (currentLanguageCount == 5){
             g.fillRect(25, 250, 200, 50);
         } 
         
@@ -93,10 +95,10 @@ public class SpeechView extends ModeView implements Observer {
      */
     public void plusButton(){
         //scroll up when button pressed.
-        if (model.currentLanguageCount == 5){
-            model.currentLanguageCount = 0;
+        if (currentLanguageCount == 5){
+            currentLanguageCount = 0;
         } else {
-            model.currentLanguageCount += 1;
+            currentLanguageCount += 1;
         }
     }
     
@@ -106,10 +108,10 @@ public class SpeechView extends ModeView implements Observer {
      */
     public void minusButton(){
         //scroll down when button pressed
-        if (model.currentLanguageCount == 0){
-            model.currentLanguageCount = 5;
+        if (currentLanguageCount == 0){
+            currentLanguageCount = 5;
         } else {
-            model.currentLanguageCount -= 1;
+            currentLanguageCount -= 1;
         }
     }
     
