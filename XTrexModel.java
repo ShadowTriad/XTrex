@@ -35,7 +35,7 @@ public class XTrexModel extends Observable
 	private boolean goodRead;
 
 	//relating to WhereTo
-	private String destination = "";
+	private String destination = "CHAGFORD";
 	private int highlightedButton = 0;
 	private Keyboard keyboardMode = Keyboard.ALPHABETIC;
 
@@ -379,31 +379,7 @@ public class XTrexModel extends Observable
 	*	Methods relating to SPEECH
 	*/
 
-	public void speechPlusButton() {
-
-		if (currentLanguageCount == 0) {
-			currentLanguageCount = 5;
-		} else {
-			currentLanguageCount -= 1;
-		}
-
-		setChanged();
-		notifyObservers();
-	}
-
-	public void speechMinusButton() {
-
-		if (currentLanguageCount == 5) {
-			currentLanguageCount = 0;
-		} else {
-			currentLanguageCount += 1;
-		}
-
-		setChanged();
-		notifyObservers();
-	}
-
-	 /*
+	/*
      * Renews the access token for the API
      * WRITTEN BY DAVID WAKELING, 2018
      */
@@ -454,15 +430,14 @@ public class XTrexModel extends Observable
         }
     }
 
-     /*
+    /*
     * This function creates a url to be passed into the google directions JSON.
     * Written by Tilly Porthouse
     */
-    public String createURL(String originlat, String originlong, String destination, String region, String mode ) {
+    public String createURL() {
         String url = new String();
         try {
-
-		  updateCoordinates();
+          updateCoordinates();
           String lat = latitude;
           String lon = longitude;
 
@@ -474,13 +449,14 @@ public class XTrexModel extends Observable
 
           url
             = ( "https://maps.googleapis.com/maps/api/directions/json"
-              + "?" + "origin"      + "=" + originlat + "," + originlong
+              + "?" + "origin"      + "=" + lat + "," + lon
               + "&" + "destination" + "=" + encDestination
               + "&" + "key"         + "=" + "AIzaSyDaX_hkPxn_qxqMENGZEeSZWX5-Qkcjk8Y" //key can only be used 2500 times a day
-              + "&" + "region"      + "=" + region
               + "&" + "mode"        + "=" + travelMode
               + "&" + "language"    + "=" + languages.get(currentLanguageCount)
               );
+
+		System.out.println( url );
 
         } catch ( Exception ex ) {
           System.out.println( ex );
@@ -510,7 +486,7 @@ public class XTrexModel extends Observable
      * Written by Tilly Porthouse
      */
     public void updateDirections(){
-        String url = createURL(longitude, latitude , destination, region , travelMode );
+        String url = createURL();
         JsonReader jr = new JsonReader(url);
         try {
             directions = jr.readDirections();
@@ -599,7 +575,7 @@ public class XTrexModel extends Observable
                 }
 
                 //get the current gps coords
-				updateCoordinates();
+                updateCoordinates();
                 String currentXStr = longitude;
                 double currentX = Double.parseDouble(currentXStr);
                 String currentYStr = latitude;
@@ -610,5 +586,35 @@ public class XTrexModel extends Observable
             }
         }
 
+    }
+
+     /*
+     * Is prompted by the pushing of the plus button on side of the device.
+     * Changes the language by changing the currentLanguageCounter which represents an index of the list of languages.
+     */
+    public void speechPlusButton(){
+        //scroll up when button pressed.
+        if (currentLanguageCount == 0){
+            currentLanguageCount = 5;
+        } else {
+            currentLanguageCount -= 1;
+        }
+        setChanged();
+        notifyObservers();
+    }
+
+    /*
+     * Is prompted by the pushing of the minus button on side of the device.
+     * Changes the language by changing the currentLanguageCounter which represents an index of the list of languages.
+     */
+    public void speechMinusButton(){
+        //scroll down when button pressed
+        if (currentLanguageCount == 5){
+            currentLanguageCount = 0;
+        } else {
+            currentLanguageCount += 1;
+        }
+        setChanged();
+        notifyObservers();
     }
 }
