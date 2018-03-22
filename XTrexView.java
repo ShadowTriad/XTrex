@@ -40,7 +40,7 @@ public class XTrexView extends JFrame implements Observer{
 	    add(minusButton);
 	    minusButton.addActionListener(controller);
 	    
-	    selectButton.setBounds(145, 225, 60, 70):
+	    selectButton.setBounds(145, 225, 60, 70);
 	    add(selectButton);
 	    selectButton.addActionListener(controller);
 	    
