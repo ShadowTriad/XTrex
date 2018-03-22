@@ -23,26 +23,29 @@ public class XTrexModel extends Observable
 	private String longitude = "-3.1"; // will be retrieved from gps later
 	private String latitude = "50.1"; // will be retrieved from gps later
 	private String time = "123456"; // will be retrieved from gps later
-	private String destination = "";
+	private String destination = "The Forum"; //Change me
+	
 	private double startingTime = 0;
 	private double tripOdometer = 0;
 	private double speed = 0;
 	private double movingTimeMinutes = 0;
 	private double movingTimeSeconds = 0;
+	
 	private int zoom = 15;
 	private String strZoom = Integer.toString (zoom);  
 	private ImageIcon map;
 	private String[ ] tiles = {"WhereTo", "TripComputer", "Map", "Speech", "Satellite", "About"};
 	private int index = 0;
 	
-	public int currentLanguageCount = 3; //directions counter counts how many directions have already been said 
+	public int currentLanguageCount = 3; 
     public List<String> languages = Arrays.asList("Off","en-US", "fr-FR","de-DE","It-IT","es-ES");
     final static String region = "uk";
     final static String travelMode = "WALKING"; 
     final static String FILENAME = "output.wav";
+    ArrayList<Direction> directions = new ArrayList<Direction>();
     
     final static double radiusOfDestination = 0.01; //radiusOfDestination is measured in km, represents how close the gps coords can be to the destination before the coords are declared close-enough
-    public int dirCount = 0;
+    public int dirCount = 0; 
 	
 	// need current gps coords, goal gps coords, mode, time, speed..?, language, map
 	public XTrexModel (Mode mode)
@@ -342,13 +345,12 @@ public class XTrexModel extends Observable
     }
     
      /*
-     * This function gets an ArrayList of directions from the current lang and long to the given destination, using the google directions API.
+     * This function updates the directions from the current lang and long to the given destination, using the google directions API.
      * Written by Tilly Porthouse
      */
-    public ArrayList<Direction> getDirections(){
+    public void updateDirections(){
         String url = createURL(longitude, latitude , destination, region , travelMode );
         JsonReader jr = new JsonReader(url);
-        ArrayList<Direction> directions = new ArrayList<Direction>();
         try {
             directions = jr.readDirections();
         } catch (Exception ex) {
@@ -356,14 +358,13 @@ public class XTrexModel extends Observable
             System.out.println("There has been a problem in the reading of directions. Reopen the application and try again.");
         }
         
-        return directions;
     }
     
     /*
      * This function returns the length of the entire trip.
      * Written by Tilly Porthouse
     */
-    public double getRouteLength(ArrayList<Direction> directions){
+    public double getRouteLength(){
         double length = 0;
         String disStr = new String();
         for (Direction dir : directions){
@@ -378,7 +379,7 @@ public class XTrexModel extends Observable
      * This function returns the length of the trip taken so far, from the starting destination to the last instruction.
      * Written by Tilly Porthouse
      */
-    public double getRouteLengthSoFar(ArrayList<Direction> directions){
+    public double getRouteLengthSoFar(){
         double length = 0;
         String disStr = new String();
         int runningDirCount = 0;
@@ -397,8 +398,8 @@ public class XTrexModel extends Observable
      * Written by Tilly Porthouse
      */
     public void playDirectionsUntilAtDestination(){
-        //directions is an ArrayList of directions from the google directions API. The directions represent the route from the starting position to the 
-        ArrayList<Direction> directions = getDirections();
+        //directions is an ArrayList of directions from the google directions API. The directions represent the route from the starting position to the final destination.
+        updateDirections();
         
         //stepReached stores whether the next direction has been reached yet
         boolean stepReached = false; 
@@ -446,5 +447,6 @@ public class XTrexModel extends Observable
                 stepReached = checkWithinGPSBoundaries(currentX, currentY, stepDestinationX, stepDestinationY);
             }
         }
+       
     }
 }
