@@ -1,2 +1,0 @@
-# XTrex-TeamF
-# GO TEAM!!! 
