@@ -23,7 +23,7 @@ public class SpeechView extends ModeView implements Observer {
     public XTrexController controller;
     public XTrexModel model;
     
-    public int currentLanguageCount = model.currentLanguageCount;
+    public int currentLanguageCount;
     
     public SpeechView(XTrexController controller, XTrexModel model) {
         this.controller = controller;
@@ -34,6 +34,7 @@ public class SpeechView extends ModeView implements Observer {
     }
     
     public void update( Observable obs, Object obj ) {
+        this.currentLanguageCount = model.currentLanguageCount;
         repaint();
     }
 
