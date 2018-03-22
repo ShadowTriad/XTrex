@@ -11,7 +11,11 @@ import java.text.DecimalFormat;
 public class GPS {
 
     private String latitude;
+    private String latDirection;
+
     private String longitude;
+    private String lonDirection;
+    
     private String time;
 
     private LinuxUblox7 reader;
@@ -26,22 +30,31 @@ public class GPS {
         return this.latitude;
     }
 
+    public String getLatDirection() {
+        return this.latDirection;
+    }
+
     public String getLongitude() {
         return this.longitude;
+    }
+
+    public String getLonDirection() {
+        return this.lonDirection;
     }
 
     public String getTime() {
         return this.time;
     }
 
-    //update the lat and lon with random values
     public void getCurrentCoordinates() {
 
-        String[] latLonTime = reader.read();
+        String[] gpsData = reader.read();
 
-        this.latitude = latLonTime[0];
-        this.longitude = latLonTime[1];
-        this.time = latLonTime[2];
+        this.latitude     = gpsData[0];
+        this.latDirection = gpsData[1];
+        this.longitude    = gpsData[2];
+        this.lonDirection = gpsData[3];
+        this.time         = gpsData[4];
 
     }
 

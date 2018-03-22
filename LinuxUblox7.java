@@ -79,12 +79,16 @@ public class LinuxUblox7 {
         double lon = processLatLon( gll[3], gll[4], false );
 
         String latitude = String.format( "%.6f", lat );
+        String latDirection = gll[2];
         String longitude = String.format( "%.6f", lon );
+        String lonDirection = gll[4];
         String time = gll[5].substring(0, 6);
 
-        String[] latLonTime = {latitude, longitude, time};
+        String[] gpsData = {latitude,  latDirection,
+                            longitude, lonDirection,
+                            time};
 
-        return latLonTime;
+        return gpsData;
 
     }
 
