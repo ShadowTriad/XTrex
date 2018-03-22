@@ -36,9 +36,12 @@ public class SatelliteView extends JPanel implements Observer {
         g.setColor(Color.black);
         g.setFont(new Font("Arial", Font.PLAIN, 30));
 
+        String lat = model.formatCoord( latitude );
+        String lon = model.formatCoord( longitude );
+
         //draw the latitude and longitude to the screen
-        g.drawString(latitude + " " + latDirection, 25, 100);
-        g.drawString(longitude + " " + lonDirection, 25, 200);
+        g.drawString(lat + " " + latDirection, 25, 100);
+        g.drawString(lon + " " + lonDirection, 25, 200);
 
     }
 

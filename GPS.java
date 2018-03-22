@@ -15,7 +15,7 @@ public class GPS {
 
     private String longitude;
     private String lonDirection;
-    
+
     private String time;
 
     private LinuxUblox7 reader;

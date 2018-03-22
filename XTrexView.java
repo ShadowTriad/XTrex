@@ -8,15 +8,15 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class XTrexView extends JFrame implements Observer {
-	
+
     public final OnOffButton onOffButton = new OnOffButton();
     public final PlusButton plusButton = new PlusButton("+");
     public final MinusButton minusButton = new MinusButton("-");
     public final SelectButton selectButton = new SelectButton("SELECT");
-    public final MenuButton menuButton = new MenuButton("MENU"); 
-	private HashMap<Mode, JPanel> screens = new HashMap<Mode, JPanel>(); 
-   
-	
+    public final MenuButton menuButton = new MenuButton("MENU");
+	private HashMap<Mode, JPanel> screens = new HashMap<Mode, JPanel>();
+
+
     private XTrexController controller;
     private XTrexModel model;
     private OnOffView onOff;
@@ -25,9 +25,11 @@ public class XTrexView extends JFrame implements Observer {
     private SpeechView speech;
     private WhereToView whereTo;
     private TripComputerView tripComputer;
-	
+    private AboutView about;
+    private SatelliteView satellite;
+
 	private Mode mode;
-	
+
     public XTrexView(XTrexController controller, XTrexModel model) {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setSize(Constants.FRAME_SIZE, Constants.FRAME_SIZE);
@@ -35,31 +37,31 @@ public class XTrexView extends JFrame implements Observer {
 	    setTitle("XTrex");
 	    setContentPane(new JLabel(new ImageIcon (Constants.IMAGE_FILE)));
 	    getContentPane().setLayout(null);
-	    
+
 	    onOffButton.setBounds(417, 114, 62, 62); //do we need to store these values as constants? //////////////////////
 	    add(onOffButton);
 	    onOffButton.addActionListener(controller);
-	    
+
 	    plusButton.setBounds(155, 70, 40, 50);
 	    add(plusButton);
 	    plusButton.addActionListener(controller);
-	    
+
 	    minusButton.setBounds(155, 135, 40, 50);
 	    add(minusButton);
 	    minusButton.addActionListener(controller);
-	    
+
 	    selectButton.setBounds(145, 225, 60, 70);
 	    add(selectButton);
 	    selectButton.addActionListener(controller);
-	    
+
 	    menuButton.setBounds(515, 75, 50, 70);
 	    add (menuButton);
 	    menuButton.addActionListener(controller);
-	    
+
 	    this.controller = controller;
 	    this.model = model;
 		this.mode = model.getMode();
-	    
+
 	    model.addObserver(this);
 	    onOff = new OnOffView(controller, model);
 	    menu = new MenuView(controller, model);
@@ -67,17 +69,21 @@ public class XTrexView extends JFrame implements Observer {
 		speech = new SpeechView(controller, model);
 		whereTo = new WhereToView(controller, model);
 		tripComputer = new TripComputerView(controller, model);
-	    
+        about = new AboutView();
+        satellite = new SatelliteView(controller, model);
+
 		screens.put(Mode.ONOFF, onOff);
 		screens.put(Mode.MENU, menu);
 		screens.put(Mode.MAP, map);
 		screens.put(Mode.SPEECH, speech);
 		screens.put(Mode.WHERETO, whereTo);
 		screens.put(Mode.TRIPCOMPUTER, tripComputer);
-		
+        screens.put(Mode.ABOUT, about);
+        screens.put(Mode.SATELLITE, satellite);
+
 		showScreen(onOff);
 	}
-	
+
 /*
      * Takes different modes screen as argument and display on screen.
      */
@@ -88,21 +94,21 @@ public class XTrexView extends JFrame implements Observer {
 	    panel.setBounds(240, 260, 240, 353);
 	    panel.setVisible(true);
     }
-	
+
 	private void switchMode(Mode newMode) {
 		JPanel currentScreen = screens.get(mode);
         JPanel nextScreen = screens.get( newMode );
 		this.mode = newMode;
 
 		//move to controller later?
-		
+
 		getContentPane().remove(currentScreen);
         //showScreen( nextScreen );
         //getContentPane().remove( currentScreen );
         showScreen( nextScreen );
-		
+
 	}
-	
+
      /*
      * @author Oonagh
      */
@@ -111,10 +117,10 @@ public class XTrexView extends JFrame implements Observer {
 		setBorder(new LineBorder(Color.RED));
     		setContentAreaFilled(false);
 		setOpaque(false);
-			
+
         }
     }
-    
+
      /*
      * @author Oonagh
      * @author Faith
@@ -125,8 +131,8 @@ public class XTrexView extends JFrame implements Observer {
             setContentAreaFilled(false);
             setOpaque(false);
         }
-    }	
-	
+    }
+
     /*
      * @author Oonagh
      * @author Faith
@@ -138,7 +144,7 @@ public class XTrexView extends JFrame implements Observer {
             setOpaque(false);
         }
     }
-	
+
      /*
      * @author Oonagh
      */
@@ -150,7 +156,7 @@ public class XTrexView extends JFrame implements Observer {
         }
     }
 
-	
+
     /*
      * @author Oonagh
      * @author Jasmine
@@ -171,8 +177,8 @@ public class XTrexView extends JFrame implements Observer {
 			Mode newMode = model.getMode();
 			System.out.println(newMode);
 			switchMode( newMode );
-			screens.get(newMode).repaint(); 
+			screens.get(newMode).repaint();
 		}
 	}
-	
+
 }
