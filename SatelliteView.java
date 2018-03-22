@@ -16,10 +16,16 @@ public class SatelliteView extends JPanel implements Observer {
     private String longitude;
     private String lonDirection;
 
+    private boolean goodRead;
+
+    private ImageIcon img;
+
 	public SatelliteView(XTrexController controller, XTrexModel model) {
 
 		this.controller = controller;
 		this.model = model;
+
+        this.img = new ImageIcon( "img/noGPSDino.png" );
 
 		model.addObserver( this );
 
@@ -28,20 +34,36 @@ public class SatelliteView extends JPanel implements Observer {
     public void paintComponent( Graphics g ) {
         super.paintComponent(g);
 
-        //draw a white rectangle as background
-        g.setColor(Color.white);
-        g.fillRect(0,0, 330, 415);
 
-        //set the text to arial black
-        g.setColor(Color.black);
-        g.setFont(new Font("Arial", Font.PLAIN, 30));
+        if ( goodRead ) {
+            //draw a white rectangle as background
+            g.setColor(Color.white);
+            g.fillRect(0,0, 330, 415);
 
-        String lat = model.formatCoord( latitude );
-        String lon = model.formatCoord( longitude );
+            g.setColor(Color.black);
+            g.setFont(new Font("Arial", Font.PLAIN, 30));
 
-        //draw the latitude and longitude to the screen
-        g.drawString(lat + " " + latDirection, 25, 100);
-        g.drawString(lon + " " + lonDirection, 25, 200);
+            String lat = model.formatCoord( latitude );
+            String lon = model.formatCoord( longitude );
+
+            System.out.println(lat);
+
+            //draw the latitude and longitude to the screen
+            g.drawString(lat + " " + latDirection, 25, 100);
+            g.drawString(lon + " " + lonDirection, 25, 200);
+
+        } else {
+
+            img.paintIcon(this, g, 50, 150);
+
+            g.setColor(Color.black);
+            g.setFont(new Font("Arial", Font.PLAIN, 25));
+            g.drawString( "Can't find GPS!", 25, 100 );
+
+        }
+
+        model.updateCoordinates();
+        repaint();
 
     }
 
@@ -52,6 +74,8 @@ public class SatelliteView extends JPanel implements Observer {
         this.latDirection = model.getLatDirection();
         this.longitude = model.getLongitude();
         this.lonDirection = model.getLonDirection();
+
+        this.goodRead = model.getGoodRead();
 
         //repaint the screen
 		repaint();

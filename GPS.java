@@ -46,15 +46,25 @@ public class GPS {
         return this.time;
     }
 
-    public void getCurrentCoordinates() {
+    public boolean getCurrentCoordinates() {
 
         String[] gpsData = reader.read();
 
-        this.latitude     = gpsData[0];
-        this.latDirection = gpsData[1];
-        this.longitude    = gpsData[2];
-        this.lonDirection = gpsData[3];
-        this.time         = gpsData[4];
+        if (gpsData == null) {
+
+            return false;
+
+        } else {
+
+            this.latitude     = gpsData[0];
+            this.latDirection = gpsData[1];
+            this.longitude    = gpsData[2];
+            this.lonDirection = gpsData[3];
+            this.time         = gpsData[4];
+
+            return true;
+
+        }
 
     }
 

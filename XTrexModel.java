@@ -32,6 +32,8 @@ public class XTrexModel extends Observable
 
 	private String time; // will be retrieved from gps later
 
+	private boolean goodRead;
+
 	//relating to WhereTo
 	private String destination = "";
 	private int highlightedButton = 0;
@@ -100,6 +102,10 @@ public class XTrexModel extends Observable
 
     }
 
+	public boolean getGoodRead() {
+		return goodRead;
+	}
+
 	public String getLatitude()
 	{
 		return latitude;
@@ -118,31 +124,30 @@ public class XTrexModel extends Observable
 		return lonDirection;
 	}
 
-
-
 	public String getTime ()
 	{
 		return time;
 	}
 
-	public void setCoordinates (String longitude, String latitude, String time)
-	{
-		this.longitude = longitude;
-		this.latitude  = latitude;
-		this.time  = time;
-		updateMap ();
-		setChanged (); ////????????????????????????????????????
-		notifyObservers ();
-	}
-
 	public void updateCoordinates() {
-		gps.getCurrentCoordinates();
 
-		this.latitude = gps.getLatitude();
-		this.latDirection = gps.getLatDirection();
-		this.longitude = gps.getLongitude();
-		this.lonDirection = gps.getLonDirection();
-		this.time = gps.getTime();
+		goodRead = gps.getCurrentCoordinates();
+
+		if (goodRead) {
+
+			//good read! tell the Satellite mode
+			this.latitude = gps.getLatitude();
+			this.latDirection = gps.getLatDirection();
+			this.longitude = gps.getLongitude();
+			this.lonDirection = gps.getLonDirection();
+			this.time = gps.getTime();
+
+		}
+
+		this.time = "123456";
+		setChanged();
+		notifyObservers();
+
 	}
 
 	public double inSeconds (String time)
@@ -456,6 +461,8 @@ public class XTrexModel extends Observable
     public String createURL(String originlat, String originlong, String destination, String region, String mode ) {
         String url = new String();
         try {
+
+		  updateCoordinates();
           String lat = latitude;
           String lon = longitude;
 
@@ -592,6 +599,7 @@ public class XTrexModel extends Observable
                 }
 
                 //get the current gps coords
+				updateCoordinates();
                 String currentXStr = longitude;
                 double currentX = Double.parseDouble(currentXStr);
                 String currentYStr = latitude;

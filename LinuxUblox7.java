@@ -26,10 +26,19 @@ public class LinuxUblox7 {
             while ( ( n = in.read( buffer ) ) > -1 && !gotGPS ) {
                 s = new String( buffer, 0, n );
                 //process GLL sentences
-                if ( s.startsWith("$GPGLL") && !s.contains(",,") ) {
-                    String[] latLonTime = parseGPS( s );
-                    if ( latLonTime != null ) {
-                        return latLonTime;
+                if ( s.startsWith("$GPGLL") ) {
+
+                    if ( !s.contains(",,") ) {
+
+                        String[] latLonTime = parseGPS( s );
+
+                        if ( latLonTime != null ) {
+                            return latLonTime;
+                        }
+
+                    } else {
+                        //bad gps read
+                        return null;
                     }
                 }
             }
