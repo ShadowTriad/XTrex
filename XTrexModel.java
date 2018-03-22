@@ -221,7 +221,7 @@ public class XTrexModel extends Observable
 		return numericButtons;
 	}
 	
-	public void plusButton ()
+	public void whereToPlusButton ()
 	{
 		if (keyboard == Keyboard.ALPHABETIC)
 		{
@@ -247,7 +247,7 @@ public class XTrexModel extends Observable
 		}
 	}
 	
-	public void minusButton ()
+	public void whereToMinusButton ()
 	{
 		if (keyboard == Keyboard.ALPHABETIC)
 		{
@@ -273,7 +273,7 @@ public class XTrexModel extends Observable
 		}
 	}
 	
-	public void selectButton ()
+	public void whereToSelectButton ()
 	{
 		if (keyboard == Keyboard.ALPHABETIC)
 		{		

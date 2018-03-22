@@ -32,6 +32,12 @@ public class XTrexController implements ActionListener {
 				if (model.getIndex() == 5) {
 					model.setIndex(0);
 				}
+				
+				else if (model.getMode() == Mode.WHERETO)
+				{
+					model.whereToPlusButton ();
+				}
+				
 				else {
 					model.setIndex(model.getIndex() + 1);
 				}
@@ -46,7 +52,14 @@ public class XTrexController implements ActionListener {
 				} else {
 					model.setIndex(model.getIndex() - 1) ;
 				}
-			} else {} // other modes minusbutton
+			}
+			
+			else if (model.getMode() == Mode.WHERETO)
+			{
+				model.whereToMinusButton ();
+			}
+			
+			else {} // other modes minusbutton
 			
 		} else if ( e.getSource() == view.selectButton ) {
 			if (model.getMode() == Mode.MENU) {
@@ -54,7 +67,14 @@ public class XTrexController implements ActionListener {
 				model.setMode(Mode.values()[ model.getIndex() ]);
 			}
 			
-		} else {
+		}
+		
+		else if (model.getMode() == Mode.WHERETO)
+			{
+				model.whereToSelectButton ();
+			}
+		
+		else {
 			//something weird has happened
 		}
 	}
