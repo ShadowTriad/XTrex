@@ -34,7 +34,7 @@ public class SpeechView extends ModeView implements Observer {
     }
     
     public void update( Observable obs, Object obj ) {
-        System.out.println(obs);
+        repaint();
     }
 
     /*
@@ -78,7 +78,6 @@ public class SpeechView extends ModeView implements Observer {
         g.drawString("Italian",80,240);
         g.drawString("Spanish",80,290);
 
-        repaint();
     }
     
     /*
