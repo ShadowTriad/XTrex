@@ -14,7 +14,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
-//extends ModelView and implements Observer so the class can use model view controller
+//extends JPanel and implements Observer so the class can use screens and views
 public class TripComputerView extends JPanel implements Observer
 {
 	private XTrexController controller;
