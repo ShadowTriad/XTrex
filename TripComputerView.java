@@ -8,13 +8,11 @@
  * The screen displays the trip odometer, speed and moving time in a meter reader using data from directions and satellite.
  */
 
-//imports the java awt, java swing and java util packages so the class can use model view controller
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
-//extends JPanel and implements Observer so the class can use screens and views
 public class TripComputerView extends JPanel implements Observer
 {
 	private XTrexController controller;
@@ -25,9 +23,6 @@ public class TripComputerView extends JPanel implements Observer
 	private double movingTimeMinutes;
 	private double movingTimeSeconds;
 	
-	//sets up the class so the mode can be displayed on the screen
-	//sets the starting coordinates to the starting coordinate attributes
-	//sets the starting time to the starting time attribute
 	public TripComputerView (XTrexController controller, XTrexModel model)
 	{
 		this.controller = controller;
@@ -40,7 +35,6 @@ public class TripComputerView extends JPanel implements Observer
 		model.addObserver (this);
 	}
 	
-	//updates the class
 	public void update (Observable observable, Object object)
 	{
 		tripOdometer = model.getTripOdometer ();
@@ -50,7 +44,6 @@ public class TripComputerView extends JPanel implements Observer
 		repaint ();
 	}
 	
-	//updates the screen
 	public void paintComponent (Graphics graphics)
 	{
 		graphics.setColor(Color.black);

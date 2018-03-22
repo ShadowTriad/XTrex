@@ -22,6 +22,9 @@ public class XTrexView extends JFrame implements Observer {
     private OnOffView onOff;
     private MenuView menu;
     private MapView map;
+    private SpeechView speech;
+    private WhereToView whereTo;
+    private TripComputerView tripComputer;
 	
 	private Mode mode;
 	
@@ -61,10 +64,16 @@ public class XTrexView extends JFrame implements Observer {
 	    onOff = new OnOffView(controller, model);
 	    menu = new MenuView(controller, model);
 	    map = new MapView(controller, model);
-		
+		speech = new SpeechView(controller, model);
+		whereTo = new WhereToView(controller, model);
+		tripComputer = new TripComputerView(controller, model);
+	    
 		screens.put(Mode.ONOFF, onOff);
 		screens.put(Mode.MENU, menu);
 		screens.put(Mode.MAP, map);
+		screens.put(Mode.SPEECH, speech);
+		screens.put(Mode.WHERETO, whereTo);
+		screens.put(Mode.TRIPCOMPUTER, tripComputer);
 		
 		showScreen(onOff);
 	}

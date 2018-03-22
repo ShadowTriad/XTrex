@@ -93,7 +93,7 @@ public class Constant
 	private int tripComputerTextRow4 = 200;
 	private int tripComputerTextColumn5 = 45;
 	private int tripComputerTextRow5 = 270;
-	private int tripComputerTextColumn6 = 30;
+	private int tripComputerTextColumn6 = 10;
 	private int tripComputerTextRow6 = 295;
 
 	//sets up the class so the information about the constants in the XTrex can be stored
