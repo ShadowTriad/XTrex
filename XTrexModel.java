@@ -23,7 +23,7 @@ public class XTrexModel extends Observable
 	private String longitude = "-3.1"; // will be retrieved from gps later
 	private String latitude = "50.1"; // will be retrieved from gps later
 	private String time = "123456"; // will be retrieved from gps later
-	private String destination = "The Forum"; //Change me
+	private String destination = "Chagford"; //Change me
 	
 	private String address = "";
 	private int highlightedButton = 0;
@@ -504,11 +504,11 @@ public class XTrexModel extends Observable
         }
     }
     
-     /*
+    /*
     * This function creates a url to be passed into the google directions JSON.
     * Written by Tilly Porthouse
     */
-    public String createURL(String originlat, String originlong, String destination, String region, String mode ) {
+    public String createURL() {
         String url = new String();
         try {
           String lat = latitude;
@@ -522,10 +522,9 @@ public class XTrexModel extends Observable
           
           url 
             = ( "https://maps.googleapis.com/maps/api/directions/json"
-              + "?" + "origin"      + "=" + originlat + "," + originlong 
+              + "?" + "origin"      + "=" + lat + "," + lon 
               + "&" + "destination" + "=" + encDestination
               + "&" + "key"         + "=" + "AIzaSyDaX_hkPxn_qxqMENGZEeSZWX5-Qkcjk8Y" //key can only be used 2500 times a day
-              + "&" + "region"      + "=" + region
               + "&" + "mode"        + "=" + travelMode
               + "&" + "language"    + "=" + languages.get(currentLanguageCount)
               );
