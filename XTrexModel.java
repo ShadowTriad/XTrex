@@ -20,18 +20,29 @@ public class XTrexModel extends Observable
 {
 	private Mode mode;
 	private Constant constant = new Constant ();
-	private String longitude = "-3.1"; // will be retrieved from gps later
-	private String latitude = "50.1"; // will be retrieved from gps later
-	private String time = "123456"; // will be retrieved from gps later
-	private String destination = "The Forum"; //Change me
 
+	//relating to GPS
+	private String latitude; // will be retrieved from gps later
+	private String latDirection;
+
+	private String lonDirection;
+	private String longitude; // will be retrieved from gps later
+
+	private String time = "14241"; // will be retrieved from gps later
+
+	//relating to WhereTo
+	private String destination = "";
+	private int highlightedButton = 0;
+	private Keyboard keyboardMode = Keyboard.ALPHABETIC;
+
+	//relating to TripComputer
 	private double startingTime = 0;
 	private double tripOdometer = 0;
 	private double speed = 0;
 	private double movingTimeMinutes = 0;
 	private double movingTimeSeconds = 0;
-	private int highlightedButton = 0;
 
+	//relating to Map
 	private int zoom = 15;
 	private String strZoom = Integer.toString (zoom);
 	private ImageIcon map;
@@ -81,15 +92,25 @@ public class XTrexModel extends Observable
 		return constant;
 	}
 
+	public String getLatitude()
+	{
+		return latitude;
+	}
+
+	public String getLatDirection() {
+		return latDirection;
+	}
+
 	public String getLongitude ()
 	{
 		return longitude;
 	}
 
-	public String getLatitude ()
-	{
-		return latitude;
+	public String getLonDirection() {
+		return lonDirection;
 	}
+
+
 
 	public String getTime ()
 	{
@@ -122,7 +143,7 @@ public class XTrexModel extends Observable
 
 	public void setStartingTime (String time)
 	{
-		startingTime = Double.parseDouble (time);
+		startingTime = Double.parseDouble(time);
 	}
 
 	public double getTripOdometer ()
@@ -169,11 +190,97 @@ public class XTrexModel extends Observable
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
 	}
 
-	public int getHighlightedButton ()
-	{
-		return highlightedButton;
+	/*
+	*	Methods relating to WHERETO MODE
+	*/
+	public Keyboard getKeyboardMode() {
+		return this.keyboardMode;
 	}
 
+	public String getDestination() {
+		return this.destination;
+	}
+
+	public int getHighlightedButton() {
+		return this.highlightedButton;
+	}
+
+	public void incrementHighlighted() {
+		this.highlightedButton += 1;
+
+		int limit;
+		if (keyboardMode == Keyboard.ALPHABETIC) {
+			limit = constant.getAlphabeticButtons();
+		} else {
+			limit = constant.getNumericButtons();
+		}
+
+		if (highlightedButton == limit) {
+			this.highlightedButton = 0;
+		}
+
+		setChanged();
+		notifyObservers();
+	}
+
+	public void decrementHightlighted() {
+		this.highlightedButton -= 1;
+
+		int limit;
+		if (keyboardMode == Keyboard.ALPHABETIC) {
+			limit = constant.getAlphabeticButtons();
+		} else {
+			limit = constant.getNumericButtons();
+		}
+
+		if (highlightedButton == -1) {
+			this.highlightedButton = limit - 1;
+		}
+
+		setChanged();
+		notifyObservers();
+	}
+
+	public void changeKeyboard() {
+		if (keyboardMode == Keyboard.NUMERIC) {
+			this.keyboardMode = Keyboard.ALPHABETIC;
+		} else {
+			this.keyboardMode = Keyboard.NUMERIC;
+		}
+		this.highlightedButton = 0;
+
+		setChanged();
+		notifyObservers();
+	}
+
+	public void addLetter() {
+		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+		this.destination += alphabet.charAt( highlightedButton );
+
+		setChanged();
+		notifyObservers();
+	}
+
+	public void addNumber() {
+		String nums = "1234567890";
+		this.destination += nums.charAt( highlightedButton );
+
+		setChanged();
+		notifyObservers();
+	}
+
+	public void delFromAddress() {
+		if ( this.destination.length() > 0 ) {
+			this.destination = destination.substring(0, destination.length()-1);
+		}
+
+		setChanged();
+		notifyObservers();
+	}
+
+	/*
+	*	Methods relating to MAP MODE
+	*/
 	public String getZoom() {
 		return strZoom;
 	}

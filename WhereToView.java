@@ -22,12 +22,14 @@ public class WhereToView extends JPanel implements Observer
 {
 	private XTrexController controller;
 	private XTrexModel model;
-	private Constant constant;
-	private String address = "";
+	private Constant constant = new Constant();
+
 	private int highlightedButton;
+	private String address;
+
 	private Keyboard keyboard = Keyboard.ALPHABETIC;
-	private ArrayList <Keycap> alphabeticButtons = new ArrayList <Keycap> (constant.getAlphabeticButtons ());
-	private ArrayList <Keycap> numericButtons = new ArrayList <Keycap> (constant.getNumericButtons ());
+	private ArrayList <Keycap> alphabeticButtons = new ArrayList<Keycap>( constant.getAlphabeticButtons() );
+	private ArrayList <Keycap> numericButtons = new ArrayList <Keycap> ( constant.getNumericButtons() );
 	private Keycap buttonA = new Keycap ("A", constant.getAlphabeticColumn1 (), constant.getAlphabeticRow1 ());
 	private Keycap buttonB = new Keycap ("B", constant.getAlphabeticColumn2 (), constant.getAlphabeticRow1 ());
 	private Keycap buttonC = new Keycap ("C", constant.getAlphabeticColumn3 (), constant.getAlphabeticRow1 ());
@@ -68,7 +70,7 @@ public class WhereToView extends JPanel implements Observer
 	private Keycap button0 = new Keycap ("0", constant.getNumericColumn1 (), constant.getNumericRow4 ());
 	private Keycap buttonLEF = new Keycap ("LEF", constant.getNumericColumn1 (), constant.getNumericRow5 ());
 	private Keycap buttonDEL = new Keycap ("DEL", constant.getNumericColumn2 (), constant.getNumericRow4 ());
-	
+
 	//sets up the class so the mode can be displayed on the screen
 	//adds the buttons on the alphabetic keyboard to the alphabetic keyboard buttons list
 	//adds the buttons on the numeric keyboard to the numeric keyboard buttons list
@@ -76,8 +78,12 @@ public class WhereToView extends JPanel implements Observer
 	{
 		this.controller = controller;
 		this.model = model;
-		constant = model.getConstant ();
-		highlightedButton = model.getHighlightedButton ();
+
+		constant = model.getConstant();
+
+		this.address = model.getDestination();
+		this.highlightedButton = model.getHighlightedButton();
+
 		alphabeticButtons.add (buttonA);
 		alphabeticButtons.add (buttonB);
 		alphabeticButtons.add (buttonC);
@@ -120,14 +126,16 @@ public class WhereToView extends JPanel implements Observer
 		numericButtons.add (buttonDEL);
 		model.addObserver (this);
 	}
-	
+
 	//updates the class
-	public void update (Observable observable, Object object)
-	{
-		highlightedButton = model.getHighlightedButton ();
+	public void update (Observable observable, Object object) {
+		this.address = model.getDestination();
+		this.highlightedButton = model.getHighlightedButton();
+		this.keyboard = model.getKeyboardMode();
+		System.out.println( highlightedButton );
 		repaint ();
 	}
-	
+
 	//cycles forwards through the buttons on the keyboard
 	//traverses the buttons in the list of buttons on a keyboard
 	//if the end of the list is reached, it goes back to the beginning of the list
@@ -157,7 +165,7 @@ public class WhereToView extends JPanel implements Observer
 		}
 		repaint ();
 	}
-	
+
 	//cycles backwards through the buttons on the keyboard
 	//traverses the buttons in the list of buttons on a keyboard
 	//if the beginning of the list is reached, it goes forward to the end of the list
@@ -187,14 +195,14 @@ public class WhereToView extends JPanel implements Observer
 		}
 		repaint ();
 	}
-	
+
 	//adds the orange highlighted button on the keyboard to the display if the orange highlighted button is a character button
 	//deletes the last character from the display if the orange highlighted button is a delete button
 	//switches the keyboard to either an alphabetic or a numeric keyboard if the orange highlighted button is an arrow button
 	public void selectButton ()
 	{
 		if (keyboard == Keyboard.ALPHABETIC)
-		{		
+		{
 			if ((alphabeticButtons.get (highlightedButton)).getName () == "RIG")
 			{
 				keyboard = Keyboard.NUMERIC;
@@ -208,7 +216,7 @@ public class WhereToView extends JPanel implements Observer
 		else
 		{
 			if ((numericButtons.get (highlightedButton)).getName () == "DEL")
-			{			
+			{
 				if (address.length () == 0)
 				{
 				}
@@ -233,13 +241,7 @@ public class WhereToView extends JPanel implements Observer
 		}
 		repaint ();
 	}
-	
-	//returns the address in the display on the screen
-	public String getAddress ()
-	{			
-		return address;
-	}
-	
+
 	//updates the screen
 	public void paintComponent (Graphics graphics)
 	{
