@@ -10,21 +10,21 @@
  * The select button is used to either add the orange highlighted button on the keyboard to the address in the display if the orange highlighted button is a character button, delete the last character from the address in the display if the orange highlighted button is a DEL button or switch the alphabetic or the numeric keyboard displayed to the alphabetic or the numeric keyboard not displayed if the orange highlighted button is an arrow button.
  */
 
-//imports the java awt, java swing and java util packages so the class can use screens, lists and views
+//imports the java awt, java swing and java util packages so the class can use screens and lists
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
-//extends JPanel and implements Observer so the class can use screens and views
+//extends JPanel and implements Observer so the class can use screens
 public class WhereToView extends JPanel implements Observer
 {
 	private XTrexController controller;
 	private XTrexModel model;
 	private Constant constant;
 	private String address = "";
-	private int highlightedButton = 0;
+	private int highlightedButton;
 	private Keyboard keyboard = Keyboard.ALPHABETIC;
 	private ArrayList <Keycap> alphabeticButtons = new ArrayList <Keycap> (constant.getAlphabeticButtons ());
 	private ArrayList <Keycap> numericButtons = new ArrayList <Keycap> (constant.getNumericButtons ());
@@ -72,11 +72,12 @@ public class WhereToView extends JPanel implements Observer
 	//sets up the class so the mode can be displayed on the screen
 	//adds the buttons on the alphabetic keyboard to the alphabetic keyboard buttons list
 	//adds the buttons on the numeric keyboard to the numeric keyboard buttons list
-	public WhereToView ()
+	public WhereToView (XTrexController controller, XTrexModel model)
 	{
 		this.controller = controller;
 		this.model = model;
 		constant = model.getConstant ();
+		highlightedButton = model.getHighlightedButton ();
 		alphabeticButtons.add (buttonA);
 		alphabeticButtons.add (buttonB);
 		alphabeticButtons.add (buttonC);
@@ -120,8 +121,11 @@ public class WhereToView extends JPanel implements Observer
 		model.addObserver (this);
 	}
 	
+	//updates the class
 	public void update (Observable observable, Object object)
 	{
+		highlightedButton = model.getHighlightedButton ();
+		repaint ();
 	}
 	
 	//cycles forwards through the buttons on the keyboard

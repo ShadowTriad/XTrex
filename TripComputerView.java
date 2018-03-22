@@ -20,12 +20,14 @@ public class TripComputerView extends JPanel implements Observer
 	private XTrexController controller;
 	private XTrexModel model;
 	private Constant constant;
-	private double tripOdometer = 0;
-	private double speed = 0;
-	private double movingTimeMinutes = 0;
-	private double movingTimeSeconds = 0;
+	private double tripOdometer;
+	private double speed;
+	private double movingTimeMinutes;
+	private double movingTimeSeconds;
 	
-	//sets up the view
+	//sets up the class so the mode can be displayed on the screen
+	//sets the starting coordinates to the starting coordinate attributes
+	//sets the starting time to the starting time attribute
 	public TripComputerView (XTrexController controller, XTrexModel model)
 	{
 		this.controller = controller;
@@ -38,7 +40,7 @@ public class TripComputerView extends JPanel implements Observer
 		model.addObserver (this);
 	}
 	
-	//updates the view
+	//updates the class
 	public void update (Observable observable, Object object)
 	{
 		tripOdometer = model.getTripOdometer ();
