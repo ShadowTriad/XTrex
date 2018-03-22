@@ -557,7 +557,7 @@ public class XTrexModel extends Observable
      * Written by Tilly Porthouse
      */
     public void updateDirections(){
-        String url = createURL(longitude, latitude , destination, region , travelMode );
+        String url = createURL();
         JsonReader jr = new JsonReader(url);
         try {
             directions = jr.readDirections();
