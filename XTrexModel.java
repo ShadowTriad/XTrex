@@ -30,6 +30,7 @@ public class XTrexModel extends Observable
 	private double speed = 0;
 	private double movingTimeMinutes = 0;
 	private double movingTimeSeconds = 0;
+	private int highlightedButton = 0;
 	
 	private int zoom = 15;
 	private String strZoom = Integer.toString (zoom);  
@@ -166,6 +167,11 @@ public class XTrexModel extends Observable
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
+	}
+	
+	public int getHighlightedButton ()
+	{
+		return highlightedButton;
 	}
 	
 	public String getZoom() {
