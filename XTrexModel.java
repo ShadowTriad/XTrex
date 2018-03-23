@@ -377,17 +377,11 @@ public class XTrexModel extends Observable
 	{
 		return minutes / constant.getMinuteSeconds () + seconds / constant.getHourSeconds ();
 	}
-	
-	//gets the starting time
-	public String getStartingTime ()
-	{
-		return startingTime;
-	}
-	
+		
 	//sets the starting time
 	public void setStartingTime (String time)
 	{
-		startingTime = Double.parseDouble(time);
+		startingTime = Double.parseDouble (time);
 		setChanged ();
 		notifyObservers ();
 	}
@@ -435,13 +429,13 @@ public class XTrexModel extends Observable
 	public void updateMovingTime ()
 	{
 		double seconds = inSeconds (time);
-		if (seconds > Double.parseDouble(startingTime))
+		if (seconds > startingTime)
 		{
 			seconds = seconds - Double.parseDouble(startingTime);
 		}
 		else
 		{
-			seconds = seconds + constant.getDaySeconds () - Double.parseDouble(startingTime);
+			seconds = seconds + constant.getDaySeconds () - startingTime;
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
