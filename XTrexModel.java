@@ -39,7 +39,8 @@ public class XTrexModel extends Observable
 	private int highlightedButton = 0;
 	private Keyboard keyboardMode = Keyboard.ALPHABETIC;
 
-	//relating to TripComputer
+	//Trip Compute attributes
+	
 	private double startingTime = 0;
 	private double tripOdometer = 0;
 	private double speed = 0;
@@ -149,58 +150,79 @@ public class XTrexModel extends Observable
 		notifyObservers();
 
 	}
-
+	
+       /*
+	* @author Faith
+	*/
+	
+	//Trip Computer methods
+	
+	//converts time in hours, minutes and second to seconds
 	public double inSeconds (String time)
 	{
 		return Double.parseDouble (time.substring (0, 2)) * constant.getHourSeconds () + Double.parseDouble (time.substring (2, 4)) * constant.getMinuteSeconds () + Double.parseDouble (time.substring (4));
 	}
-
+	
+	//converts time in minutes and seconds to hours
 	public double inHours (Double minutes, Double seconds)
 	{
 		return minutes / constant.getMinuteSeconds () + seconds / constant.getHourSeconds ();
 	}
-
+	
+	//gets the starting time
+	public String getStartingTime ()
+	{
+		return startingTime;
+	}
+	
+	//sets the starting time
 	public void setStartingTime (String time)
 	{
 		startingTime = Double.parseDouble(time);
 		setChanged ();
 		notifyObservers ();
 	}
-
+	
+	//gets the trip odometer
 	public double getTripOdometer ()
 	{
 		return tripOdometer;
 	}
-
-	public void updateTripOdometer () //will update trip odometer using speech mode later
+	//updates the trip odometer
+	public void updateTripOdometer ()
 	{
 		tripOdometer = getRouteLengthSoFar ();
 		setChanged ();
 		notifyObservers ();
 	}
-
+	
+	//gets the speed
 	public double getSpeed ()
 	{
 		return speed;
 	}
-
+	
+	//updates the speed
 	public void updateSpeed ()
 	{
 		speed = tripOdometer / (inHours(movingTimeMinutes, movingTimeSeconds));
 		setChanged ();
 		notifyObservers ();
 	}
-
+	
+	//gets the moving time
 	public double getMovingTimeMinutes ()
 	{
 		return movingTimeMinutes;
 	}
-
+	
+	//gets the moving time
 	public double getMovingTimeSeconds ()
 	{
 		return movingTimeSeconds;
 	}
-
+	
+	//updates the moving time
 	public void updateMovingTime ()
 	{
 		double seconds = inSeconds (time);
@@ -218,55 +240,65 @@ public class XTrexModel extends Observable
 		notifyObservers ();
 	}
 
-	/*
-	*	Methods relating to WHERETO MODE
-	*/
-	public Keyboard getKeyboardMode() {
+	//Trip Computer methods
+	
+	public Keyboard getKeyboardMode ()
+	{
 		return this.keyboardMode;
 	}
 
-	public String getDestination() {
+	public String getDestination ()
+	{
 		return this.destination;
 	}
 
-	public int getHighlightedButton() {
+	public int getHighlightedButton ()
+	{
 		return this.highlightedButton;
 	}
 
-	public void incrementHighlighted() {
+	public void incrementHighlighted ()
+	{
 		this.highlightedButton += 1;
 
 		int limit;
-		if (keyboardMode == Keyboard.ALPHABETIC) {
-			limit = constant.getAlphabeticButtons();
-		} else {
-			limit = constant.getNumericButtons();
+		if (keyboardMode == Keyboard.ALPHABETIC)
+		{
+			limit = constant.getAlphabeticButtons ();
+		}
+		else
+		{
+			limit = constant.getNumericButtons ();
 		}
 
-		if (highlightedButton == limit) {
+		if (highlightedButton == limit)
+		{
 			this.highlightedButton = 0;
 		}
-
-		setChanged();
-		notifyObservers();
+		setChanged ();
+		notifyObservers ();
 	}
 
-	public void decrementHightlighted() {
+	public void decrementHightlighted ()
+	{
 		this.highlightedButton -= 1;
-
 		int limit;
-		if (keyboardMode == Keyboard.ALPHABETIC) {
-			limit = constant.getAlphabeticButtons();
-		} else {
-			limit = constant.getNumericButtons();
+		if (keyboardMode == Keyboard.ALPHABETIC)
+		{
+			limit = constant.getAlphabeticButtons ();
+		}
+		else
+		{
+			limit = constant.getNumericButtons ();
 		}
 
-		if (highlightedButton == -1) {
+		if (highlightedButton == -1)
+		{
 			this.highlightedButton = limit - 1;
 		}
 
-		setChanged();
-		notifyObservers();
+		setChanged ();
+		notifyObservers ();
 	}
 
 	public void changeKeyboard() {
