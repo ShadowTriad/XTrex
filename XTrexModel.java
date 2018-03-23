@@ -35,7 +35,7 @@ public class XTrexModel extends Observable
 	private boolean goodRead;
 
 	//relating to WhereTo
-	private String destination = "CHAGFORD";
+	private String destination = "THE FORUM EXETER";
 	private int highlightedButton = 0;
 	private Keyboard keyboardMode = Keyboard.ALPHABETIC;
 
@@ -60,7 +60,7 @@ public class XTrexModel extends Observable
     final static String FILENAME = "output.wav";
     ArrayList<Direction> directions = new ArrayList<Direction>();
 
-    final static double radiusOfDestination = 0.01; //radiusOfDestination is measured in km, represents how close the gps coords can be to the destination before the coords are declared close-enough
+    final static double radiusOfDestination = 0.1; //radiusOfDestination is measured in km, represents how close the gps coords can be to the destination before the coords are declared close-enough
     public int dirCount = 0;
 
 	// need current gps coords, goal gps coords, mode, time, speed..?, language, map
@@ -475,6 +475,7 @@ public class XTrexModel extends Observable
         double distance = Haversine.distance(currentX, currentY, destinationX, destinationY);
 
         if (distance <= radiusOfDestination){
+			System.out.println("HEY YOU'RE IN RANGE");
             return true;
         } else {
             return false;
