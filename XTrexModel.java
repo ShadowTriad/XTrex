@@ -8,6 +8,7 @@ import java.util.Observable;
 import javax.swing.*;
 import java.util.*;
 import java.util.List;
+import java.lang.Math;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -93,8 +94,12 @@ public class XTrexModel extends Observable
 	private int zoom = 15;
 	private String strZoom = Integer.toString (zoom);
 	private ImageIcon map;
+	private String output = "map.png"; 
 	private String[ ] tiles = {"WhereTo", "TripComputer", "Map", "Speech", "Satellite", "About"};
 	private int index = 0;
+	private String endLatitude = latitude;
+	private String endLongitude = longitude;
+	private double rad = 0;
 
 	public int currentLanguageCount = 3;
     public List<String> languages = Arrays.asList("Off","en-US", "fr-FR","de-DE","It-IT","es-ES");
@@ -152,6 +157,7 @@ public class XTrexModel extends Observable
 		numericButtons.add (buttonDEL);
 		setStartingTime (getTime ());
 		setMode (mode);
+		updateRadians();
 	}
 
 	public Mode getMode ()
@@ -446,8 +452,15 @@ public class XTrexModel extends Observable
 	/*
 	*	Methods relating to MAP MODE
 	*/
-	public String getZoom() {
-		return strZoom;
+	public void setZoom(int zoom) {
+		this.zoom = zoom;
+		strZoom = Integer.toString(zoom);
+		setChanged ();
+		notifyObservers (mode);
+	}
+	
+	public int getZoom() {
+		return zoom;
 	}
 
 	public void setMap(ImageIcon map) {
@@ -458,6 +471,42 @@ public class XTrexModel extends Observable
 	public ImageIcon getMap() {
 		return map;
 	}
+	
+	public void setLastDirection() {
+		Direction last = new Direction();
+		last = directions.get(directions.size() - 1);
+		//could instead use dir count
+		//NEED TO CHANGE SO GETS FROM SPEECH
+		this.endLatitude  = "51.5";//last.getEndLatitude() ;
+		this.endLongitude = "0.12";//last.getEndLongitude();
+		setChanged(); 
+		notifyObservers();
+	}
+	
+	public void updateRadians() {
+		
+		endLatitude = "40.71";
+		endLongitude = "-73.5"; // WANT TO CALL SETLASTDIRECTION()
+		Double eLat  = Double.parseDouble(endLatitude);
+		Double eLong = Double.parseDouble(endLongitude);
+		Double lat   = Double.parseDouble(latitude);
+		Double lon   = Double.parseDouble(longitude);
+		rad = Math.atan2(
+				  Math.cos(lat) * Math.sin(eLat) 
+				- Math.sin(lat) * Math.cos(eLat)
+				* Math.cos(eLong - lon), 
+				  Math.sin(eLong - lon)
+				* Math.cos(eLat))%Math.PI;
+				
+		setChanged(); 
+		notifyObservers();
+	}
+	
+	public double getRadians() {
+		return rad;
+	}
+	
+
 
 	// is this constant?
 	public String[] getTiles() {
@@ -516,10 +565,12 @@ public class XTrexModel extends Observable
     }
 
 	public void updateMap() {
-		String output = "map.png"; ///////////////////////////////////////////////
-		writeData( output, this.readData() );
-		setMap(new ImageIcon(output));
+		writeData( output, this.readData() ); 
+		map = new ImageIcon(output);
+		setChanged(); 
+		notifyObservers();
 	}
+	
 
 	/*
 	*	Methods relating to SPEECH
