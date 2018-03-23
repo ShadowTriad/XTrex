@@ -50,7 +50,7 @@ public class XTrexController implements ActionListener {
 				}
 
             } else if (model.getMode() == Mode.WHERETO) {
-				model.incrementHighlighted();
+				model.whereToPlusButton();
 			} else if (model.getMode() == Mode.SPEECH) {
 				model.speechPlusButton();
 			}
@@ -68,7 +68,7 @@ public class XTrexController implements ActionListener {
 				}
 
 			} else if (model.getMode() == Mode.WHERETO) {
-				model.decrementHightlighted();
+				model.whereToMinusButton();
 
 			} else if (model.getMode() == Mode.SPEECH) {
 				model.speechMinusButton();
@@ -82,27 +82,8 @@ public class XTrexController implements ActionListener {
 				// use tiles and dictionary somehow?
 				model.setMode(Mode.values()[ model.getIndex() ]);
 			} else if ( model.getMode() == Mode.WHERETO ) {
-
-				boolean alphabetic = model.getKeyboardMode() == Keyboard.ALPHABETIC;
-				boolean rightArrow = model.getHighlightedButton() == constant.getAlphabeticButtons()-1;
-				boolean leftArrow = model.getHighlightedButton() == constant.getNumericButtons()-2;
-				boolean delete = model.getHighlightedButton() == constant.getNumericButtons()-1;
-
-				if ( alphabetic ) {
-					if ( rightArrow ) {
-						model.changeKeyboard();
-					} else {
-						model.addLetter();
-					}
-				} else {
-					if ( leftArrow ) {
-						model.changeKeyboard();
-					} else if ( delete ) {
-						model.delFromAddress();
-					} else {
-						model.addNumber();
-					}
-				}
+				model.whereToSelectButton ();
+			}
 
 			} else if ( model.getMode() == Mode.SPEECH ) {
 
