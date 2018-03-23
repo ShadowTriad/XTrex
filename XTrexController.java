@@ -77,21 +77,25 @@ public class XTrexController implements ActionListener {
 		/*
 		*	SELECT BUTTON
 		*/
-		} else if ( e.getSource() == view.selectButton ) {
-			if (model.getMode() == Mode.MENU) {
+		}
+		else if ( e.getSource() == view.selectButton )
+		{
+			if (model.getMode() == Mode.MENU)
+			{
 				// use tiles and dictionary somehow?
 				model.setMode(Mode.values()[ model.getIndex() ]);
-			} else if ( model.getMode() == Mode.WHERETO ) {
+			}
+			else if ( model.getMode() == Mode.WHERETO )
+			{
 				model.whereToSelectButton ();
 			}
-
-			} else if ( model.getMode() == Mode.SPEECH ) {
-
+			else if ( model.getMode() == Mode.SPEECH )
+			{
 				model.playDirectionsUntilAtDestination();
-
 			}
-
-		} else {
+		}
+		else
+		{
 			//something weird has happened
 		}
 	}
