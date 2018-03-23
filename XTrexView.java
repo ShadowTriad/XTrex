@@ -7,28 +7,26 @@ import javax.swing.border.LineBorder;
 import java.util.Observable;
 import java.util.Observer;
 
-public class XTrexView extends JFrame implements Observer {
-
-    public final OnOffButton onOffButton = new OnOffButton();
-    public final PlusButton plusButton = new PlusButton("+");
-    public final MinusButton minusButton = new MinusButton("-");
-    public final SelectButton selectButton = new SelectButton("SELECT");
-    public final MenuButton menuButton = new MenuButton("MENU");
-	private HashMap<Mode, JPanel> screens = new HashMap<Mode, JPanel>();
-
-
-    private XTrexController controller;
-    private XTrexModel model;
-    private OnOffView onOff;
-    private MenuView menu;
-    private MapView map;
-    private SpeechView speech;
-    private WhereToView whereTo;
-    private TripComputerView tripComputer;
-    private AboutView about;
-    private SatelliteView satellite;
-
+public class XTrexView extends JFrame implements Observer
+{
+	public final OnOffButton onOffButton = new OnOffButton ();
+	public final PlusButton plusButton = new PlusButton ("+");
+	public final MinusButton minusButton = new MinusButton ("-");
+	public final SelectButton selectButton = new SelectButton ("SELECT");
+	public final MenuButton menuButton = new MenuButton ("MENU");
+	private HashMap <Mode, JPanel> screens = new HashMap <Mode, JPanel> ();
 	private Mode mode;
+	
+	private XTrexController controller;
+	private XTrexModel model;
+	private OnOffView onOff;
+	private MenuView menu;
+	private MapView map;
+	private SpeechView speech;
+	private WhereToView whereTo;
+	private TripComputerView tripComputer;
+	private AboutView about;
+	private SatelliteView satellite;
 
     public XTrexView(XTrexController controller, XTrexModel model) {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
