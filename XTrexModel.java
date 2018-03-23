@@ -163,6 +163,8 @@ public class XTrexModel extends Observable
 	public void setStartingTime (String time)
 	{
 		startingTime = Double.parseDouble(time);
+		setChanged ();
+		notifyObservers ();
 	}
 
 	public double getTripOdometer ()
@@ -172,6 +174,9 @@ public class XTrexModel extends Observable
 
 	public void updateTripOdometer () //will update trip odometer using speech mode later
 	{
+		tripOdometer = getRouteLengthSoFar ();
+		setChanged ();
+		notifyObservers ();
 	}
 
 	public double getSpeed ()
@@ -182,6 +187,8 @@ public class XTrexModel extends Observable
 	public void updateSpeed ()
 	{
 		speed = tripOdometer / (inHours(movingTimeMinutes, movingTimeSeconds));
+		setChanged ();
+		notifyObservers ();
 	}
 
 	public double getMovingTimeMinutes ()
@@ -203,10 +210,12 @@ public class XTrexModel extends Observable
 		}
 		else
 		{
-			//seconds = seconds + constant.getDaySeconds () - startingTime;
+			seconds = seconds + constant.getDaySeconds () - startingTime;
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
+		setChanged ();
+		notifyObservers ();
 	}
 
 	/*
