@@ -435,13 +435,13 @@ public class XTrexModel extends Observable
 	public void updateMovingTime ()
 	{
 		double seconds = inSeconds (time);
-		if (seconds > startingTime)
+		if (seconds > Double.parseDouble(startingTime))
 		{
-			seconds = seconds - startingTime;
+			seconds = seconds - Double.parseDouble(startingTime);
 		}
 		else
 		{
-			seconds = seconds + constant.getDaySeconds () - startingTime;
+			seconds = seconds + constant.getDaySeconds () - Double.parseDouble(startingTime);
 		}
 		movingTimeMinutes = seconds / constant.getMinuteSeconds ();
 		movingTimeSeconds = seconds % constant.getMinuteSeconds ();
