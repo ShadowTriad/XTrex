@@ -34,7 +34,8 @@ public class XTrexModel extends Observable
 
 	private boolean goodRead;
 
-	//relating to WhereTo
+	//WhereTo
+	
 	private String destination = "THE FORUM EXETER";
 	private int highlightedButton = 0;
 	private Keyboard keyboardMode = Keyboard.ALPHABETIC;
