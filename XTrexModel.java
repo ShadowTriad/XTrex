@@ -431,7 +431,7 @@ public class XTrexModel extends Observable
 		double seconds = inSeconds (time);
 		if (seconds > startingTime)
 		{
-			seconds = seconds - Double.parseDouble(startingTime);
+			seconds = seconds - startingTime;
 		}
 		else
 		{
